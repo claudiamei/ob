@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ~/ob/AmeliaUI/src/main/webapp/a
+git stash apply

@@ -1,0 +1,55 @@
+
+<div class="ob-kpi-box">
+	<div class="row equal-height-cols">
+		<div class="col-xs-4">
+			<div class="row equal-height-cols">
+				<div class="col-xs-6">
+					<div class="font-lg">
+						<div class="value" ng-bind="368345 | kpiNumber:2"></div>
+						<label>Clicks into content /hr</label>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<ob-bullet-graph>
+						<ob-bullet-bar value="10" class="progress-bar-info" name="search"></ob-bullet-bar>
+						<ob-bullet-benchmark value="20"></ob-bullet-benchmark>
+					</ob-bullet-graph>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="row">
+				<div class="col-xs-12 col-lg-6">
+					<div class="font-md">
+						<div class="value" ng-bind="68345 | number"></div>
+						<label>Reach /hr</label>
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<div class="font-md">
+						<div class="value" ng-bind="68345 | number"></div>
+						<label>Mentions /hr</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="row">
+				<div class="col-xs-12 col-lg-6">
+					<div class="font-md">
+						<div class="value" ng-bind="33 | number"></div>
+						<label>Tweets /hr</label>
+					</div>
+				</div>
+				<div class="col-xs-12 col-lg-6">
+					<div class="font-md">
+						<div class="value" ng-bind="+345 | number"></div>
+						<label>New Followers /today</label>
+						<label>195,454 total</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

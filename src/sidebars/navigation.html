@@ -1,0 +1,24 @@
+<div class="ob-sidebar-navigation">
+	<a id="menu-toggle" data-ng-click="toggleSidebar('Left', true)" class="clearfix">
+		<h5 data-ng-click="toggle_product()" class="product-name">Menu</h5>
+		<i class="fa fa-bars"></i>
+	</a>
+	<a id="product-box" data-ng-click="toggleProduct()" class="clearfix">
+		<h4 class="product-name">Engage</h4>
+		<i class="fa fa-ellipsis-h"></i>
+	</a>
+	<nav id="main-menu" ng-transclude>
+		<!-- TRANSCLUDE LIST ITEMS -->
+	</nav>
+	<div id="main-current-time">
+		<!-- <img src="/docs/assets/images/sprite_assets/amelia_head.png"></img> -->
+		<div class="format-lg">
+			<ob-clock class="day" format="'MMMM d, yyyy'"></ob-clock>
+			<ob-clock class="clock" format="'H:mm:ss'"></ob-clock>
+		</div>
+		<div class="format-sm">
+			<ob-clock class="day" format="'M/d'"></ob-clock>
+			<ob-clock class="clock" format="'H:mm'"></ob-clock>
+		</div>
+	</div>
+</div>

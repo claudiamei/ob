@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "What are you committing, followed by [ENTER]:"
+
+read msg
+
+cd ~/ob/AmeliaUI/src/main/webapp/a
+git add --all :/
+git commit -m \'"$msg"\'
+git svn dcommit

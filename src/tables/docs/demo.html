@@ -1,0 +1,134 @@
+<h3>ngTable</h3>
+
+
+<div ob-demo-list demo-list="ngtable.html, ultable.html"></div>
+
+<script type="text/ng-template" id="ngtable.html">
+<div ng-controller="ngTableDemoCtrl" class="customers-table">
+
+	<table ng-table="tableParams" class="table">
+	<tr ng-repeat="user in $data">
+		<td data-title="'Title'">{{user.title}}</td>
+		<td data-title="'Name'">{{user.name}}</td>
+		<td data-title="'Age'">{{user.age}}</td>
+	</tr>
+	</table>
+</div>
+
+<style type="text/css">
+	.customers-table td:first-of-type {
+		width: 100px;
+	}
+	.customers-table td:last-of-type {
+		width: 200px;
+	}
+</style>
+
+<script>
+	var data = [
+		{name: "Moroni", age: 50, title: 'Mr.'},
+		{name: "Tiancum", age: 43, title: 'Mrs.'},
+		{name: "Jacob", age: 27, title: 'Mr.'},
+		{name: "Nephi", age: 29, title: 'Mrs.'},
+		{name: "Enos", age: 34, title: 'Dr.'},
+		{name: "Tiancum", age: 43, title: 'Sr.'},
+		{name: "Jacob", age: 27, title: 'Rev.'},
+		{name: "Nephi", age: 29, title: 'Ms.'},
+		{name: "Enos", age: 34, title: 'Mrs.'},
+		{name: "Tiancum", age: 43, title: 'Mr.'},
+		{name: "Jacob", age: 27, title: 'Ms.'},
+		{name: "Nephi", age: 29, title: 'Miss'},
+		{name: "Enos", age: 34, title: 'Dr.'},
+		{name: "Tiancum", age: 43, title: 'Sr.'},
+		{name: "Jacob", age: 27, title: 'Mr.'},
+		{name: "Nephi", age: 29, title: 'Mrs.'},
+		{name: "Enos", age: 34, title: 'Mr.'}
+	];
+
+	var ngTableDemoCtrl = function($scope, ngTableParams) {
+		$scope.tableParams = new ngTableParams({
+			page: 1,
+			count: 10
+		}, {
+			total: data.length,
+			getData: function($defer, params) {
+				$defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+			}
+		});
+	};
+
+</script>
+</script>
+
+<script type="text/ng-template"id="ultable.html">
+<h3>UL "table"</h3>
+<div ng-controller="ulTableDemoCtrl" class="customers-table">
+	<div class="matrix">
+		<ul class="thead">
+			<li>
+				<div class="fluid">
+					<div class="col">Name</div>
+				</div>
+				<div class="fixed-left">
+					<div class="col">Title</div>
+				</div>
+				<div class="fixed-right">
+					<div class="col">Age</div>
+				</div>
+			</li>
+		</ul>
+		<ul class="tbody">
+			<li ng-repeat="user in data">
+				<div class="fluid">
+					<div class="col">{{user.name}}</div>
+				</div>
+				<div class="fixed-left">
+					<div class="col">{{user.title}}</div>
+				</div>
+				<div class="fixed-right">
+					<div class="col age">{{user.age}}</div>
+					<div class="col actions">
+						<button class="btn btn-primary">Yes</button>
+						<button class="btn btn-danger">No</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<style type="text/css">
+	.customers-table .fluid .col {
+		margin: 0 200px 0 100px;
+		float: none;
+	}
+	.customers-table .fixed-left {
+		width: 100px;
+	}
+	.customers-table .fixed-right {
+		width: 200px;
+	}
+	.customers-table .actions {
+		padding: 0 10px;
+		float: right;
+	}
+</style>
+
+<script>
+	var data = [
+		{name: "Moroni", age: 50, title: 'Mr.'},
+		{name: "Tiancum", age: 43, title: 'Mrs.'},
+		{name: "Jacob", age: 27, title: 'Mr.'},
+		{name: "Nephi", age: 29, title: 'Mrs.'},
+		{name: "Enos", age: 34, title: 'Dr.'},
+		{name: "Tiancum", age: 43, title: 'Sr.'},
+		{name: "Jacob", age: 27, title: 'Rev.'},
+		{name: "Nephi", age: 29, title: 'Ms.'}
+	];
+
+	var ulTableDemoCtrl = function ($scope) {
+		$scope.data = data;
+	};
+
+</script>
+</script>

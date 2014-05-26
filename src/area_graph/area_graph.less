@@ -1,0 +1,93 @@
+
+ob-area-graph{
+	display: block;
+	position: relative;
+}
+
+.area-graph text{
+	fill: #AAAAAA;
+}
+
+.axis path{
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.axis line{
+	stroke: none;
+}
+
+.axis text.y-label{
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.area{
+	stroke: none;
+}
+
+.area-group{
+	-webkit-transition: all .5s ease-in-out;
+	opacity: .3;
+}
+
+.line{
+	fill: none;
+	stroke: blue;
+	stroke-width: 3px;
+}
+
+.voronoi path {
+  fill: none;
+  pointer-events: all;
+}
+
+.voronoi--show path {
+  stroke: red;
+  stroke-opacity: .2;
+}
+
+.focus rect {
+	fill: #696969;
+}
+
+.focus text {
+	fill: #EEE;
+	font-size: 9px;
+	font-weight: 700;
+	text-anchor: middle;
+	font-family: arial,helvetica,sans-serif;
+}
+
+.focus text.shadow {
+	fill: #47484A;
+}
+
+.popover.popover-legend{
+	display: block;
+}
+
+.ob-popover.popover-legend .popover-content{
+	padding: 0px 5px;
+}
+
+.graph-key-row{
+	display: table-row;
+}
+
+.graph-key-row div{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.graph-key-row .key-label{
+	padding: 0px 10px;
+}
+
+.graph-key-row .key-color{
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
+

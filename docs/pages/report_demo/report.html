@@ -1,0 +1,186 @@
+
+<!-- <div class="alert alert-info alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
+</div> -->
+<div class="report-header">
+	<!-- KPI Box -->
+	<div class="ob-kpi-box">
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="center-table font-lg">
+					<div class="value">{{10234455455 | kpiNumber:2}}</div>
+					<label>Impressions</label>
+				</div>
+				<div class="btn-group">
+					<button type="button"class="btn btn-xs btn-default">Left</button>
+					<button type="button"class="btn btn-xs btn-default">Middle</button>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="center-table font-lg">
+					<div class="value">{{34343344 | kpiNumber:2 }}</div>
+					<label>Clicks</label>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="center-table font-lg">
+					<div class="value">
+						<span class="currency">$</span>{{43443 | number}}
+					</div>
+					<label>Spend</label>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row border-bottom">
+		<div ng-controller="obPieChartController">
+			<ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
+		</div>
+	</div>
+</div>
+
+<div class="btn-group" ng-init="radioModel='clicks'">
+        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'clicks'">Most Clicked</button>
+        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'earning'">Highest Earning</button>
+    </div>
+
+<!-- Matrix -->
+<div ng-controller="ulTableDemoCtrl" class="customers-table">
+	<div class="matrix">
+		<div class="thead row">
+			<div class="col-xs-8">Title</div>
+			<div class="col-xs-2">Clicks</div>
+			<div class="col-xs-2"></div>
+		</div>
+		<div class="tbody">
+			<div class="tr row" ng-repeat="article in data">
+				<div class="col-xs-8">{{article.title}}</div>
+				<div class="col-xs-2">{{article.clicks | number}}</div>
+				<div class="col-xs-2">
+					<button class="btn btn-primary">Accept</button>
+					<button class="btn btn-danger">Pass</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <div ng-controller="ulTableDemoCtrl" class="customers-table">
+	<div class="matrix">
+		<ul class="thead">
+			<li>
+				<div class="fluid">
+					<div class="col">Name</div>
+				</div>
+				<div class="fixed-left">
+					<div class="col">Title</div>
+					<div class="col">Title</div>
+				</div>
+				<div class="fixed-right">
+					<div class="col">Age</div>
+				</div>
+			</li>
+		</ul>
+		<ul class="tbody">
+			<li ng-repeat="user in data">
+				<div class="fluid">
+					<div class="col">{{user.name}}</div>
+				</div>
+				<div class="fixed-left">
+					<div class="col">{{user.title}}</div>
+					<div class="col">Title</div>
+				</div>
+				<div class="fixed-right">
+					<div class="col age">{{user.age}}</div>
+					<div class="col actions">
+						<button class="btn btn-primary">Accept</button>
+						<button class="btn btn-danger">Pass</button>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div> -->
+
+<style type="text/css">
+	.customers-table .fluid .col {
+		margin: 0 200px 0 100px;
+		float: none;
+	}
+	.customers-table .fixed-left {
+		width: 200px;
+	}
+	.customers-table .fixed-right {
+		width: 200px;
+	}
+	.customers-table .actions {
+		padding: 0 10px;
+		float: right;
+	}
+</style>
+
+<script>
+
+	var data = [{
+		title: "Fresh details on Flight 370's path",
+		clicks: 121345
+	},{
+		title: "Divers see bodies in sunken ferry",
+		clicks: 121345
+	},{
+		title: "See Rosie O'Donnell's 50-lb. weight loss",
+		clicks: 121345
+	},{
+		title: "Walmart joins money-transfer game",
+		clicks: 121345
+	},{
+		title: "Where are Nigeria's abducted girls?",
+		clicks: 121345
+	},{
+		title: "Reid defends 'terrorists' comments",
+		clicks: 121345
+	},{
+		title: "Has smartphone innovation stalled?",
+		clicks: 121345
+	},{
+		title: "League kicks out HIV-positive man",
+		clicks: 121345
+	},{
+		title: "Police: Dad kills son to play games",
+		clicks: 121345
+	},{
+		title: "What's new at New York Auto Show",
+		clicks: 121345
+	},{
+		title: "Miley Cyrus faces long recovery",
+		clicks: 121345
+	},{
+		title: "NHL player takes slapshot to face",
+		clicks: 121345
+	},{
+		title: "TNT reporter has leukemia",
+		clicks: 121345
+	},{
+		title: "Is Charles Barkley leaving TNT?",
+		clicks: 121345
+	}];
+
+
+	// var data = [
+	// 	{name: "Moroni", age: 50, title: 'Mr.'},
+	// 	{name: "Tiancum", age: 43, title: 'Mrs.'},
+	// 	{name: "Jacob", age: 27, title: 'Mr.'},
+	// 	{name: "Nephi", age: 29, title: 'Mrs.'},
+	// 	{name: "Enos", age: 34, title: 'Dr.'},
+	// 	{name: "Tiancum", age: 43, title: 'Sr.'},
+	// 	{name: "Jacob", age: 27, title: 'Rev.'},
+	// 	{name: "Nephi", age: 29, title: 'Ms.'}
+	// ];
+
+	var ulTableDemoCtrl = function ($scope) {
+		$scope.data = data;
+	};
+
+</script>

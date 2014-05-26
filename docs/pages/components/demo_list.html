@@ -1,0 +1,7 @@
+<div ng-repeat="file_src in demoList">
+	<ng-include src="file_src"></ng-include>
+	<br>
+	<button class="btn toggle-Btn" ng-click="show = !show" ng-class="{active: show}" >Toggle Markup</button>
+	<div ng-show="show" hljs language="html" include="file_src" lang="html"></div>
+	<br><br>
+</div>

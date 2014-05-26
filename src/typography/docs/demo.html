@@ -1,0 +1,120 @@
+  <br>
+  <!-- Headings -->
+  <dt>
+    <h2 id="type-headings">Headings</h2>
+  </dt>
+  <dd>
+    <div class="bs-example bs-example-type">
+     <!-- <table class="table">
+        <tbody>
+          <tr>
+            <td><h1>h1. Bootstrap heading</h1></td>
+            <td class="type-info">Semibold 36px</td>
+          </tr>
+          <tr>
+            <td><h2>h2. Bootstrap heading</h2></td>
+            <td class="type-info">Semibold 30px</td>
+          </tr>
+          <tr>
+            <td><h3>h3. Bootstrap heading</h3></td>
+            <td class="type-info">Semibold 24px</td>
+          </tr>
+          <tr>
+            <td><h4>h4. Bootstrap heading</h4></td>
+            <td class="type-info">Semibold 18px</td>
+          </tr>
+          <tr>
+            <td><h5>h5. Bootstrap heading</h5></td>
+            <td class="type-info">Semibold 14px</td>
+          </tr>
+          <tr>
+            <td><h6>h6. Bootstrap heading</h6></td>
+            <td class="type-info">Semibold 12px</td>
+          </tr>
+        </tbody>
+      </table>-->
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><h1>h1. {{12345890 | kpiNumber:2}} <small>Views/hr</small></h1></td>
+          </tr>
+          <tr>
+            <td><h2>h2. {{1234567890 | currency:'$'}} <small>Views/hr</small></h2></td>
+          </tr>
+          <tr>
+            <td><h3>h3. {{1234567890 | number}} <small>Views/hr</small></h3></td>
+          </tr>
+          <tr>
+            <td><h4>h4. {{1234567890 | number}} <small>Views/hr</small></h4></td>
+          </tr>
+          <tr>
+            <td><h5>h5. {{1234567890 | number}} <small>Views/hr</small></h5></td>
+          </tr>
+          <tr>
+            <td><h6>h6. {{1234567890 | number}} <small>Views/hr</small></h6></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <div class="highlight"><pre><code class="html">
+  <span class="nt">&lt;h1&gt;</span>h1. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h1&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>h2. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h2&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>h3. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h3&gt;</span>
+  <span class="nt">&lt;h4&gt;</span>h4. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h4&gt;</span>
+  <span class="nt">&lt;h5&gt;</span>h5. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h5&gt;</span>
+  <span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading <span class="nt">&lt;small&gt;</span>Secondary text<span class="nt">&lt;/small&gt;&lt;/h6&gt;</span>
+  </code></pre></div>
+</dd>
+
+  <!-- Body copy -->
+  <dt>
+    <h2 id="type-body-copy">Body copy</h2>
+  </dt>
+  <dd>
+    <div class="bs-example">
+      <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+      <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+    </div>
+  </dd>
+
+  <!-- Emphasis -->
+  <dt>
+    <h3>Small text</h3>
+  </dt>
+  <dd>
+    <div class="bs-example">
+      <p><small>This line of text is meant to be treated as fine print.</small></p>
+    </div>
+  <div class="highlight">
+  <pre><code class="html"><span class="nt">&lt;small&gt;</span>This line of text is meant to be treated as fine print.<span class="nt">&lt;/small&gt;</span>
+  </code></pre></div>
+  </dd>
+
+  <dt>
+    <h3>Bold</h3>
+  </dt>
+  <dd>
+    <div class="bs-example">
+      <p>The following snippet of text is <strong>rendered as bold text</strong>.</p>
+    </div>
+  <div class="highlight"><pre><code class="html"><span class="nt">&lt;strong&gt;</span>rendered as bold text<span class="nt">&lt;/strong&gt;</span>
+  </code></pre></div>
+  </dd>
+
+  <dt>
+    <h3>Italics</h3>
+  </dt>
+  <dd>
+    <div class="bs-example">
+      <p>The following snippet of text is <em>rendered as italicized text</em>.</p>
+    </div>
+  <div class="highlight"><pre><code class="html"><span class="nt">&lt;em&gt;</span>rendered as italicized text<span class="nt">&lt;/em&gt;</span>
+  </code></pre></div>
+  </dd>
+  <div class="clearfix"></div>
+
+<style type="text/css">
+  dt { float: left; clear: left; width: 20%;}
+  dd { float: left; width: 80%; margin-bottom: 3em;}
+</style>

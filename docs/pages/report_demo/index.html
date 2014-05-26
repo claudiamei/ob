@@ -1,0 +1,46 @@
+<ob-wrapper>
+	<div id="main" role="main">
+
+		<div id="content">
+			<header class="ob-header">
+				<ul class="breadcrumbs">
+					<li ob-dropdown ng-controller="DropdownNewsPropertyCtrl"></ob-dropdown>
+					<li ob-dropdown ng-controller="DropdownFrontpageCtrl"></ob-dropdown>
+				</ul>
+				<ob-dropdown h-pos="left" class="account fr">
+					Test Test
+				</ob-dropdown>
+			</header>
+
+			<ng-include src="'pages/report_demo/report.html'"></ng-include>
+		</div>
+	</div>
+
+	<div id="left-sidebar" ob-sidebar-navigation>
+			<ul>
+				<li class="active">
+					<a ob-nav-link ng-href="" class="color-gray">
+						<div class="image">
+							<img src="images/sprite_assets/menu_recommend.png"></img>
+						</div>
+						<h4 class="navigation-name">Dashboard</h4>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a ob-nav-link ng-href="" class="color-gray">
+						<div class="image">
+							<img src="images/sprite_assets/menu_front_page.png">
+						</div>
+						<h4 class="navigation-name">Front Page</h4>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+			</ul>
+
+	</div>
+
+</ob-wrapper>
+
+<script src="pages/report_demo/dropdown_news_property.js"></script>
+<script src="pages/report_demo/dropdown_frontpage.js"></script>

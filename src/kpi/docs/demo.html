@@ -1,0 +1,113 @@
+<div ob-demo-list demo-list="engage-dashboard, amplify-dashboard,editorial-recommend,editorial-content,editorial-frontpage,editorial-social"></div>
+
+<script type="text/ng-template" id="engage-dashboard">
+	<h3>engage-dashboard</h3>
+	<div ng-controller="kpiControllerEngageDashboard">
+		<div ob-kpi-box-engage-dashboard boxes="kpi_boxes" currency="$"></div>
+    <div>
+      <div>{</div>
+      <div style="margin-left: 20px; margin-bottom: 10px">CTR: <input ng-model="kpi_boxes.ctr.value" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">PVs with Outbrain: <input ng-model="kpi_boxes.pv.value" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">Clicks: <input ng-model="kpi_boxes.clicks.value" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">Organic: <input ng-model="kpi_boxes.clicks.organic" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">Paid: <input ng-model="kpi_boxes.clicks.paid" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">RPM: <input ng-model="kpi_boxes.rpm.value" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">PVs with Paid Links: <input ng-model="kpi_boxes.paidImpressions.value" type="text" /></div>
+      <div style="margin-left: 20px; margin-bottom: 10px">Revenue: <input ng-model="kpi_boxes.net.value" type="text" /></div>
+      <div>}</div>
+    </div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="amplify-dashboard">
+	<h3>amplify-dashboard</h3>
+	<div ng-controller="kpiControllerAmplifyDashboard">
+		<div ob-kpi-box-amplify-dashboard boxes="kpi_boxes" currency="$"></div>
+	</div>
+</script>
+
+<script type="text/ng-template"id="editorial-recommend">
+	<h3>editorial-recommend</h3>
+	<div ng-controller="kpiControllerEditorialRecommend">
+		<div ob-kpi-box-editorial-recommend boxes="kpi_data"></div>
+	</div>
+</script>
+
+<script type="text/ng-template"id="editorial-content">
+	<h3>editorial-content</h3>
+	<div ng-controller="kpiControllerEditorialContent">
+		<div ob-kpi-box-editorial-content boxes="kpi_data"></div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="editorial-frontpage">
+	<h3>editorial-frontpage</h3>
+	<div ng-controller="kpiControllerEditorialFrontpage">
+		<div ob-kpi-box-editorial-frontpage boxes="kpi_data"></div>
+	</div>
+</script>
+
+<script type="text/ng-template" id="editorial-social">
+	<h3>editorial-social</h3>
+	<div ng-controller="kpiControllerEditorialSocial">
+		<div ob-kpi-box-editorial-social boxes="kpi_data"></div>
+	</div>
+</script>
+
+<script type="text/javascript">
+  var kpiControllerEngageDashboard = function($scope) {
+    $scope.kpi_boxes = {
+      ctr: { value: 0.025 },
+      impressions: { value: 324125454 },
+      clicks: { value: 984555654, organic : 55464, paid : 28445 },
+      rpm : { value: 125 },
+      paidImpressions : { value: 54623423423 },
+      pv : { value: 134222 },
+      net: { value: 3434343, currency: 'USD' }
+    };
+  };
+
+  var kpiControllerAmplifyDashboard = function($scope) {
+    $scope.kpi_boxes = {
+      mtd : {
+        clicks: {
+          clicks : { value: 1234 },
+          impressions : { value: 234575 },
+          spend : { value: 12.21 }
+        }
+      },
+      last_30: {
+        clicks: {
+          clicks : { value: 56789 },
+          impressions : { value: 567889879 },
+          spend : { value: 145562.21 }
+        },
+        revenue: {
+          cpc: { value: 5000 },
+          pvac: { value: 12343 },
+          ecpc: { value: 1244 }
+        }
+      }
+    };
+  };
+
+  var kpiControllerEditorialContent = function($scope) {
+    $scope.kpi_data = {};
+  };
+
+  var kpiControllerEditorialFrontpage = function($scope) {
+    $scope.kpi_data = {};
+  };
+
+    var kpiControllerEditorialRecommend = function($scope) {
+      $scope.kpi_data = {};
+    };
+
+  var kpiControllerEditorialSocial = function($scope) {
+    $scope.kpi_data = {};
+  };
+</script>
+
+<script type="text/ng-template" id="temp.html">
+  <h1>asdasdasd</h1>
+</script>

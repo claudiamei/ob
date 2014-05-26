@@ -1,0 +1,75 @@
+/*
+.strip-unit(@num) {
+	@return @num / (@num * 0 + 1);
+}
+
+.rem-fallback(@property, @values...) {
+	@max: length(@values);
+	@pxValues: '';
+	@remValues: '';
+
+	@for @i from 1 through @max {
+		@value: strip-unit(nth(@values, @i));
+		@pxValues: #{@pxValues + @value*16}px;
+
+		@if @i < @max {
+			@pxValues: #{@pxValues + " "};
+		}
+	}
+
+	@for @i from 1 through @max {
+		@value: strip-unit(nth(@values, @i));
+		@remValues: #{@remValues + @value}rem;
+
+		@if @i < @max {
+			@remValues: #{@remValues + " "};
+		}
+	}
+
+	#{@property}: @pxValues;
+	#{@property}: @remValues;
+}*/
+
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  table&  { display: table; }
+  tr&     { display: table-row !important; }
+  th&,
+  td&     { display: table-cell !important; }
+  .equal-height-cols > div& { display: table-cell !important; }
+}
+
+
+/*
+		Fluid columns boilerplate
+		Usage: Override padding depending on the width of left/right sidebars
+		@ref: http://alistapart.com/article/holygrail
+	*/
+
+.fluid-columns {
+	/*padding-left: 200px;   /* LC width */
+	/*padding-right: 150px;  /* RC width */
+}
+
+.fluid-columns .column {
+	position: relative;
+	float: left;
+}
+
+.fluid-columns .center-col {
+	width: 100%;
+}
+
+.fluid-columns .left-col {
+	margin-left: -100%;
+	/*width: 200px;          /* LC width */
+	/*right: 200px;           LC width */
+}
+
+.fluid-columns .right-col {
+	/*width: 150px;          /* RC width */
+	/*margin-right: -150px;  /* RC width */
+}

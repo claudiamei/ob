@@ -1,0 +1,151 @@
+<button popover-placement="left" pieover="On the Top!" class="btn btn-default">Pieover</button>
+
+<div ob-demo-list demo-list="pie-chart1.html"></div>
+
+<h3>Data Format</h3>
+<pre>{
+  primaryData: [{
+    value : 40,
+    label : 'CNN.com'
+  }, {
+    value : 56,
+    label : 'anExampleName.com'
+  }],
+  otherData: [
+  [{
+    value : 2,
+    label : 'Other-Category.com'
+  }, {
+    value : 5,
+    label : 'anExampleWithLowValue.com'
+  }]
+}
+</pre>
+
+<h3>OBPieChartConfig Options</h3>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Default</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>width</td>
+			<td>number | function</td>
+			<td>1024</td>
+			<td>Width of the SVG Graph</td>
+		</tr>
+		<tr>
+			<td>margin</td>
+			<td>object</td>
+			<td>20px, 20px, 20px, 20px
+			</td>
+			<td>Margin of the graph for each side. Object structure is :
+				<code>margin: {top : 20 ,right : 20,bottom : 20, left : 20}</code>
+			</td>
+		</tr>
+		<tr>
+			<td>outerRadius</td>
+			<td>number</td>
+			<td>120</td>
+			<td>
+				<p>Outer Radius of Primary Ring</p>
+				Note: This is also used to calculate the height of the Graph.
+				<code>height = (outerRadius * 2) + margin.top + margin.bottom</code>
+			</td>
+		</tr>
+		<tr>
+			<td>innerRadius</td>
+			<td>number</td>
+			<td>80</td>
+			<td>Inner Radius of Primary Ring</td>
+		</tr>
+		<tr>
+			<td>collapseOuterRadius</td>
+			<td>number</td>
+			<td>81</td>
+			<td>Outer Radius of Primary Ring when collapsed (During Hover over "Other")</td>
+		</tr>
+		<tr>
+			<td>collapseInnerRadius</td>
+			<td>number</td>
+			<td>60</td>
+			<td>Inner Radius of Primary Ring when collapsed</td>
+		</tr>
+		<tr>
+			<td>sunburstOuterRadius</td>
+			<td>number</td>
+			<td>120</td>
+			<td>Outer Radius of Secondary ("Other") Ring</td>
+		</tr>
+		<tr>
+			<td>sunburstOuterRadius</td>
+			<td>number</td>
+			<td>80</td>
+			<td>Inner Radius of Secondary ("Other") Ring</td>
+		</tr>
+		<tr>
+			<td>colors</td>
+			<td>array</td>
+			<td>['#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00']</td>
+			<td>List of Hex color strings used for the primary ring. Example
+				<code>['#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00']</code>
+			</td>
+		</tr>
+		<tr>
+			<td>collapseColors</td>
+			<td>array</td>
+			<td>['#D9D1CC', '#B2A399','#8C7466','#664633','#200C00']</td>
+			<td>List of Hex color strings used for the primary ring while the ring is collapsed. Example
+				<code>['#D9D1CC', '#B2A399','#8C7466','#664633','#200C00']</code>
+			</td>
+		</tr>
+		<tr>
+			<td>outerColorRange</td>
+			<td>array</td>
+			<td>['#CEE7ED', '#08C1EA', '#200C00']</td>
+			<td>List of 3 colors used for the outer ring's color interpolator.
+				<code>color = ['#CEE7ED','#08C1EA','#200C00']</code>
+				<p>Given 3 data points:</p>
+				<p>	Each slice will get a 1-1 assignment for color.</p>
+				<p>Given 5 data points:</p>
+				<p>	Slices 1, 3, 5 will get be color[0],color[2],color[4]</p>
+				<p>	Slice 2 will get an interpolated color between color[0],color[2]</p>
+			</td>
+		</tr>
+		<tr>
+			<td>keyAccessor</td>
+			<td>string, function</td>
+			<td>"label"</td>
+			<td>Accessor function used to find a pie slice's unique key.
+				If value is a string, the each slice's data object will be accessed
+				directly by that string.<br>
+				With Slice <code>data_object = {value : 4, key: '1542', label : 'CNN.com'}</code>
+				and keyAccessor="key", the unique key would be data_object["key"]
+				<br>
+				If the value is a function, it should return the unique key when passed the slice's data object.
+				Example: <code>function(d){return d.some_object.nested_field}</code>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/ng-template"id="pie-chart1.html">
+	<h3>Standard</h3>
+  <div ng-controller="obPieChartController">
+	  <ob-pie-chart ob-pie-chart-data="data">
+	  </ob-pie-chart>
+  </div>
+</script>
+
+<script type="text/ng-template"id="pie-chart2.html">
+	<h3>Customize Options</h3>
+  <div ng-controller="obPieChartController">
+	  <ob-pie-chart  ob-pie-chart-data="data" ob-pie-chart-options="{margin: {left: 50}, innerRadius: 20}">
+	  </ob-pie-chart>
+  </div>
+</script>

@@ -1,0 +1,176 @@
+/* Navigation ----------------------------------------- */
+.ob-sidebar-navigation {
+	// background-color: @gray-lightest;
+	.vertical-gradient(#EEE, #FFF);
+	overflow: hidden;
+	box-shadow: inset -1px 10px 6px -3px #000;
+}
+#left-sidebar a {
+	color: inherit;
+}
+#left-sidebar a:hover {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/* Product Box ---------------------------------------- */
+#menu-toggle {
+	display: block;
+	position: relative;
+	background-color: @brand-primary;
+	margin-bottom: 10px;
+}
+
+	#menu-toggle i {
+		font-size: 22px;
+		padding: 18px;
+		color: @white-lighter;
+		float: right;
+	}
+
+	#menu-toggle .product-name {
+		position: absolute;
+		left: 55px;
+		line-height: 56px;
+		color: @white-lighter;
+		white-space: nowrap;
+		margin: 0;
+	}
+
+/* Product Box ---------------------------------------- */
+#product-box {
+	display: block;
+	position: relative;
+	// background-color: @brand-primary;
+	margin-bottom: 10px;
+}
+
+	#product-box i {
+		font-size: 22px;
+		padding: 18px;
+		color: @gray;
+		float: right;
+	}
+
+	#product-box .product-name {
+		position: absolute;
+		left: 55px;
+		line-height: 56px;
+		color: @gray;
+		white-space: nowrap;
+		margin: 0;
+	}
+
+/* Main Menu ------------------------------------------- */
+#main-menu {
+	font-size: 14px;
+	// padding-left: 15px;
+}
+#main-menu ul {
+	list-style: none;
+	padding: 0;
+}
+
+#main-menu li {
+	opacity: 0.4;
+	padding-left: 8px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+#main-menu a {
+	color: @gray;
+	white-space: nowrap;
+	display: block;
+	clear: both;
+	transition: all 0.2s;
+}
+
+#main-menu {
+	.image {
+		position: relative;
+		float: left;
+		margin: 5px 10px 5px 5px;
+	}
+}
+#main-menu li:hover {
+	opacity: 0.8;
+}
+#main-menu li.active {
+	opacity: 1;
+
+	.image::after {
+		position: absolute;
+		margin-left: -110%;
+		height: 110%;
+		width: 110%;
+		background: @gray-light;
+		border-radius: 20px;
+		z-index: -1;
+		content: "";
+	}
+}
+
+#main-menu li.active::before {
+	position: absolute;
+	margin-left: -8px;
+	height: 100%;
+	width: 3px;
+	background: @brand-primary;
+	content: "";
+}
+
+	#main-menu img {
+		// margin: 15px 15px 15px 0;
+		// float: left;
+		margin: 5px;
+	}
+
+	#main-menu .navigation-name {
+		// position: absolute;
+		left: 55px;
+		line-height: 44px;
+		margin: 0;
+	}
+
+
+/* Time Box ------------------------------------------- */
+#main-current-time {
+	position: absolute;
+	width: 100%;
+	font-size: 12px;
+	text-align: center;
+	bottom: 60px;
+}
+
+#main-current-time > div {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	transition: opacity .1s linear;
+	white-space: nowrap;
+}
+ob-clock,
+.ob-clock {
+	color: @gray-light;
+}
+	// #main-current-time .day {
+	// 	color: #666;
+	// }
+	#main-current-time .day {
+		// font-size: 12px;
+		display: block;
+	}
+	#main-current-time .format-lg {
+		opacity: 0;
+	}
+	#main-current-time .format-sm {
+		opacity: 1;
+	}
+	.expandLeft #main-current-time .format-lg {
+		opacity: 1;
+	}
+	.expandLeft #main-current-time .format-sm {
+		opacity: 0;
+	}

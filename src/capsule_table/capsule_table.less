@@ -1,0 +1,64 @@
+
+/* Capsule CSS*/
+.capsule-table {
+	display: table;
+	width: 100%;
+}
+
+.capsule-table > div{
+	display: table-cell;
+}
+
+.capsule-group{
+	width: 46px;
+	margin: 0 auto;
+}
+
+.capsule {
+	position: relative;
+	height: 115px;
+	left: 8px;
+}
+
+.capsule .base {
+	position: absolute;
+	width: 32px;
+	height: 1px;
+	bottom: 0;
+	margin-left: 0px;
+	background-color: grey;
+}
+
+.capsule .glass {
+	position: absolute;
+	left: 5px;
+	width: 22px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+	height: 100%;
+	border: solid 1px grey;
+	border-top-left-radius: 6px 6px;
+	border-top-right-radius: 6px 6px;
+}
+
+/* Adjust height 0 - 100% */
+.capsule .bar {
+	position: relative;
+	left: 4px;
+	width: 12px;
+	height: 100%;
+	background-color: #F00;
+	border-top-left-radius: 7px 4px;
+	border-top-right-radius: 7px 4px;
+}
+
+.capsule ~ .source{
+	font-size: 8px;
+	text-align: center;
+	margin-top: 2px;
+}
+.capsule ~ .value{
+	font-weight: bold;
+	font-size: 8px;
+	text-align: center;
+}

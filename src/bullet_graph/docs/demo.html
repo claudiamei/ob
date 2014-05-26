@@ -1,0 +1,91 @@
+<div ob-demo-list demo-list="bullet-graph1.html, bullet-graph2.html, bullet-graph3.html"></div>
+
+<!-- non-directive
+<script type="text/ng-template"id="bullet-graph1.html">
+<div class="bullet-graph">
+	<div class="base"></div>
+	<div class="bar">
+		<div class="value">23,454</div>
+		<div class="value-2">43,555</div>
+	</div>
+	<div class="bar"></div>
+	<div class="benchmark"></div>
+</div>
+</script>-->
+
+<script type="text/ng-template" id="bullet-graph1.html">
+<h3>KPI Bullet Graph</h3>
+<div class="ob-kpi-box">
+	<ob-bullet-graph>
+		<ob-bullet-bar value="10" class="progress-bar-info" name="search"></ob-bullet-bar>
+		<ob-bullet-benchmark value="20"></ob-bullet-benchmark>
+	</ob-bullet-graph>
+</div>
+</script>
+
+<script type="text/ng-template" id="bullet-graph2.html">
+<h3>Matrix Bullet Graph</h3>
+<table class="table">
+	<tbody>
+		<tr>
+			<td>
+				<ob-bullet-graph max="250">
+					<ob-bullet-bar value="35" class="progress-bar-danger" name="social"></ob-bullet-bar>
+					<ob-bullet-benchmark value="20"></ob-bullet-benchmark>
+				</ob-bullet-graph>
+			</td>
+			<td></td>
+		</tr>
+	</tbody>
+</div>
+</script>
+
+<script type="text/ng-template" id="bullet-graph3.html">
+<h3>Bullet Graph with multiple datapoints</h3>
+<ob-bullet-graph max="250">
+	<ob-bullet-bar value="35" class="progress-bar-danger" name="social"></ob-bullet-bar>
+	<ob-bullet-bar value="47" class="progress-bar-success" name="frontpage"></ob-bullet-bar>
+	<ob-bullet-bar value="10" class="progress-bar-info" name="search"></ob-bullet-bar>
+	<ob-bullet-benchmark value="20"></ob-bullet-benchmark>
+</ob-bullet-graph>
+</script>
+
+<!-- <ob-bullet-graph benchmark="19" max-value="50">
+	<div class="bar" value="14"></div>
+	<div class="bar" value="17"></div>
+</ob-bullet-graph> -->
+
+<!-- <ob-bullet-graph benchmark="67" max-value="107">
+	<div class="bar" value="10"></div>
+	<div class="bar" value="34"></div>
+</ob-bullet-graph>
+
+
+<ob-bullet-graph benchmark="19" max-value="50">
+	<ob-bullet-graph-bar class="bar" value="14"></ob-bullet-graph>
+	<ob-bullet-graph-bar class="bar" value="17"></ob-bullet-graph>
+</ob-bullet-graph> -->
+<!-- <div ng-controller="ProgressDemoCtrl">
+<progress><bar ng-repeat="bar in stacked" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span></bar></progress>
+</div>
+ -->
+<!-- <progress>
+	<bar value="10" type="danger"></bar>
+	<bar value="20" type="success"></bar>
+</progress> -->
+
+<!-- <ob-bullet-graph>
+	<bar value="35" class="progress-bar-danger" name="social"></bar>
+	<bar value="47" class="progress-bar-success" name="frontpage"></bar>
+	<bar value="10" class="progress-bar-info" name="search"></bar>
+	<benchmark value="20" name="all"></benchmark>
+</ob-bullet-graph> -->
+
+<!-- <progress ng-init="stacked=[{'name': 'frontpage', 'value': 10, 'type': 'success'}, {'name': 'social', 'value': 30, 'type': 'danger'}]">
+	<bar ng-repeat="bar in stacked" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span></bar>
+</progress> -->
+
+<script>
+	// var s = angular.element('.progress').scope();
+	var bars = [];
+</script>

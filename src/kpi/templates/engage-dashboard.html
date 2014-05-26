@@ -1,0 +1,70 @@
+
+<div class="ob-kpi-box">
+  <div class="row equal-height-cols">
+    <div class="col-xs-4">
+      <div class="ob-period">KPI Data reflects the last 30 days</div>
+      <div class="center-table font-lg">
+        <div class="value">
+          <span ng-bind="boxes.ctr.value | obNumber"></span>
+          <span>%</span>
+        </div>
+        <label>CTR</label>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center-table font-lg">
+        <div tooltip="{{ boxes.pv.value | kpiNumberTooltip:1:4 }}" tooltip-placement="bottom" class="value" ng-bind="boxes.pv.value | kpiNumber:1:4:true"></div>
+        <label>PVs with Outbrain</label>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div kpiover="-" popover-placement="left"  class="ob-help"></div>
+      <div class="center-table font-lg">
+        <div class="value" tooltip="{{ boxes.clicks.value | kpiNumberTooltip:1:4 }}" ng-bind="boxes.clicks.value | kpiNumber:1:4:true"></div>
+        <label class="clearfix">
+          <div class="col-xs-3">
+            Clicks
+          </div>
+          <div class="col-xs-9">
+            <label>Organic</label>
+            <span class="value" tooltip="{{ boxes.clicks.organic | kpiNumberTooltip:1:4 }}" ng-bind="boxes.clicks.organic | kpiNumber:1:4:true"></span>
+            <label>Paid</label>
+            <span class="value" tooltip="{{ boxes.clicks.paid | kpiNumberTooltip:1:4 }}" ng-bind="boxes.clicks.paid | kpiNumber:1:4:true"></span>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row"  ng-hide="boxes.hideSecondRow">
+    <div class="col-xs-4">
+      <div class="center-table font-lg">
+          <div class="value">
+            <span class="currency" ng-bind="currency"></span>
+            <span ng-bind="boxes.rpm.value | obNumber"></span>
+          </div>
+        <label>
+          RPM
+          <span ng-bind="boxes.net.currency"></span>
+        </label>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center-table font-lg">
+        <div class="value" tooltip="{{ boxes.paidImpressions.value | kpiNumberTooltip:1:4 }}" ng-bind="boxes.paidImpressions.value | kpiNumber:1:4:true"></div>
+        <label>PVs with Paid Links</label>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center-table font-lg">
+        <div class="value">
+          <span class="currency" ng-bind="currency"></span>
+          <span tooltip="{{ boxes.net.value | kpiNumberTooltip:2:4  }}" ng-bind="boxes.net.value | kpiNumberRevenue"></span>
+        </div>
+        <label>
+          Revenue
+          <span ng-bind="boxes.net.currency"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

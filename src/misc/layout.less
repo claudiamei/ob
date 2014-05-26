@@ -1,0 +1,61 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	min-height: 100%;
+}
+
+.body {
+	position: relative;
+	height: 100%;
+	background-color: #F7F7F7;
+}
+
+#doc-wrapper {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#ob-wrapper {
+	width: 100%;
+	min-width: @layout-min-width;
+}
+
+#main {
+	float: left;
+	width: 100%;
+
+	#content {
+		margin-left: @sidebar-collapsed-size;
+		min-width: @layout-min-width;
+		transition: margin-left @sidebar-collapse-duration @sidebar-collapse-motion;
+	}
+}
+
+#left-sidebar {
+	position: fixed;
+	height: 100%;
+	width: @sidebar-collapsed-size;
+	z-index: @sidebar-z-index;
+	transition: width @sidebar-collapse-duration @sidebar-collapse-motion;
+}
+
+.expandLeft {
+	#main #content {
+		margin-left: @sidebar-expanded-size;
+	}
+	#left-sidebar {
+		width: @sidebar-expanded-size;
+	}
+}
+
+.report-header {
+	.vertical-gradient(#FFF, #EEE);
+}

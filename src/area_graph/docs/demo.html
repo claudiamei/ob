@@ -1,0 +1,137 @@
+<div ob-demo-list demo-list="area-graph-1.html"></div>
+
+<h3>OBAreaGraphConfig Options</h3>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Default</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>width</td>
+			<td>number | function</td>
+			<td>full container width</td>
+			<td>Width of the graph.  May be a constant Number or a function
+				that calculates the width when given the container element.
+				<p>Example: <code>function(element){return element.width();</code>
+				where element is the container element sent to the directive's link function</p>
+			</td>
+		</tr>
+		<tr>
+			<td>height</td>
+			<td>number</td>
+			<td>250</td>
+			<td>Height of the Graph</td>
+		</tr>
+		<tr>
+			<td>margin</td>
+			<td>object</td>
+			<td>top 30px,
+				right 20px,
+				bottom 30px,
+				left 50px
+			</td>
+			<td>Margin of the graph for each side. Object structure is :
+				<code>margin: {
+				top : 30,
+				right : 20,
+				bottom : 30,
+				left : 50
+			}</code>
+			</td>
+		</tr>
+		<tr>
+			<td>areaColors</td>
+			<td>array</td>
+			<td>[]</td>
+			<td>List of Hex color strings used for the area colors. Example
+				<code>['#FF5F00', '#3DD3E1']</code>
+			</td>
+		</tr>
+		<tr>
+			<td>lineColors</td>
+			<td>array</td>
+			<td>[]</td>
+			<td>List of Hex color strings used of the line colors. Example
+				<code>['#FF5F00', '#3DD3E1']</code>
+			</td>
+		</tr>
+		<tr>
+			<td>parseDate</td>
+			<td>function</td>
+			<td>d3.time.format("%m/%d/%Y").parse(d.date)</td>
+			<td>Date format accessor to turn a graph point's date in to a JavaScript Date</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Data Format</h3>
+<pre>
+[{
+  name: 'Publisher-1',
+  values: [{
+    value : 100,
+    date: '4/5/2014',
+  }, {
+    value : 125,
+    date: '4/11/2014',
+  }]
+},{
+  name: 'Publisher-2',
+  values: [{
+    value : 130,
+    date: '4/5/2014',
+  }, {
+    value : 15,
+    date: '4/11/2014',
+  }]
+}]
+</pre>
+
+<script type="text/ng-template" id="area-graph-1.html">
+	<h3>Standard</h3>
+	<div ng-controller="obAreaGraphControllerDemo">
+		<ob-area-graph data="data"></ob-area-graph>
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Line 1 Values</label>
+				<div class="col-sm-10">
+					<div class="col-sm-12">
+						<div class="col-sm-2">
+							<input class="form-control" type="text" ng-model="data.0.values.0.date">
+						</div>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" ng-model="data.0.values.1.date">
+						</div>
+						<div class="col-sm-2">
+							<input class="form-control" type="text" ng-model="data.0.values.2.date">
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="col-sm-2">
+							<input class="form-control" type="number" ng-model="data.0.values.0.value">
+						</div>
+						<div class="col-sm-2">
+							<input class="form-control" type="number" ng-model="data.0.values.1.value">
+						</div>
+						<div class="col-sm-2">
+							<input class="form-control" type="number" ng-model="data.0.values.2.value">
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</script>
+
+<script type="text/ng-template"id="area-graph-2.html">
+	<h3>Customize Options</h3>
+	<div ng-controller="obAreaGraphControllerDemo">
+		<ob-area-graph data="data" ob-area-graph-options="{margin: {left: 50}, innerRadius: 20}">
+		</ob-area-graph>
+	</div>
+</script>

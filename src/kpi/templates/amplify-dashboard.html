@@ -1,0 +1,53 @@
+
+<div class="ob-kpi-box">
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value" ng-bind="box_view.clicks.impressions.value | kpiNumber:2"></div>
+				<label>Impressions</label>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-xs btn-default" ng-class="{active: view === 'mtd'}" ng-click="set_kpi_view('mtd')">MTD</button>
+				<button type="button" class="btn btn-xs btn-default" ng-class="{active: view === 'last_30'}" ng-click="set_kpi_view('last_30')">Last 30 Days</button>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value" ng-bind="box_view.clicks.clicks.value | kpiNumber:2"></div>
+				<label>Clicks</label>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value">
+					<span class="currency" ng-bind="currency"></span>
+					<span ng-bind="box_view.clicks.spend.value | number"></span>
+				</div>
+				<label>Spend</label>
+			</div>
+		</div>
+	</div>
+	<div ng-show="box_view.revenue" class="row">
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value" ng-bind="box_view.revenue.cpc.value | kpiNumber:2"></div>
+				<label>Avg CPC</label>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value" ng-bind="box_view.revenue.pvac.value | kpiNumber:2"></div>
+				<label>PVAC</label>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="center-table font-lg">
+				<div class="value">
+					<span class="currency" ng-bind="currency"></span>
+					<span ng-bind="box_view.revenue.ecpc.value | number"></span>
+				</div>
+				<label>eCPC</label>
+			</div>
+		</div>
+	</div>
+</div>
