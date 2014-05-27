@@ -106,8 +106,9 @@ var clean = function clean () {
 
 var test = {
 	hint: function hint () {
-		var js_files = path.join('src', '**', '*.js');
-		return gulp.src(js_files)
+		var js_files = path.join('docs', '**', '*.js'),
+			ignore = path.join('docs', 'lib', '**', '*');
+		return gulp.src([js_files, '!'+ignore])
 			.pipe(tasks.jshint(jshintRc))
 			.pipe(tasks.jshint.reporter(reporter))
 			// .pipe(jshint.reporter('fail'));
@@ -122,6 +123,7 @@ var test = {
 				bootstrap_ui,
 				path.join('src', '**', '*.js'),
 				'!'+path.join('src', '**', 'docs', '*.js'),
+				'!'+path.join('src', 'lib', '**'),
 				path.join('src', '**', 'tests', 'unit.js')
 			])
 			.pipe(tasks.karma({
