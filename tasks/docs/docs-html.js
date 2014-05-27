@@ -17,7 +17,7 @@ var serve = {
 			.pipe(gulp.dest(output_to));
 	},
 	components_list: function components () {
-		var components = path.join('src', '*', 'docs', '*.html'),
+		var components = path.join('src', '**', 'docs', '*.html'),
 			template = path.join('docs', 'pages', 'components', 'component_list.tpl.html'),
 			output_to = path.join('docs', '.tmp');
 		return gulp.src(components)
@@ -31,7 +31,7 @@ var serve = {
 		// 	.pipe(gulp.dest(output_to));
 	},
 	components_demos: function components () {
-		var components = path.join('src', '*', 'docs', '*.html'),
+		var components = path.join('src', '**', 'docs', '*.html'),
 			template = path.join('docs', 'pages', 'components', 'demo-component.tpl.html'),
 			output_to = path.join('docs', '.tmp');
 		return gulp.src(components)
@@ -62,7 +62,7 @@ module.exports = {
 		});
 
 		var demo_files = path.join('docs', '*', 'docs', 'demo.html'),
-			demo_files = path.join('src', '*', 'package.json'),
+			demo_files = path.join('src', '**', 'package.json'),
 			templates = path.join('docs', 'pages', '**', '*.html');
 		gulp.watch([demo_files, templates], function (event) {
 			var tasks = [serve.components_list, serve.components_demos];
