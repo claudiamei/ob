@@ -1,4 +1,4 @@
-<li id="demo-<%= component = demo.file.path.replace(demo.file.base, "").replace("/docs/demo.html", "") %>">
+<li id="demo-<%= component = demo.file.path.replace(demo.file.base, "").replace("components/", "").replace("/docs/demo.html", "") %>">
 	<h1><%=component.replace("_", " ").replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); })%></h1>
 	<div>
 		<div demo-description="'../src/<%= demo.file.path.replace(demo.file.base, '').replace("/docs/demo.html", "/package.json") %>'"></div>

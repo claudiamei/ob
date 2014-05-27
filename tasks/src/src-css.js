@@ -76,7 +76,7 @@ var serve = {
 var build = {
   bootstrap_theme: function bootstrap_theme() {
     var
-      bootstrap = path.join('docs', 'lib', 'bootstrap', 'less', 'bootstrap.less'),
+      bootstrap = path.join('src', 'lib', 'bootstrap', 'less', 'bootstrap.less'),
       override_variables = path.join('src', 'misc', 'ob_variables.less'),
       bs_variables = path.join('src', 'misc', 'bs_variables.less'),
       destination = 'dist';
@@ -92,11 +92,11 @@ var build = {
   },
   components: function components() {
     var
-      bs_variables = path.join('src', 'misc', 'bs_variables.less'),
-      ob_variables = path.join('src', 'misc', 'ob_variables.less'),
-      bs_mixins = path.join('docs', 'lib', 'bootstrap', 'less', 'mixins.less'),
+      bs_variables = path.join('src', 'components', 'misc', 'bs_variables.less'),
+      ob_variables = path.join('src', 'components', 'misc', 'ob_variables.less'),
+      bs_mixins = path.join('src', 'lib', 'bootstrap', 'less', 'mixins.less'),
       ob_mixins,
-      components = path.join('src', '**', '*.less'),
+      components = path.join('src', 'components', '**', '*.less'),
       amelia = path.join('src', 'amelia-ui.less'),
       bootstrap_theme = path.join('src', 'bootstrap-theme.less'),
       destination = 'dist';

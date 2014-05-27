@@ -1,0 +1,7 @@
+{
+  "name": "amelia-ui",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}

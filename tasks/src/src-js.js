@@ -50,7 +50,7 @@ var min_output = 'amelia-ui.min.js';
 
 var component_js = function component_js () {
 	var app = path.join('src', 'amelia-ui.js');
-	var components = path.join('src', '*', '*.js');
+	var components = path.join('src', 'components', '**', '*.js');
 	return gulp.src([app, components])
 		.pipe(tasks.ngmin())
 		.pipe(tasks.concat(raw_output))
@@ -69,7 +69,7 @@ var component_templates = function component_templates () {
 		}))
 		.pipe(tasks.ngHtml2js({
 			moduleName: "amelia-ui.templates",
-			prefix: "/src/"
+			prefix: "../src/components/"
 		}))
 		.pipe(tasks.uglify())
 		.pipe(tasks.concat(output))
@@ -106,8 +106,9 @@ var clean = function clean () {
 
 var test = {
 	hint: function hint () {
-		var js_files = path.join('src', '**', '*.js');
-		return gulp.src(js_files)
+		var js_files = path.join('docs', '**', '*.js'),
+			ignore = path.join('docs', 'lib', '**', '*');
+		return gulp.src([js_files, '!'+ignore])
 			.pipe(tasks.jshint(jshintRc))
 			.pipe(tasks.jshint.reporter(reporter))
 			// .pipe(jshint.reporter('fail'));
@@ -122,6 +123,7 @@ var test = {
 				bootstrap_ui,
 				path.join('src', '**', '*.js'),
 				'!'+path.join('src', '**', 'docs', '*.js'),
+				'!'+path.join('src', 'lib', '**'),
 				path.join('src', '**', 'tests', 'unit.js')
 			])
 			.pipe(tasks.karma({
