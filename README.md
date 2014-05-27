@@ -1,6 +1,6 @@
 
 ## Usage
-- a change to test verioning -
+- a change to test versioning -
 ### Locate the Code
 
 Compiled CSS and javascript can be found in `/dist`.
