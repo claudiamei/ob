@@ -46,7 +46,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
 		replace: true,
 		transclude: true,
 		controller: 'obBulletGraphController',
-		templateUrl: '../src/bullet_graph/bullet_graph.html'
+		templateUrl: '../src/components/bullet_graph/bullet_graph.html'
 	};
 })
 
@@ -61,7 +61,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
 			class: '@',
 			name: '@'
 		},
-		templateUrl: '../src/bullet_graph/bullet_graph_bar.html',
+		templateUrl: '../src/components/bullet_graph/bullet_graph_bar.html',
 		link: function(scope, element, attrs, obBulletGraphController) {
 			obBulletGraphController.add('bar', scope, element);
 		}
@@ -78,7 +78,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
 			value: '@',
 			name: '@'
 		},
-		templateUrl: '../src/bullet_graph/bullet_graph_benchmark.html',
+		templateUrl: '../src/components/bullet_graph/bullet_graph_benchmark.html',
 		link: function(scope, element, attrs, obBulletGraphController) {
 
 			obBulletGraphController.add('benchmark', scope, element);

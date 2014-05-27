@@ -57,7 +57,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 		scope: {
 			data: '='
 		},
-		templateUrl: '../src/area_graph/area-legend.html',
+		templateUrl: '../src/components/area_graph/area-legend.html',
 		link: function(scope, element, attrs) {
 			var create = true;
 			var data;

@@ -51,7 +51,7 @@ angular.module('amelia-ui.page', ['amelia-ui.clock', 'amelia-ui.utils.debounce']
 
     return {
       restrict: 'AE',
-      templateUrl: currentScriptPath.replace('sidebars.js', 'navigation.html'),
+      templateUrl: '../src/components/sidebars/navigation.html',
       replace: true,
       transclude: true
     };

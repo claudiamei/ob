@@ -5,7 +5,7 @@ angular.module( 'pieover', [ 'ui.bootstrap.tooltip' ] )
     restrict: 'EA',
     replace: true,
     scope: { title: '@', content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: '../src/pie_chart/pieover.html'
+    templateUrl: '../src/components/pie_chart/pieover.html'
   };
 })
 

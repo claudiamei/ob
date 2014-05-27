@@ -28,7 +28,7 @@ angular.module('amelia-ui.dropdown', [])
     //   vPos: '@?',  // for menu placement relative to toggle
     // },
     controller: 'obDropdownController',
-    templateUrl: '../src/dropdown/dropdown.html',
+    templateUrl: '../src/components/dropdown/dropdown.html',
 
   };
 })

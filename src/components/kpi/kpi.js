@@ -56,7 +56,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
     restrict: 'EA',
     replace: true,
     scope: { title: '@', content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: '../src/kpi/templates/popover.html'
+    templateUrl: '../src/components/kpi/templates/popover.html'
   };
 })
 .directive( 'kpiover', [ '$tooltip', function ( $tooltip ) {
@@ -65,7 +65,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 .directive('obKpiBoxEngageDashboard', function () {
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/engage-dashboard.html',
+		templateUrl: '../src/components/kpi/templates/engage-dashboard.html',
 		replace: true,
 		transclude: true,
 		scope: {
@@ -94,7 +94,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/amplify-dashboard.html',
+		templateUrl: '../src/components/kpi/templates/amplify-dashboard.html',
 		replace: true,
 		transclude: true,
 		link: link,
@@ -107,7 +107,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 .directive('obKpiBoxEditorialRecommend', function () {
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/editorial-recommend.html',
+		templateUrl: '../src/components/kpi/templates/editorial-recommend.html',
 		replace: true,
 		transclude: true,
 		scope: {
@@ -119,7 +119,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 .directive('obKpiBoxEditorialContent', function () {
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/editorial-content.html',
+		templateUrl: '../src/components/kpi/templates/editorial-content.html',
 		replace: true,
 		transclude: true,
 		scope: {
@@ -131,7 +131,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 .directive('obKpiBoxEditorialFrontpage', function () {
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/editorial-frontpage.html',
+		templateUrl: '../src/components/kpi/templates/editorial-frontpage.html',
 		replace: true,
 		transclude: true,
 		scope: {
@@ -143,7 +143,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 .directive('obKpiBoxEditorialSocial', function () {
 	return {
 		restrict: 'AE',
-		templateUrl: '../src/kpi/templates/editorial-social.html',
+		templateUrl: '../src/components/kpi/templates/editorial-social.html',
 		replace: true,
 		transclude: true,
 		scope: {
