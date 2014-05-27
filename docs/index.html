@@ -1,128 +1,123 @@
 <!DOCTYPE html>
-	<head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Amelia-UI Documentation | Outbrain</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-				<!-- <meta http-equiv="expires" content="0"> -->
-<!--  -->
-		<link rel="stylesheet" href="pages/components/tomorrow-night-eighties.css">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-		<link href=".tmp/fonts/outbrain.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amelia-UI Documentation | Outbrain</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="expires" content="0"> -->
+    <!--  -->
+    <link rel="stylesheet" href="pages/components/tomorrow-night-eighties.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
-		<!-- <link rel="stylesheet/less" type="text/css" href="docs.less" /> -->
-		<!-- <link rel="stylesheet/less" type="text/css" href="../src/amelia-ui.less" /> -->
-		<!-- <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.css"> -->
+    <link href=".tmp/fonts/outbrain.css" rel="stylesheet">
 
-		<link rel="icon" href="assets/images/favicon.ico">
+
+    <link rel="icon" href="assets/images/favicon.ico">
 
     <script>
-        //			document.open();
-        if (location.host === 'localhost:1337') {
-            document.write('<link rel="stylesheet" href=".tmp/bootstrap-theme.css" />');
-            document.write('<link rel="stylesheet/less" type="text/css" href="docs.less" />');
-            document.write('<link rel="stylesheet" href=".tmp/amelia-ui.css" />');
-        } else {
-            document.write('<link rel="stylesheet" href=".tmp/docs.css" />');
-            document.write('<link rel="stylesheet" href="../dist/bootstrap-theme.css">');
-            document.write('<link rel="stylesheet" href="../dist/amelia-ui.css">');
-//                less = {
-//                    env: "development"
-//                };
-//                var script = document.createElement('script');
-//                script.type = 'text/javascript';
-//                script.async = false;
-//                script.src = 'lib/lessLeaner/less.min.js';
-//                document.getElementsByTagName('body')[0].appendChild(script);
-        }
-        //			document.close();
+    document.open();
+    if (location.host === 'localhost:1337') {
+        document.write('<link rel="stylesheet" href=".tmp/bootstrap-theme.css" />');
+        document.write('<link rel="stylesheet" href=".tmp/amelia-ui.css" />');
+    } else {
+        document.write('<link rel="stylesheet" href="../dist/bootstrap-theme.css">');
+        document.write('<link rel="stylesheet" href="../dist/amelia-ui.css">');
+    }
+    document.write('<link rel="stylesheet" href=".tmp/docs.css" />');
+    document.close();
     </script>
-	</head>
-	<body ng-app="amelia.docs">
+</head>
 
-		<header id="ob-doc-nav">
-			<nav class="navbar-default" role="navigation">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#amelia-docs-nav-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Amelia-UI</a>
-				</div>
+<body ng-app="amelia.docs">
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="amelia-docs-nav-collapse">
-					<ul class="nav navbar-nav">
-						<li ng-class="{ active: isActive('/components')}"><a href="#components">Components</a></li>
-						<li ng-class="{ active: isActive('/report_demo')}"><a href="#report_demo">Report Demo</a></li>
-						<li ng-class="{ active: isActive('/icons')}"><a href="#icons">Icons</a></li>
+    <header id="ob-doc-nav">
+        <nav class="navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#amelia-docs-nav-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Amelia-UI</a>
+            </div>
 
-					</ul>
-<!--
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="amelia-docs-nav-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: isActive('/components')}"><a href="#components">Components</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/report_demo')}"><a href="#report_demo">Report Demo</a>
+                    </li>
+                    <li ng-class="{ active: isActive('/icons')}"><a href="#icons">Icons</a>
+                    </li>
+
+                </ul>
+                <!--
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#/faq">FAQ</a></li>
 					</ul>-->
-				</div><!-- /.navbar-collapse -->
-			</nav>
-		</header>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </header>
 
-		<div ng-view="" id="doc-wrapper" class="container-fluid"></div>
+    <div ng-view="" id="doc-wrapper" class="container-fluid"></div>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="lib/highlightjs/highlight.pack.js"></script>
-		<script src="lib/angular/angular.js"></script>
-		<script src="lib/angular-highlightjs/angular-highlightjs.js"></script>
-		<script src="lib/angular-animate/angular-animate.js"></script>
-		<script src="lib/angular-route/angular-route.js"></script>
-		<script src="lib/ng-table/ng-table.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="lib/highlightjs/highlight.pack.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-highlightjs/angular-highlightjs.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/ng-table/ng-table.js"></script>
 
-		<script src="docs.js"></script>
-		<script src="pages/components/components.js"></script>
-		<script src="lib/angular-scroll/angular-scroll.min.js"></script>
-		<script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-		<script src="lib/d3/d3.js"></script>
+    <script src="docs.js"></script>
+    <script src="pages/components/components.js"></script>
+    <script src="lib/angular-scroll/angular-scroll.min.js"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="lib/d3/d3.js"></script>
 
-		<!--<script src="lib/jquery/dist/jquery.js"></script>-->
-
-
-		<script src="../src/amelia-ui.js"></script>
-		<script src="../src/bullet_graph/bullet_graph.js"></script>
-		<script src="../src/clock/clock.js"></script>
-		<script src="../src/count_to/count_to.js"></script>
-		<script src="../src/d3/d3_service.js"></script>
-		<script src="../src/dropdown/dropdown.js"></script>
-		<script src="../src/filters/filters.js"></script>
-		<script src="../src/kpi/kpi.js"></script>
-		<script src="../src/line_graph/line_graph.js"></script>
-		<script src="../src/area_graph/area_graph.js"></script>
-		<script src="../src/area_graph/docs/demoCtrl.js"></script>
-		<script src="../src/pie_chart/pie_chart.js"></script>
-		<script src="../src/pie_chart/pieover.js"></script>
-		<script src="../src/pie_chart/docs/demoCtrl.js"></script>
-		<script src="../src/services/services.js"></script>
-		<script src="../src/sidebars/sidebars.js"></script>
-		<script src="../src/utils/debounce.js"></script>
-		<script src="../src/typography/typography.js"></script>
+    <!--<script src="lib/jquery/dist/jquery.js"></script>-->
 
 
-		<script>
-			document.open();
-			if (location.host === 'localhost:1337') {
-				var script = document.createElement('script');
-			    script.type = 'text/javascript';
-			    script.async = true;
-			    script.src = 'http://localhost:35729/livereload.js';
-			    document.getElementsByTagName('head')[0].appendChild(script);
-			}
-			document.close();
-		</script>
+    <script src="../src/amelia-ui.js"></script>
+    <script src="../src/bullet_graph/bullet_graph.js"></script>
+    <script src="../src/clock/clock.js"></script>
+    <script src="../src/count_to/count_to.js"></script>
+    <script src="../src/d3/d3_service.js"></script>
+    <script src="../src/dropdown/dropdown.js"></script>
+    <script src="../src/filters/filters.js"></script>
+    <script src="../src/kpi/kpi.js"></script>
+    <script src="../src/line_graph/line_graph.js"></script>
+    <script src="../src/area_graph/area_graph.js"></script>
+    <script src="../src/area_graph/docs/demoCtrl.js"></script>
+    <script src="../src/pie_chart/pie_chart.js"></script>
+    <script src="../src/pie_chart/pieover.js"></script>
+    <script src="../src/pie_chart/docs/demoCtrl.js"></script>
+    <script src="../src/services/services.js"></script>
+    <script src="../src/sidebars/sidebars.js"></script>
+    <script src="../src/utils/debounce.js"></script>
+    <script src="../src/typography/typography.js"></script>
+
+
+    <script>
+    document.open();
+    if (location.host === 'localhost:1337') {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = 'http://localhost:35729/livereload.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    document.close();
+    </script>
 
 
 
-	</body>
+</body>
+
 </html>
