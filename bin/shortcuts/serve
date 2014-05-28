@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ~/ob/AmeliaUI/src/main/webapp/a
-./bin/amelia-ui serve
+cd ~/ob/AmeliaUI/
+./bin/amelia-ui -t serve

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ~/ob/AmeliaUI/src/main/webapp/a
-git svn rebase
+cd ~/ob/AmeliaUI/
+git pull
