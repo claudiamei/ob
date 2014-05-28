@@ -77,7 +77,7 @@ var build = {
   bootstrap_theme: function bootstrap_theme() {
     var
       bootstrap = path.join('src', 'lib', 'bootstrap', 'less', 'bootstrap.less'),
-      override_variables = path.join('src', 'outbrain_variables.less'),
+      override_variables = path.join('src', 'amelia_variables.less'),
       bs_variables = path.join('src', 'bootstrap_variables.less'),
       destination = 'dist';
 
@@ -93,7 +93,7 @@ var build = {
   components: function components() {
     var
       bs_variables = path.join('src', 'bootstrap_variables.less'),
-      ob_variables = path.join('src', 'outbrain_variables.less'),
+      ob_variables = path.join('src', 'amelia_variables.less'),
       bs_mixins = path.join('src', 'lib', 'bootstrap', 'less', 'mixins.less'),
       ob_mixins,
       components = path.join('src', 'components', '**', '*.less'),
