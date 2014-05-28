@@ -77,8 +77,8 @@ var build = {
   bootstrap_theme: function bootstrap_theme() {
     var
       bootstrap = path.join('src', 'lib', 'bootstrap', 'less', 'bootstrap.less'),
-      override_variables = path.join('src', 'misc', 'ob_variables.less'),
-      bs_variables = path.join('src', 'misc', 'bs_variables.less'),
+      override_variables = path.join('src', 'outbrain_variables.less'),
+      bs_variables = path.join('src', 'bootstrap_variables.less'),
       destination = 'dist';
 
     return gulp.src([bootstrap, override_variables, bs_variables])
@@ -92,8 +92,8 @@ var build = {
   },
   components: function components() {
     var
-      bs_variables = path.join('src', 'components', 'misc', 'bs_variables.less'),
-      ob_variables = path.join('src', 'components', 'misc', 'ob_variables.less'),
+      bs_variables = path.join('src', 'bootstrap_variables.less'),
+      ob_variables = path.join('src', 'outbrain_variables.less'),
       bs_mixins = path.join('src', 'lib', 'bootstrap', 'less', 'mixins.less'),
       ob_mixins,
       components = path.join('src', 'components', '**', '*.less'),

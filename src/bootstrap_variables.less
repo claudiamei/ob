@@ -13,11 +13,9 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-// @brand-secondary:       #2fb1bd;
 @brand-primary:         #ff5f00;
-@brand-secondary:       #428bca;
-@brand-success:         #5cb85c;
-@brand-info:            #5bc0de;
+@brand-success:         #428bca;
+@brand-info:            @gray-light;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 
@@ -32,7 +30,7 @@
 @text-color:            @gray-dark;
 
 //** Global textual link color.
-@link-color:            @brand-secondary;
+@link-color:            @brand-primary;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
 
@@ -41,7 +39,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -59,13 +57,13 @@
 @font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
 
 //** Unit-less `line-height` for use in components like buttons.
-@line-height-base:        2; // 28/14
+@line-height-base:        2;
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~24px
 
 //** By default, this inherits from the `<body>`.
 @headings-font-family:    inherit;
-@headings-font-weight:    500;
+@headings-font-weight:    400;
 @headings-line-height:    1.1;
 @headings-color:          inherit;
 
@@ -98,13 +96,13 @@
 @line-height-small:         1.5;
 
 @border-radius-base:        0px;
-@border-radius-large:       3px;
+@border-radius-large:       0px;
 @border-radius-small:       0px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-secondary;
+@component-active-bg:       @brand-primary;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -144,7 +142,7 @@
 @btn-default-border:             #ccc;
 
 @btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-secondary;
+@btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
 @btn-success-color:              #fff;
@@ -221,7 +219,7 @@
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      @component-active-color;
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         @brand-secondary;
+@dropdown-link-hover-bg:         @brand-success;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -340,12 +338,12 @@
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                #777;
-@navbar-default-link-hover-color:          #333;
-@navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         #555;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
-@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-color:                #fff;
+@navbar-default-link-hover-color:          #fff;
+@navbar-default-link-hover-bg:             #ffaf36;
+@navbar-default-link-active-color:         #fff;
+@navbar-default-link-active-bg:            #e17613;
+@navbar-default-link-disabled-color:       #fff;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
@@ -429,8 +427,8 @@
 @pagination-hover-border:              #ddd;
 
 @pagination-active-color:              #fff;
-@pagination-active-bg:                 @brand-secondary;
-@pagination-active-border:             @brand-secondary;
+@pagination-active-bg:                 @brand-success;
+@pagination-active-border:             @brand-success;
 
 @pagination-disabled-color:            @gray-light;
 @pagination-disabled-bg:               #fff;
@@ -457,7 +455,7 @@
 //
 //##
 
-@jumbotron-padding:              30px;
+@jumbotron-padding:              50px;
 @jumbotron-color:                inherit;
 @jumbotron-bg:                   @gray-lighter;
 @jumbotron-heading-color:        inherit;
@@ -508,7 +506,7 @@
 //##
 
 //** Popover body background color
-@popover-bg:                          #fff;
+@popover-bg:                          #333333;
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
@@ -520,9 +518,9 @@
 @popover-title-bg:                    darken(@popover-bg, 3%);
 
 //** Popover arrow width
-@popover-arrow-width:                 10px;
+@popover-arrow-width:                 8px;
 //** Popover arrow color
-@popover-arrow-color:                 #fff;
+@popover-arrow-color:                 #333333;
 
 //** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
@@ -539,7 +537,7 @@
 //** Default label background color
 @label-default-bg:            @gray-light;
 //** Primary label background color
-@label-primary-bg:            @brand-secondary;
+@label-primary-bg:            @brand-primary;
 //** Success label background color
 @label-success-bg:            @brand-success;
 //** Info label background color
@@ -623,7 +621,7 @@
 @progress-bar-color:          #fff;
 
 //** Default progress bar color
-@progress-bar-bg:             @brand-secondary;
+@progress-bar-bg:             @brand-primary;
 //** Success progress bar color
 @progress-bar-success-bg:     @brand-success;
 //** Warning progress bar color
@@ -676,8 +674,8 @@
 @panel-default-heading-bg:    #f5f5f5;
 
 @panel-primary-text:          #fff;
-@panel-primary-border:        @brand-secondary;
-@panel-primary-heading-bg:    @brand-secondary;
+@panel-primary-border:        @brand-primary;
+@panel-primary-heading-bg:    @brand-primary;
 
 @panel-success-text:          @state-success-text;
 @panel-success-border:        @state-success-border;
