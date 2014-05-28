@@ -13,10 +13,6 @@ As soon as you've got all the files downloaded and included in your page you jus
 angular.module('outbrainDashboard', ['amelia-ui']);
 ```
 
-### LESS Variables and Mixins
-
-Your project may also include our LESS variables and mixins into your build step for a more seamless look. Look in `/dist` for `_variables.scss` and `_mixins.scss`.
-
 ***
 
 ## Working on this project
@@ -28,30 +24,24 @@ Your project may also include our LESS variables and mixins into your build step
 Serve the documentation pages locally:
 
 ```
-./bin/amelia-ui serve
+./bin/amelia-ui -t serve
 ```
 
-Test amelia-ui components:
+Test the amelia-ui library:
 
 ```
-./bin/amelia-ui test
+./bin/amelia-ui -t test
 ```
 
 Compile your own version from `/src`:
 
 ```
-./bin/amelia-ui build
-```
-
-If you want to bump the current version of the library, run:
-
-```
-./bin/amelia-ui build --bump [patch/minor/major]
+./bin/amelia-ui -t build
 ```
 
 ### Adding a component
 
-1. Add a directory in `/src` that corresponds with the name of your component.
+1. Add a directory in `/src/components` that corresponds with the name of your component.
 2. `*.js`, `*.html`, `*.less` can now be added. They should all be in the root of your component directory.
 3. Add `/docs` to your component directory and add a `demo.html` (optional)
 4. Add `/tests` to your component directory and add any `*.js` to test against (mandatory)
