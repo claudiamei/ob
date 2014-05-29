@@ -50,7 +50,7 @@ var min_output = 'amelia-ui.min.js';
 
 var component_js = function component_js () {
 	var app = path.join('src', 'amelia-ui.js');
-	var components = path.join('src', 'components', '**', '*.js');
+	var components = path.join('src', 'components', '*', '*.js');
 	return gulp.src([app, components])
 		.pipe(tasks.ngmin())
 		.pipe(tasks.concat(raw_output))
@@ -69,7 +69,7 @@ var component_templates = function component_templates () {
 		}))
 		.pipe(tasks.ngHtml2js({
 			moduleName: "amelia-ui.templates",
-			prefix: "../src/components/"
+			prefix: "../src/"
 		}))
 		.pipe(tasks.uglify())
 		.pipe(tasks.concat(output))
