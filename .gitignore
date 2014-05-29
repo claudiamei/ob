@@ -3,3 +3,4 @@ bower_components
 dist
 docs/.tmp
 .DS_Store
+.idea/
