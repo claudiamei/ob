@@ -62,40 +62,76 @@
 
 <script type="text/ng-template"id="ultable.html">
 <h3>UL "table"</h3>
-<div ng-controller="ulTableDemoCtrl" class="customers-table">
-	<div class="matrix">
-		<ul class="thead">
-			<li>
-				<div class="fluid">
-					<div class="col">Name</div>
-				</div>
-				<div class="fixed-left">
-					<div class="col">Title</div>
-				</div>
-				<div class="fixed-right">
-					<div class="col">Age</div>
-				</div>
-			</li>
-		</ul>
-		<ul class="tbody">
-			<li ng-repeat="user in data">
-				<div class="fluid">
-					<div class="col">{{user.name}}</div>
-				</div>
-				<div class="fixed-left">
-					<div class="col">{{user.title}}</div>
-				</div>
-				<div class="fixed-right">
-					<div class="col age">{{user.age}}</div>
-					<div class="col actions">
-						<button class="btn btn-primary">Yes</button>
-						<button class="btn btn-danger">No</button>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
+
+<div ob-table class="show-totals">
+	<ul class="thead row">
+		<li class="col-sm-2 sortable">Date</li>
+		<li class="col-sm-2 sortable active-sort">Total Clicks</li>
+		<li class="col-sm-2 sortable">Organic Clicks</li>
+		<li class="col-sm-2 sortable">Paid Clicks</li>
+		<li class="col-sm-2 sortable">Page Views</li>
+		<li class="col-sm-2 sortable">CTR</li>
+	</ul>
+	<ul class="tbody">
+		<li class="row totals"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+		<li class="row"><ul>
+			<li class="col-sm-2">3/10/2014</li>
+			<li class="col-sm-2">88,577</li>
+			<li class="col-sm-2">1,217</li>
+			<li class="col-sm-2">87,360</li>
+			<li class="col-sm-2">2,827,196</li>
+			<li class="col-sm-2">3.13%</li>
+		</ul></li>
+	</ul>
 </div>
+
 
 <style type="text/css">
 	.customers-table .fluid .col {

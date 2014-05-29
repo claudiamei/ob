@@ -61,10 +61,10 @@ module.exports = {
 			});
 		});
 
-		var demo_files = path.join('docs', '*', 'docs', 'demo.html'),
-			demo_files = path.join('src', '**', 'package.json'),
+		var demo_files = path.join('src', '**', 'docs', 'demo.html'),
+			demo_descriptions = path.join('src', '**', 'package.json'),
 			templates = path.join('docs', 'pages', '**', '*.html');
-		gulp.watch([demo_files, templates], function (event) {
+		gulp.watch([demo_files, demo_descriptions, templates], function (event) {
 			var tasks = [serve.components_list, serve.components_demos];
 			utils.run_tasks(__filename, tasks).then(function () {
 				utils.reload(connect, event.path);
