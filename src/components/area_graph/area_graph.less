@@ -66,6 +66,14 @@ ob-area-graph{
 
 .popover.popover-legend{
 	display: block;
+    border-radius: 3px;
+    background-color: rgba(0,0,0,.7);
+ 
+//    TODO: I don't think this is the right way to handle the h3 tag here but it was all i could figure out for now.
+    
+    h3{
+        margin-bottom: 0 !important;
+    }
 }
 
 .ob-popover.popover-legend .popover-content{
@@ -86,8 +94,30 @@ ob-area-graph{
 }
 
 .graph-key-row .key-color{
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
+    vertical-align: middle;
+    width: 15px;
+    height: 15;
+    border-radius: 8px;
+    border: 2px solid #444;
 }
+
+.graph-key-row .key-value{
+    font-weight: 700;
+}
+
+#demo-area_graph{
+    pre{
+        background: #333;
+        color: #eee;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        border: 2px solid #ffaf36;
+        padding: 20px !important; 
+//        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
+    }
+        pre:last-of-type{
+        background: #ff0;
+    }
+}
+
 
