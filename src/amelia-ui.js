@@ -9,6 +9,7 @@ angular.module('amelia-ui', [
 	'amelia-ui.page',
 	'amelia-ui.kpi-boxes',
 	'amelia-ui.dropdown',
+	'amelia-ui.table',
 	'ui.bootstrap',
 	'pieover',
 	// 'amelia-ui.utils.debounce'
