@@ -1,12 +1,33 @@
 .ob-kpi-box {
-	border-radius: 0;
-	border-top: solid 1px #DDD;
-    border-bottom: solid 1px #DDD;
-	margin-bottom: 15px;
-	line-height: 1;
-	white-space: nowrap;
-    font-weight: 700;
-    min-width: 964px;
+  border-radius: 0;
+  border-top: solid 1px #DDD;
+  border-bottom: solid 1px #DDD;
+  margin-bottom: 15px;
+  line-height: 1;
+  white-space: nowrap;
+  font-weight: 700;
+  min-width: 964px;
+
+  .kpi-suffix {
+    font-size: 30px;
+  }
+
+  .organic-paid {
+    position: absolute;
+    bottom: 25px;
+    .kpi-suffix {
+      font-size: 10px;
+    }
+  }
+
+  .kpi-suffix-top {
+    font-size: 30px;
+    line-height: 1.2;
+    vertical-align: top;
+    &.currency {
+      float: left;
+    }
+  }
 
   .ob-period {
     position: absolute;
@@ -21,17 +42,29 @@
     position: absolute;
     right: 12px;
     top: 12px;
-    background-color: #181818;
-    padding: 3px 6px;
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #888;
     text-align: center;
+    border-radius: 50%;
     cursor: pointer;
-  }
 
-  .ob-help:after {
-    content: '?';
-    color: white;
-    font-size: 12px;
+    &.helpOpen {
+      background-color: #181818;
+    }
+
+    &:hover {
+      background-color: #181818;
+    }
+
+    &:after {
+      content: '?';
+      color: white;
+      font-size: 12px;
+      position: relative;
+      vertical-align: middle;
+      line-height: 1.84;
+    }
   }
 
 
@@ -153,103 +186,96 @@
 }
 
 .ob-kpi-box > .row {
-	margin: 0;
+  margin: 0;
 }
 
 .ob-kpi-box > .row > div:nth-child(n+2) {
-	border-left: 1px solid #DDD;
+  border-left: 1px solid #DDD;
 }
 
 .ob-kpi-box .row + .row {
-	border-top: 1px solid #DDD;
+  border-top: 1px solid #DDD;
 }
 
 .ob-kpi-box [class*="col-"] {
-	padding-bottom: 40px;
-	padding-top: 40px;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .ob-kpi-box [class*="col-"] [class*="col-"] {
-	padding-top: 0;
-	padding-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .ob-kpi-box label {
-	font-size: 14px;
-	font-weight: normal;
-	padding: 0;
-	margin-top: 5px;
-	display: block;
-	text-align: left;
-	color: #aaa;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+  color: #aaa;
 }
 
 .ob-kpi-box label label {
-	font-size: 12px;
-	display: inline;
-	padding-right: .5em;
+  font-size: 12px;
+  display: inline;
+  padding-right: .5em;
 }
 .ob-kpi-box label .value {
-	font-size: 12px;
-	padding-right: 1em;
-	color: #444;
-	font-weight: 700;
+  font-size: 12px;
+  padding-right: 1em;
+  color: #444;
+  font-weight: 700;
 }
 
 /* kpi group list */
 .ob-kpi-box ul {
-	list-style: none;
-	margin: 0;
+  list-style: none;
+  margin: 0;
 }
 
 .ob-kpi-box li + li {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .ob-kpi-box li .value {
-	margin-left: 15px;
-	font-weight: bold;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
 /* Kpi button group */
 
 .ob-kpi-box .btn-group {
-	position: absolute;
-	top: 7px;
-	left: 7px;
+  position: absolute;
+  top: 7px;
+  left: 7px;
 }
 
 /* Font styles */
 .ob-kpi-box .font-md {
-	font-size: 30px;
+  font-size: 30px;
 }
 
 .ob-kpi-box .font-lg {
-	font-size: 55px;
-}
-
-.ob-kpi-box .percent,
-.ob-kpi-box .currency {
-	font-size: .6em;
-}
-.ob-kpi-box .currency {
-	vertical-align: top;
+  font-size: 60px;
 }
 
 /* kpi-box utilities */
 
 .center-table {
-	margin: 0 auto;
-	display: table;
+  margin: 0 auto;
+  display: table;
 }
 
 .equal-height-cols {
-	display: table;
-	min-width: 100%;
+  display: table;
+  min-width: 100%;
 }
 
 .equal-height-cols > div {
-    display: table-cell;
-    vertical-align: middle;
-    float: none;
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
 }
+

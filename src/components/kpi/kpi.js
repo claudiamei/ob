@@ -1,6 +1,7 @@
+/* global angular, $ */
 
-angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'])
-.filter('obNumber', function($filter) {
+angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip', 'ngSanitize'])
+  .filter('obNumber', function($filter) {
     var numberFilter = $filter('number');
     return function(number, decimalPlaces) {
       var toRound = Math.round(number) !== Number(number);
@@ -9,17 +10,17 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
       }
       return numberFilter(number, toRound ? decimalPlaces: 0);
     };
-})
-.filter('kpiNumberTooltip', function($filter) {
-  return function(number, decimalPlaces, maxDigits) {
-    maxDigits = maxDigits || 3;
-    var digits = Math.abs(Math.round(number)).toString().length;
-    if (digits > maxDigits) {
-      return $filter('obNumber')(number, decimalPlaces);
-    }
-  };
-})
-.filter('kpiNumberRevenue', function($filter) {
+  })
+  .filter('kpiNumberTooltip', function($filter) {
+    return function(number, decimalPlaces, maxDigits) {
+      maxDigits = maxDigits || 3;
+      var digits = Math.abs(Math.round(number)).toString().length;
+      if (digits > maxDigits) {
+        return $filter('obNumber')(number, decimalPlaces);
+      }
+    };
+  })
+  .filter('kpiNumberRevenue', function($filter) {
     var numberFilter = $filter('kpiNumber');
     return function(number) {
       var digits = Math.abs(Math.round(number)).toString().length;
@@ -29,10 +30,10 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
       }
       return numberFilter(number, decimalPoints, 4);
     };
-})
-.filter('kpiNumber', function($filter) {
+  })
+  .filter('kpiNumber', function($filter) {
     // suffixes for thousand, million, billion, etc.
-    var suffixes = ['', 'k', 'm', 'b', 't'];
+    var suffixes = ['', 'K', 'MM', 'BN', 'MT'];
     return function(number, decimalPlaces, maxDigits, skipRounding) {
       maxDigits = maxDigits || 3;
       var digits = Math.abs(Math.round(number)).toString().length;
@@ -48,107 +49,128 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
         decimalPlaces = 0;
       }
 
-      return $filter('obNumber')(number, decimalPlaces) + suffixes[multiple];
+      return $filter('obNumber')(number, decimalPlaces) + '<span class="kpi-suffix">' + suffixes[multiple] + '</span>';
     };
-})
-.directive( 'kpioverPopup', function () {
-  return {
-    restrict: 'EA',
-    replace: true,
-    scope: { title: '@', content: '@', placement: '@', animation: '&', isOpen: '&' },
-    templateUrl: '../src/components/kpi/templates/popover.html'
-  };
-})
-.directive( 'kpiover', [ '$tooltip', function ( $tooltip ) {
-  return $tooltip( 'kpiover', 'popover', 'click' );
-}])
-.directive('obKpiBoxEngageDashboard', function () {
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/engage-dashboard.html',
-		replace: true,
-		transclude: true,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		},
-    controller: ['$scope', function($scope){
-      if ($scope.boxes.ctr && $scope.boxes.ctr.value) {
-        $scope.boxes.ctr.value = Math.round(Number($scope.boxes.ctr.value)*10000)/100;
+  })
+  .directive( 'kpioverPopup', function ($timeout) {
+    return {
+      restrict: 'EA',
+      replace: true,
+      scope: { title: '@', content: '@', placement: '@', animation: '&', isOpen: '&' },
+      templateUrl: '../src/components/kpi/templates/popover.html',
+      link: function($scope, el){
+        $timeout(function(){
+          (function registerBodyClick() {
+            $('html').one('click', function(e){
+              var btnHelp = $('.ob-help');
+              //check if clicked on button
+              if (e.target === btnHelp[0]){
+                return;
+              }
+
+              //check if clicked on popover.html
+              if ($.contains(el[0], e.target)){
+                registerBodyClick();
+                return;
+              }
+
+              btnHelp.click();
+            });
+          })();
+        }, 0);
       }
-    }]
-	};
-})
-.directive('obKpiBoxAmplifyDashboard', function () {
+    };
+  })
+  .directive( 'kpiover', [ '$tooltip', function ( $tooltip ) {
+    return $tooltip( 'kpiover', 'popover', 'click' );
+  }])
+  .directive('obKpiBoxEngageDashboard', function () {
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/engage-dashboard.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      },
+      controller: ['$scope', function($scope){
+        if ($scope.boxes.ctr && $scope.boxes.ctr.value) {
+          $scope.boxes.ctr.value = Math.round(Number($scope.boxes.ctr.value)*10000)/100;
+        }
+      }]
+    };
+  })
+  .directive('obKpiBoxAmplifyDashboard', function () {
 
-	var link = function ($scope) {
-		var kpiBoxes = $scope.boxes;
+    var link = function ($scope) {
+      var kpiBoxes = $scope.boxes;
 
-		$scope.setKpiView = function (view) {
-			view = view || 'mtd';
-			$scope.view = view;
-			$scope.boxView = kpiBoxes[view];
-		};
-		$scope.setKpiView();
-	};
+      $scope.setKpiView = function (view) {
+        view = view || 'mtd';
+        $scope.view = view;
+        $scope.boxView = kpiBoxes[view];
+      };
+      $scope.setKpiView();
+    };
 
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/amplify-dashboard.html',
-		replace: true,
-		transclude: true,
-		link: link,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		}
-	};
-})
-.directive('obKpiBoxEditorialRecommend', function () {
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/editorial-recommend.html',
-		replace: true,
-		transclude: true,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		}
-	};
-})
-.directive('obKpiBoxEditorialContent', function () {
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/editorial-content.html',
-		replace: true,
-		transclude: true,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		}
-	};
-})
-.directive('obKpiBoxEditorialFrontpage', function () {
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/editorial-frontpage.html',
-		replace: true,
-		transclude: true,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		}
-	};
-})
-.directive('obKpiBoxEditorialSocial', function () {
-	return {
-		restrict: 'AE',
-		templateUrl: '../src/components/kpi/templates/editorial-social.html',
-		replace: true,
-		transclude: true,
-		scope: {
-			boxes : '=',
-			currency: '@'
-		}
-	};
-});
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/amplify-dashboard.html',
+      replace: true,
+      transclude: true,
+      link: link,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      }
+    };
+  })
+  .directive('obKpiBoxEditorialRecommend', function () {
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/editorial-recommend.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      }
+    };
+  })
+  .directive('obKpiBoxEditorialContent', function () {
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/editorial-content.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      }
+    };
+  })
+  .directive('obKpiBoxEditorialFrontpage', function () {
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/editorial-frontpage.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      }
+    };
+  })
+  .directive('obKpiBoxEditorialSocial', function () {
+    return {
+      restrict: 'AE',
+      templateUrl: '../src/components/kpi/templates/editorial-social.html',
+      replace: true,
+      transclude: true,
+      scope: {
+        boxes : '=',
+        currency: '@'
+      }
+    };
+  });
