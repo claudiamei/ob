@@ -1,0 +1,61 @@
+
+/* Column headers */
+.thead {
+  // height: 49px;
+  padding: 0 40px 0 40px;
+  border-bottom: 1px solid #dddede;
+
+  .col {
+    float: left;
+  }
+
+  .col.sortable {
+    cursor: pointer;
+  }
+
+  .sortable:hover {
+    color: #47484A;
+    background-color: #ffffbb;
+  }
+
+  .sorted {
+    background-color: #ffc;
+  }
+
+  a:hover {
+    color: #2A51A1;
+  }
+}
+
+.thead .col, .table > thead > tr > th {
+  color: #333;
+  text-transform: uppercase;
+  padding: 20px 10px 0 40px;
+  height: 48px;
+  white-space: nowrap;
+  font-weight: bold;
+  cursor: default;
+  border: 0 none;
+}
+
+/* Matrix rows */
+.tbody > li, .tr {
+  border-bottom: 1px solid #dddede;
+  min-height: 48px;
+  padding: 0 40px 0 40px;
+}
+
+.tbody li.hidden {
+  display: none;
+}
+
+.tbody > li:hover, .tr:hover {
+  background-color: #ffc;
+}
+
+.tbody .col {
+  padding: 12px 10px;
+  line-height: 23px;
+  position: relative;
+  float: left;
+}
