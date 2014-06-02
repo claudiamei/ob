@@ -76,7 +76,7 @@
 </table>
 
 <h3>Data Format</h3>
-<pre class="inline_pretag">
+<pre class="data_format_pre">
 [{
   name: 'Publisher-1',
   values: [{
@@ -104,9 +104,9 @@
 		<ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" data="data"></ob-area-graph>
 		<form class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">Blue Line Values</label>
+				<label class="col-sm-2 control-label">Blue line Values</label>
 				<div class="col-sm-10">
-					<div class="col-sm-12">
+					<div class="col-sm-12" class="area_dates">
 						<div class="col-sm-2">
 							<input class="form-control" type="text" ng-model="data.0.values.0.date">
 						</div>
@@ -117,7 +117,8 @@
 							<input class="form-control" type="text" ng-model="data.0.values.2.date">
 						</div>
 					</div>
-					<div class="col-sm-12">
+					
+                    <div class="col-sm-12" class="area_datapoints">
 						<div class="col-sm-2">
 							<input class="form-control" type="number" ng-model="data.0.values.0.value">
 						</div>
