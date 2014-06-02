@@ -33,6 +33,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
 			interpolation: 'monotone',
 			//formatValue: d3.format('d'),
+			yAxisLabel: '',
 			yAxisFormat: d3.format('s'),
 			xAxisFormat: d3.time.format.multi([
 				[".%L", function(d) { return d.getMilliseconds(); }],
@@ -45,7 +46,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				["%Y", function() { return true; }]
 			]),
 		};
-
 		extendDeep(this, defaults);
 		extendDeep(this, options);
 	};
@@ -75,11 +75,11 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				scope.resize();
 				scope.update(data, true);
 			}, 1000, false);
-			
+
 			angular.element($window).on('resize', function () {
 				resizeDebounced();
 			});
-			
+
 			/* d3 Configuration*/
 			var d3 = window.d3,
 				config = new OBAreaGraphConfig($parse(attrs.obAreaGraphOptions)(scope)),
@@ -95,6 +95,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				hoverDateFormat = config.hoverDateFormat,
 				xAxisFormat = config.xAxisFormat,
 				yAxisFormat = config.yAxisFormat,
+				yAxisLabel = config.yAxisLabel,
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
 				legendMargin = {top: margin.top + 20, left: margin.left + 40};
@@ -230,7 +231,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.attr("y", -13)
 					.attr("x", -37)
 					.style("text-anchor", "begin")
-					.text("Clicks");
+					.text(yAxisLabel);
 
 				focus = svg.append("g")
 					.attr("class", "focus")
