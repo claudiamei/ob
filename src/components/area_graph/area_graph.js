@@ -368,6 +368,9 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					i = bisectDate(d.values, xDate);
 					d0 = d.values[i - 1];
 					d1 = d.values[i];
+					if(!d1) {
+						d1 = d0;
+					}
 					interpolate = d3.interpolateNumber(d0.value, d1.value);
 					range = d1.date - d0.date;
 					yValue = interpolate((xDate - d0.date) / range);
