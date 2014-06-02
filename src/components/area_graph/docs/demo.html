@@ -60,6 +60,12 @@
 				<code>['#FF5F00', '#3DD3E1']</code>
 			</td>
 		</tr>
+        <tr>
+            <td>yAxislabel</td>
+            <td>string</td>
+            <td>""</td>
+            <td>Label displayed at the top of the Y-Axis</td>
+        </tr>
 		<tr>
 			<td>parseDate</td>
 			<td>function</td>
@@ -95,7 +101,7 @@
 <script type="text/ng-template" id="area-graph-1.html">
 	<h3>Standard</h3>
 	<div ng-controller="obAreaGraphControllerDemo">
-		<ob-area-graph data="data"></ob-area-graph>
+		<ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" data="data"></ob-area-graph>
 		<form class="form-horizontal">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">Blue Line Values</label>
