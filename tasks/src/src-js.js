@@ -115,10 +115,12 @@ var test = {
 	},
 	units: function units () {
 		var angular = path.join('docs', 'lib', 'angular', 'angular.js');
+		var angular_sanitize = path.join('docs', 'lib', 'angular-sanitize', 'angular-sanitize.js');
 		var angular_mocks = path.join('docs', 'lib', 'angular-mocks', 'angular-mocks.js');
 		var bootstrap_ui = path.join('docs', 'lib', 'angular-bootstrap', 'ui-bootstrap-tpls.js');
 		return gulp.src([
 				angular,
+				angular_sanitize,
 				angular_mocks,
 				bootstrap_ui,
 				path.join('src', '**', '*.js'),
