@@ -110,6 +110,37 @@ button,
   .ob-button-variant(#fff; #ff9900; #ffaf36);
 }
 
+.btn{
+    border-radius: 2px;
+    border-width: 2px;    
+}
+
+.btn-link{
+    color: #0099cb;
+}
+
+.btn-primary{
+    &:hover{
+        color: #fff;
+        background-color: @brand-primary;
+    }    
+}
+
+
+.btn-success{
+    color: @brand-success;
+    background-color: lighten(@brand-success, 45%);
+    &:hover{
+        color: #fff;
+    }    
+}
+
+.btn-info{
+    &:hover{
+        color: #fff;
+    }    
+}
+
 // //
 // // Buttons
 // // --------------------------------------------------

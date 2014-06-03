@@ -22,34 +22,36 @@
 
 .capsule .base {
 	position: absolute;
-	width: 32px;
-	height: 1px;
+    z-index: 5;
+	width: 30px;
+	height: 2px;
 	bottom: 0;
 	margin-left: 0px;
-	background-color: grey;
+	background-color: #ccc;
 }
 
 .capsule .glass {
 	position: absolute;
-	left: 5px;
-	width: 22px;
-	padding-bottom: 3px;
+	left: 2px;
+	width: 26px;
+	padding-bottom: 0px;
 	padding-top: 3px;
 	height: 100%;
-	border: solid 1px grey;
-	border-top-left-radius: 6px 6px;
-	border-top-right-radius: 6px 6px;
+	border: solid 1px #ccc;
+    background-color: #eee;
+	border-radius: 3px 3px 0 0;
+    
 }
 
 /* Adjust height 0 - 100% */
 .capsule .bar {
 	position: relative;
-	left: 4px;
-	width: 12px;
+	left: 3px;
+	width: 18px;
 	height: 100%;
-	background-color: #F00;
-	border-top-left-radius: 7px 4px;
-	border-top-right-radius: 7px 4px;
+	background-color: @brand-success;
+    border: 1px solid darken(@brand-success, 8%);
+    border-radius: 3px 3px 0 0;
 }
 
 .capsule ~ .source{
