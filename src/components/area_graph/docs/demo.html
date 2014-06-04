@@ -102,24 +102,26 @@
 	<h3>Standard</h3>
 	<div ng-controller="obAreaGraphControllerDemo">
 		<ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" data="data"></ob-area-graph>
-		<form class="form-horizontal">
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Blue line Values</label>
+		
+        <form class="form-horizontal">
 			
-					<div class="col-sm-12" class="area_dates">
-						<div class="col-sm-2">
+            <div class="form-group">
+            
+				<div class="form-col col-sm-6 area_dates">  
+                        <label class="control-label">Blue line Values (Date Range)</label>
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.0.date">
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.1.date">
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.2.date">
 						</div>
-					</div>
-                    
-				<label class="col-sm-2 control-label">Data Points</label>	
-                    <div class="col-sm-12" class="area_datapoints">
+                </div>
+                
+                <div class="form-col area_datapoints">
+                    <label class="control-label">Data Points</label>	
 						<div class="col-sm-2">
 							<input class="form-control" type="number" ng-model="data.0.values.0.value">
 						</div>
@@ -129,7 +131,7 @@
 						<div class="col-sm-2">
 							<input class="form-control" type="number" ng-model="data.0.values.2.value">
 						</div>
-					</div>
+                </div>
 			
 			</div>
 		</form>

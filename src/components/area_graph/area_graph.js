@@ -98,7 +98,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				yAxisLabel = config.yAxisLabel,
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
-				legendMargin = {top: margin.top + 20, left: margin.left + 40};
+				legendMargin = {top: margin.top + 30, left: margin.left + 30};
 
 			// Temporary scale until colors are final
 			lineColor = d3.scale.category10();

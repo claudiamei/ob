@@ -27,6 +27,9 @@
     width: 5px;
     background: #333;
   }
+  li:hover::before{
+      background-color:@brand-success;
+  } 
   a {
     color: #666;
     text-decoration:none;
@@ -48,7 +51,6 @@
     font-weight: 700;
     font-size: 3em;
     margin-bottom: 30px;
-    // background-color: rgba(255, 153, 0, .1);
     padding: 20px;
     border-bottom: 1px solid #ff9900;
     border-top: 1px solid #ff9900;
@@ -123,6 +125,24 @@ hr{
 }
 
 
+.form-col{
+    
+    label{
+        text-align: left;
+        color: red;
+        display: block;
+
+    }
+}
+
+
+.form-horizontal .control-label {
+        text-align: left;
+        color: #666;
+}
+
+
+
 input{
     
     &.form-control{
@@ -135,10 +155,46 @@ input{
         height: 60px;
         box-shadow: none;
         font-weight: 300;
+        width: 97%;
     }
 }
 
-.form-horizontal .control-label {
-        text-align: left;
-        color: #666;
-}
+
+.data_format_pre{
+        background: #333;
+        color: #eee;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        border: 2px solid #ffaf36;
+        padding: 20px !important; 
+//        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
+    }
+
+.kpi-input-group{
+        .kpi-input-col{
+            display:inline-block;
+        }
+        
+        .kpi-input{
+        }
+    
+        input{
+            width: 97%;
+            background-color: #eee;
+            color: #666;
+            font-size: 32px;
+            line-height: 32px;
+            border: 1px solid #ccc;
+            margin: 0 0 20px 0;
+            height: 60px;
+            box-shadow: none;
+            font-weight: 300;
+            padding: 0 10px;
+            border-radius: 2px;
+        }
+        
+        label{
+            color: #666;
+            display: block;
+        }
+    }
