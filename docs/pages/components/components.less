@@ -17,6 +17,9 @@
     margin: 0;
     position:relative;
   }
+    li:hover{
+        background-color: #ddd;
+    }
   li:hover::before, 
   li.active::before {
     content:"";
@@ -25,10 +28,11 @@
     left: 0;
     height:100%;
     width: 5px;
-    background: #333;
+    background: #63aad1;
   }
   li:hover::before{
-      background-color:@brand-success;
+//      background-color:@brand-primary; TODO: This is not working/shows up blue instead of orange
+      background-color: #ff9900;
   } 
   a {
     color: #666;
