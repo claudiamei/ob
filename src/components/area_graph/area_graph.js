@@ -20,13 +20,13 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 		var d3 = window.d3;
 		var defaults = {
 			margin: {
-				top : 30,
+				top : 40,
 				right : 20,
 				bottom : 30,
-				left : 50
+				left : 45
 			},
 			width: function(element){return element.width();},
-			height: 250,
+			height: 180,
 			lineColors: ['#FF5F00', '#3DD3E1'],
 			areaColors: ['#FCECE2', '#C8F0F4'],
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
@@ -220,16 +220,17 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				xAxisGroup = svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
+                    .attr("x", 50)
 					.call(xAxis);
-
+                
 				yAxisGroup = svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
 
 				yAxisGroup.append("text")
 					.attr('class', 'y-label')
-					.attr("y", -13)
-					.attr("x", -37)
+					.attr("y", -27)
+					.attr("x", -0)
 					.style("text-anchor", "begin")
 					.text(yAxisLabel);
 
@@ -240,13 +241,13 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 
 				focus.append("rect")
 					.attr("height", height)
-					.attr("width", 5)
+					.attr("width", 4)
 					.attr('x', -2);
 
 				focus.append('rect')
 					.attr("height", 4)
-					.attr("width", 48)
-					.attr('x', -24)
+					.attr("width", 6)
+					.attr('x', -3)
 					.attr('y', height)
 					.attr("rx", 1)
 					.attr('ry', 1);

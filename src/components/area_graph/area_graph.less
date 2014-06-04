@@ -2,15 +2,17 @@
 ob-area-graph{
 	display: block;
 	position: relative;
+    margin: 40px 0;
 }
 
 .area-graph text{
 	fill: #AAAAAA;
+    font-size:12px;
 }
 
 .axis path{
 	fill: none;
-	stroke: #000;
+	stroke: #ccc;
 	shape-rendering: crispEdges;
 }
 
@@ -20,7 +22,7 @@ ob-area-graph{
 
 .axis text.y-label{
 	font-size: 16px;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .area{
@@ -49,7 +51,7 @@ ob-area-graph{
 }
 
 .focus rect {
-	fill: #696969;
+	fill: #333;
 }
 
 .focus text {
@@ -115,7 +117,13 @@ ob-area-graph{
         padding: 20px !important; 
 //        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
     }
+    
+    &.col-sm-2{
+        margin: 0 5px !important;
+    }
+    
 }
+
 
 
 
