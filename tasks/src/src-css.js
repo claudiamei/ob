@@ -12,7 +12,7 @@ var serve = {
     var dest = path.join('docs', '.tmp');
     return gulp.src(bootstrap_theme)
       .pipe(tasks.less({
-        sourceMap: true
+        // sourceMap: true
       }))
       .pipe(gulp.dest(dest));
   },
@@ -22,7 +22,7 @@ var serve = {
     var dest = path.join('docs', '.tmp');
     return gulp.src(amelia)
       .pipe(tasks.less({
-        sourceMap: true
+        // sourceMap: true
       }))
       .pipe(gulp.dest(dest));
   }
