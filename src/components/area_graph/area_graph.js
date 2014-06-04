@@ -220,7 +220,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				xAxisGroup = svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
-                    .attr("x", 50)
 					.call(xAxis);
                 
 				yAxisGroup = svg.append("g")

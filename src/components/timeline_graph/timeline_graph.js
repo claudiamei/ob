@@ -40,6 +40,7 @@ function ObTimeline(selector) {
 		yAccessor = function(d){
 			return d.value;
 		};
+
 	function setAxis(){
 		if((xExtent[1] - xExtent[0])/(1000 * 60) <= 61){
 			xAxis.ticks(d3.time.minutes, 10)
@@ -124,31 +125,39 @@ function ObTimeline(selector) {
 	function update(data){
 		setScale(data);
 		//setAxis();
-		timelineGroup.data(data);
-
 		xAxisGroup.transition()
 			.duration(1000)
 			.call(xAxis);
 
-		circles.transition()
+		timelineGroup.data(data)
+
+		timelineGroup.selectAll('.timeline-line')
+			.data(function(d){return [d]})
+			.transition()
+			.attr("d", function(d){return line(valuesAccessor(d));});
+
+		circles = timelineGroup.selectAll('.circ')
+			.data(valuesFilter)
+
+		circles.enter()
+			.append('circle')
+			.attr('class', 'circ')
+			.attr('r', 0)
+			.style('opacity', .7)
+			.attr("transform", function(d){ return "translate(" + x(xAccessor(d)) + ",0)";})
+			.transition()
+			.delay(function(d, i){return i * 10;})
+			.attr('r', function(d){return yAccessor(d) + 4});
+
+		circles.exit()
+			.transition()
+			.delay(0)
 			.attr('r', 0)
 			.remove();
 
-		setTimeout(function(){
-
-			circles = timelineGroup.selectAll('.circ')
-				.data(valuesFilter)
-				.enter()
-				.append('circle')
-				.attr('class', 'circ')
-				.attr('r', 0)
-				.style('opacity', .7)
-				.attr("transform", function(d){ return "translate(" + x(xAccessor(d)) + ",0)";});
-
-			circles.transition()
-				.attr('r', function(d){return yAccessor(d) + 4})
-
-		}, 600)
+		circles.transition()
+			.attr('r', function(d){return yAccessor(d) + 4})
+			.attr("transform", function(d){ return "translate(" + x(xAccessor(d)) + ",0)";})
 
 	}
 
