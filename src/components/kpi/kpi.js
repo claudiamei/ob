@@ -144,10 +144,10 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
       templateUrl: '../src/components/kpi/templates/editorial-content.html',
       replace: true,
       transclude: true,
-      scope: {
-        boxes : '=',
-        currency: '@'
-      }
+      //scope: {
+		//kpi_data : '=',
+		// currency: '@'
+		// }
     };
   })
   .directive('obKpiBoxEditorialFrontpage', function () {

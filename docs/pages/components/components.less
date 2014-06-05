@@ -17,6 +17,9 @@
     margin: 0;
     position:relative;
   }
+    li:hover{
+        background-color: #ddd;
+    }
   li:hover::before, 
   li.active::before {
     content:"";
@@ -25,8 +28,11 @@
     left: 0;
     height:100%;
     width: 5px;
-    background: #333;
+    background: #63aad1;
   }
+  li:hover::before{
+      background-color: @brand-primary;
+  } 
   a {
     color: #666;
     text-decoration:none;
@@ -38,12 +44,16 @@
 #component-list-wrapper {
   padding: 0;
   list-style: none;
-  h1 {
+    p{
+        font-size: 16px;
+        color: #666;
+    }
+    
+    h1 {
     border-bottom: none;
     font-weight: 700;
     font-size: 3em;
     margin-bottom: 30px;
-    // background-color: rgba(255, 153, 0, .1);
     padding: 20px;
     border-bottom: 1px solid #ff9900;
     border-top: 1px solid #ff9900;
@@ -75,10 +85,9 @@
   &:hover {
     color: #fff;
     background-color: #ff9900;
-    border-top: 3px #ffaf36 solid;
     border-left: 2px #ffaf36 solid;
     border-right: 2px #ffaf36 solid;
-    border-bottom: 1px #E17613 solid;
+    border-bottom: 2px #E17613 solid;
     box-shadow: 0px -1px 0 #e17613 inset;
     text-shadow: 0px 1px 0 #e17613;
   }
@@ -117,3 +126,78 @@ hr{
     }
     
 }
+
+
+.form-col{
+    
+    label{
+        text-align: left;
+        color: red;
+        display: block;
+
+    }
+}
+
+
+.form-horizontal .control-label {
+        text-align: left;
+        color: #666;
+}
+
+
+
+input{
+    
+    &.form-control{
+        background-color: #eee;
+        color: #666;
+        font-size: 32px;
+        line-height: 32px;
+        border-color: #ccc;
+        margin: 0;
+        height: 60px;
+        box-shadow: none;
+        font-weight: 300;
+        width: 97%;
+    }
+}
+
+
+.data_format_pre{
+        background: #333;
+        color: #eee;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        border: 2px solid #ffaf36;
+        padding: 20px !important; 
+//        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
+    }
+
+.kpi-input-group{
+        .kpi-input-col{
+            display:inline-block;
+        }
+        
+        .kpi-input{
+        }
+    
+        input{
+            width: 97%;
+            background-color: #eee;
+            color: #666;
+            font-size: 32px;
+            line-height: 32px;
+            border: 1px solid #ccc;
+            margin: 0 0 20px 0;
+            height: 60px;
+            box-shadow: none;
+            font-weight: 300;
+            padding: 0 10px;
+            border-radius: 2px;
+        }
+        
+        label{
+            color: #666;
+            display: block;
+        }
+    }

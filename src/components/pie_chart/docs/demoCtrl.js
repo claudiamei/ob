@@ -85,5 +85,5 @@ angular.module('amelia.docs.controllers').controller('obPieChartController', fun
   $scope.data = {
       'primaryData': testData[i],
       'otherData': otherData,
-    };
+  };
 });

@@ -66,6 +66,12 @@
 				<code>['#FF5F00', '#3DD3E1']</code>
 			</td>
 		</tr>
+        <tr>
+            <td>yAxislabel</td>
+            <td>string</td>
+            <td>""</td>
+            <td>Label displayed at the top of the Y-Axis</td>
+        </tr>
 		<tr>
 			<td>parseDate</td>
 			<td>function</td>
@@ -76,7 +82,7 @@
 </table>
 
 <h3>Data Format</h3>
-<pre>
+<pre class="data_format_pre">
 [{
   name: 'Publisher-1',
   values: [{
@@ -100,24 +106,28 @@
 
 <script type="text/ng-template" id="area-graph-1.html">
 	<h3>Standard</h3>
-  <div ng-controller="obAreaGraphControllerDemo">
-		<ob-area-graph data="data"></ob-area-graph>
-		<form class="form-horizontal">
-			<div class="form-group">
-				<label class="col-sm-2 control-label">Line 1 Values</label>
-				<div class="col-sm-10">
-					<div class="col-sm-12">
-						<div class="col-sm-2">
+	<div ng-controller="obAreaGraphControllerDemo">
+		<ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" data="data"></ob-area-graph>
+		
+        <form class="form-horizontal">
+			
+            <div class="form-group">
+            
+				<div class="form-col col-sm-6 area_dates">  
+                        <label class="control-label">Blue line Values (Date Range)</label>
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.0.date">
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.1.date">
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-4">
 							<input class="form-control" type="text" ng-model="data.0.values.2.date">
 						</div>
-					</div>
-					<div class="col-sm-12">
+                </div>
+                
+                <div class="form-col area_datapoints">
+                    <label class="control-label">Data Points</label>	
 						<div class="col-sm-2">
 							<input class="form-control" type="number" ng-model="data.0.values.0.value">
 						</div>
@@ -127,8 +137,8 @@
 						<div class="col-sm-2">
 							<input class="form-control" type="number" ng-model="data.0.values.2.value">
 						</div>
-					</div>
-				</div>
+                </div>
+			
 			</div>
 		</form>
 	</div>
@@ -137,11 +147,11 @@
   <div ng-controller="obDateRangeAreaGraphControllerDemo">
     <div class="clearfix" style="margin-bottom: 10px">
       <input class="col-xs-6" type="daterange"
-              ng-model="dates"
-              format="MMMM D, YYYY"
-              max-date="{{maxDate}}"
-              ranges="dateRanges"
-              show-calendars="true" style="margin-right: 10px"/>
+             ng-model="dates"
+             format="MMMM D, YYYY"
+             max-date="{{maxDate}}"
+             ranges="dateRanges"
+             show-calendars="true" style="margin-right: 10px"/>
 
       <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="month" id="input-month"/><label for="input-month" style="margin-right: 10px" >Monthly</label>
       <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="day" id="input-day"/><label for="input-day">Daily</label>
@@ -149,7 +159,6 @@
     <ob-area-graph class="col-xs-6" data="clicks"></ob-area-graph>
     <ob-area-graph class="col-xs-6" data="ctr"></ob-area-graph>
   </div>
-
 </script>
 
 <script type="text/ng-template"id="area-graph-2.html">

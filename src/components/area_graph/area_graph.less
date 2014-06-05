@@ -2,15 +2,17 @@
 ob-area-graph{
 	display: block;
 	position: relative;
+    margin: 40px 0;
 }
 
 .area-graph text{
 	fill: #AAAAAA;
+    font-size:12px;
 }
 
 .axis path{
 	fill: none;
-	stroke: #000;
+	stroke: #ccc;
 	shape-rendering: crispEdges;
 }
 
@@ -20,7 +22,7 @@ ob-area-graph{
 
 .axis text.y-label{
 	font-size: 16px;
-	font-weight: bold;
+	font-weight: normal;
 }
 
 .area{
@@ -49,7 +51,7 @@ ob-area-graph{
 }
 
 .focus rect {
-	fill: #696969;
+	fill: #333;
 }
 
 .focus text {
@@ -105,19 +107,7 @@ ob-area-graph{
     font-weight: 700;
 }
 
-#demo-area_graph{
-    pre{
-        background: #333;
-        color: #eee;
-        font-family: Menlo, Monaco, Consolas, monospace;
-        line-height: 1.5;
-        border: 2px solid #ffaf36;
-        padding: 20px !important; 
-//        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
-    }
-        pre:last-of-type{
-        background: #ff0;
-    }
-}
+
+
 
 

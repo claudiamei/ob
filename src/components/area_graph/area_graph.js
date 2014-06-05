@@ -20,19 +20,20 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 		var d3 = window.d3;
 		var defaults = {
 			margin: {
-				top : 30,
+				top : 40,
 				right : 20,
 				bottom : 30,
-				left : 50
+				left : 45
 			},
 			width: function(element){return element.width();},
-			height: 250,
+			height: 180,
 			lineColors: ['#FF5F00', '#3DD3E1'],
 			areaColors: ['#FCECE2', '#C8F0F4'],
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
 			interpolation: 'monotone',
 			//formatValue: d3.format('d'),
+			yAxisLabel: '',
 			yAxisFormat: d3.format('s'),
 			xAxisFormat: d3.time.format.multi([
 				[".%L", function(d) { return d.getMilliseconds(); }],
@@ -45,7 +46,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				["%Y", function() { return true; }]
 			]),
 		};
-
 		extendDeep(this, defaults);
 		extendDeep(this, options);
 	};
@@ -75,11 +75,11 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				scope.resize();
 				scope.update(data, true);
 			}, 1000, false);
-			
+
 			angular.element($window).on('resize', function () {
 				resizeDebounced();
 			});
-			
+
 			/* d3 Configuration*/
 			var d3 = window.d3,
 				config = new OBAreaGraphConfig($parse(attrs.obAreaGraphOptions)(scope)),
@@ -95,9 +95,10 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				hoverDateFormat = config.hoverDateFormat,
 				xAxisFormat = config.xAxisFormat,
 				yAxisFormat = config.yAxisFormat,
+				yAxisLabel = config.yAxisLabel,
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
-				legendMargin = {top: margin.top + 20, left: margin.left + 40};
+				legendMargin = {top: margin.top + 30, left: margin.left + 30};
 
 			// Temporary scale until colors are final
 			lineColor = d3.scale.category10();
@@ -220,17 +221,17 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
-
+                
 				yAxisGroup = svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
 
 				yAxisGroup.append("text")
 					.attr('class', 'y-label')
-					.attr("y", -13)
-					.attr("x", -37)
+					.attr("y", -27)
+					.attr("x", -0)
 					.style("text-anchor", "begin")
-					.text("Clicks");
+					.text(yAxisLabel);
 
 				focus = svg.append("g")
 					.attr("class", "focus")
@@ -239,13 +240,13 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 
 				focus.append("rect")
 					.attr("height", height)
-					.attr("width", 5)
+					.attr("width", 4)
 					.attr('x', -2);
 
 				focus.append('rect')
 					.attr("height", 4)
-					.attr("width", 48)
-					.attr('x', -24)
+					.attr("width", 6)
+					.attr('x', -3)
 					.attr('y', height)
 					.attr("rx", 1)
 					.attr('ry', 1);
@@ -367,6 +368,9 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					i = bisectDate(d.values, xDate);
 					d0 = d.values[i - 1];
 					d1 = d.values[i];
+					if(!d1) {
+						d1 = d0;
+					}
 					interpolate = d3.interpolateNumber(d0.value, d1.value);
 					range = d1.date - d0.date;
 					yValue = interpolate((xDate - d0.date) / range);

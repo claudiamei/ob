@@ -14,8 +14,8 @@
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
 @brand-primary:         #ff9900;
-@brand-success:         #428bca;
-@brand-info:            @gray-light;
+@brand-success:         #63aad1;
+@brand-info:            #ccc;
 @brand-warning:         #ff5f00;
 @brand-danger:          #de4741;
 
@@ -137,19 +137,19 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
+@btn-default-color:              #666;
 @btn-default-bg:                 #fff;
 @btn-default-border:             #ccc;
 
-@btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-color:              #ff9900;
+@btn-primary-bg:                 lighten(@brand-primary, 48%);
+@btn-primary-border:             #ff9900;
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 #666;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
@@ -466,20 +466,20 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             #3c763d;
-@state-success-bg:               #dff0d8;
+@state-success-text:             #def0e2;
+@state-success-bg:               #5cb85c;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #31708f;
-@state-info-bg:                  #d9edf7;
+@state-info-text:                #e3ebf0;
+@state-info-bg:                  @brand-success;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #8a6d3b;
-@state-warning-bg:               #fcf8e3;
+@state-warning-text:             #ff5f00;
+@state-warning-bg:               lighten(@brand-warning, 45%);
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #a94442;
-@state-danger-bg:                #f2dede;
+@state-danger-text:              #fff0f0;
+@state-danger-bg:                #de4741;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 
@@ -623,11 +623,11 @@
 //** Default progress bar color
 @progress-bar-bg:             @brand-primary;
 //** Success progress bar color
-@progress-bar-success-bg:     @brand-primary;
+@progress-bar-success-bg:     @brand-success;
 //** Warning progress bar color
-@progress-bar-warning-bg:     @brand-danger;
+@progress-bar-warning-bg:     @brand-primary;
 //** Danger progress bar color
-@progress-bar-danger-bg:      @brand-warning;
+@progress-bar-danger-bg:      @brand-primary;
 //** Info progress bar color
 @progress-bar-info-bg:        @brand-info;
 
