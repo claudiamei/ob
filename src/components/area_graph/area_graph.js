@@ -279,12 +279,16 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.datum(function(d) {return d.point;})
 					.on("mouseover", mouseOverVoronoi)
 					.on("mouseout", mouseOutVoronoi);
-				
+
 				svg.on('mouseenter', function(){
 						focus.transition().style('opacity', 1);
 						hoverLegend.transition().style('opacity', 1);
 					})
 					.on('mouseleave', function(){
+						var $ele = $(d3.event.toElement);
+						if($ele.hasClass('popover') || $ele.parents('.popover').length){
+							return;
+						}
 						focus.transition().style('opacity', 0);
 						hoverLegend.transition().style('opacity', 0);
 					})
@@ -367,16 +371,12 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				angular.forEach(data, function(d){
 					i = bisectDate(d.values, xDate);
 					d0 = d.values[i - 1];
-					d1 = d.values[i];
-					if(!d1) {
-						d1 = d0;
-					}
+					d1 = d.values[i] || d0;
 					interpolate = d3.interpolateNumber(d0.value, d1.value);
 					range = d1.date - d0.date;
 					yValue = interpolate((xDate - d0.date) / range);
 					values.push(yValue);
 				});
-				
 				hoverLegend.style('left', (x0 + legendMargin.left) + 'px');
 				updateTooltip(xDate, values);
 			}
