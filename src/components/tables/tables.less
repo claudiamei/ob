@@ -1,185 +1,139 @@
 
 /* Data Matrix */
 .matrix {
-	width: 100%;
-	font-size: 14px;
-    font-weight: 700;
-	color: #666;
-	clear: both;
-}
-	.matrix ul {
-		margin: 0;
-		padding: 0;
-	}
-	.matrix li {
-		list-style: none;
-		position: relative;
-	}
-	.matrix li.bullet {
-		list-style: disc;
-		list-style-position: inside;
-	}
-	.matrix .tbody a:hover {
-		color: #2A51A1;
-	}
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #666;
+  clear: both;
 
-/* Column headers */
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
-.thead {
-	// height: 49px;
-	padding: 0 40px 0 40px;
-	border-bottom: 1px solid #dddede;
+  .tbody a:hover {
+    color: #2A51A1;
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+
+    &.bullet {
+      list-style: disc;
+      list-style-position: inside;
+    }
+  }
 }
-	.thead .col, .table > thead > tr > th {
-		color: #333;
-		text-transform: uppercase;
-		padding: 20px 10px 0 40px;
-		height: 48px;
-		white-space: nowrap;
-		font-weight: bold;
-		cursor: default;
-		border: 0 none;
-	}
-	.thead .col {
-		float: left;
-	}
-	.thead .col.sortable {
-		cursor: pointer;
-	}
-	.thead .sortable:hover {
-		color: #47484A;
-		background-color: #ffffbb;
-	}
-	.thead .sorted {
-		background-color: #ffc;
-	}
-	.thead a:hover {
-		color: #2A51A1;
-	}
 
 /* Matrix rows */
-.tbody > li, .tr {
-	border-bottom: 1px solid #dddede;
-	min-height: 48px;
-    padding: 0 40px 0 40px;
-}
-.tbody li.hidden {
-	display: none;
-}
-.tbody > li:hover, .tr:hover {
-	background-color: #ffc;
-}
-	.tbody .col {
-		padding: 12px 10px;
-		line-height: 23px;
-		position: relative;
-		float: left;
-	}
 
 /** Matrix common columns **/
 
+
 .tbody .performance-bar {
-	width: 129px;
-	padding: 0 0 0 8px;
-	vertical-align: top;
-	margin-top: 1px;
-	position: relative;
+  width: 129px;
+  padding: 0 0 0 8px;
+  vertical-align: top;
+  margin-top: 1px;
+  position: relative;
 }
-	.performance-bar .bar-start {
-		width: 1px;
-		height: 19px;
-		background: #b9b9b9;
-		margin: 9px 0 0 0;
-	}
-	.performance-bar .bar {
-		min-width: 2px;
-		width: 1px;
-		max-width: 120px;
-		height: 11px;
-		background-color: #ffbe73;
-		position: absolute;
-		left: 9px;
-		top: 13px;
-	}
-	.performance-bar .bar-green {
-		background: #7aa824;
-	}
-	.performance-bar .bar-red {
-		background: #f14e45;
-	}
-	.performance-bar .bar-grey {
-		background: #A6A6A6;
-	}
-	.performance-bar .bar-light-orange {
-		background: #ffe3c5;
-	}
-	.performance-bar .bar-green.bar-light-orange {
-		background: #d7e5bd;
-	}
-	.performance-bar .bar-avg {
-		width: 2px;
-		height: 15px;
-		background: #696969;
-		position: absolute;
-		margin-left: 9px;
-		top: 11px;
-		left: 0;
-	}
-		.matrix li:hover .bar-avg {
-			top: 9px;
-			height: 19px;
-		}
+.performance-bar .bar-start {
+  width: 1px;
+  height: 19px;
+  background: #b9b9b9;
+  margin: 9px 0 0 0;
+}
+.performance-bar .bar {
+  min-width: 2px;
+  width: 1px;
+  max-width: 120px;
+  height: 11px;
+  background-color: #ffbe73;
+  position: absolute;
+  left: 9px;
+  top: 13px;
+}
+.performance-bar .bar-green {
+  background: #7aa824;
+}
+.performance-bar .bar-red {
+  background: #f14e45;
+}
+.performance-bar .bar-grey {
+  background: #A6A6A6;
+}
+.performance-bar .bar-light-orange {
+  background: #ffe3c5;
+}
+.performance-bar .bar-green.bar-light-orange {
+  background: #d7e5bd;
+}
+.performance-bar .bar-avg {
+  width: 2px;
+  height: 15px;
+  background: #696969;
+  position: absolute;
+  margin-left: 9px;
+  top: 11px;
+  left: 0;
+}
+.matrix li:hover .bar-avg {
+  top: 9px;
+  height: 19px;
+}
 
-	/* css animations */
-	.performance-bar .bar {
-		transition: width 9s ease-out, background-color 2s ease-out;
-		-webkit-transition: width 9s ease-out, background-color 2s ease-out;
-		-moz-transition: width 9s ease-out, background-color 2s ease-out;
-	}
-		.start-speed .performance-bar .bar {
-			transition: width 2s ease-out;
-			-webkit-transition: width 2s ease-out;
-			-moz-transition: width 2s ease-out;
-		}
-	.performance-bar .bar-avg {
-		transition: left 9s ease-out;
-		-webkit-transition: left 9s ease-out;
-		-moz-transition: left 9s ease-out;
-	}
-		.start-speed .performance-bar .bar-avg {
-			transition: left 2s ease-out;
-			-webkit-transition: left 2s ease-out;
-			-moz-transition: left 2s ease-out;
-		}
+/* css animations */
+.performance-bar .bar {
+  transition: width 9s ease-out, background-color 2s ease-out;
+  -webkit-transition: width 9s ease-out, background-color 2s ease-out;
+  -moz-transition: width 9s ease-out, background-color 2s ease-out;
+}
+.start-speed .performance-bar .bar {
+  transition: width 2s ease-out;
+  -webkit-transition: width 2s ease-out;
+  -moz-transition: width 2s ease-out;
+}
+.performance-bar .bar-avg {
+  transition: left 9s ease-out;
+  -webkit-transition: left 9s ease-out;
+  -moz-transition: left 9s ease-out;
+}
+.start-speed .performance-bar .bar-avg {
+  transition: left 2s ease-out;
+  -webkit-transition: left 2s ease-out;
+  -moz-transition: left 2s ease-out;
+}
 
-	.bar-broken {
-		display: none;
-		margin: 0 auto;
-		width: 10px;
-		height: 13px;
-		z-index: 1;
-		background: url('/static/images/vr_sprite.png') -104px -190px;
-	}
-		.normalized .bar-broken {
-			display: block;
-		}
-		li:hover .bar-broken {
-			background-position: -104px -203px;
-		}
+.bar-broken {
+  display: none;
+  margin: 0 auto;
+  width: 10px;
+  height: 13px;
+  z-index: 1;
+  background: url('/static/images/vr_sprite.png') -104px -190px;
+}
+.normalized .bar-broken {
+  display: block;
+}
+li:hover .bar-broken {
+  background-position: -104px -203px;
+}
 
 /** Fluid-fixed columns layout
 	@ref http://www.dynamicdrive.com/style/layouts/item/css-liquid-layout-22-fluid-fixed/ */
 
 .matrix .fluid {
-	float: left;
-	width: 100%;
-	height: 100%;
+  float: left;
+  width: 100%;
+  height: 100%;
 }
 .matrix .fixed-left {
-	float: left;
-	margin-left: -100%;
+  float: left;
+  margin-left: -100%;
 }
 .matrix .fixed-right {
-	float: right;
-	margin-left: -100%;
+  float: right;
+  margin-left: -100%;
 }
