@@ -23,7 +23,7 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
         current.add('days', 1).startOf('day');
       }
 
-      number += 10;
+      number = ~~(Math.random()*30);
     }
 
     $scope.clicks = [

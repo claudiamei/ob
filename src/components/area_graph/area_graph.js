@@ -32,7 +32,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
 			interpolation: 'monotone',
-			//formatValue: d3.format('d'),
 			yAxisLabel: '',
 			yAxisFormat: d3.format('s'),
 			xAxisFormat: d3.time.format.multi([
@@ -131,9 +130,10 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			var svg = d3.select(element[0]).append('svg')
 				.attr('class', 'area-graph')
 				.attr("width", width + margin.left + margin.right)
-				.attr("height", height + margin.top + margin.bottom)
-				.append("g")
-				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+				.attr("height", height + margin.top + margin.bottom);
+
+			var svgGroup = svg.append("g")
+					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 			var area = d3.svg.area()
 				.interpolate(interpolation)
@@ -200,7 +200,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.attr('class', 'key-value')
 					.text(function(d){ return yAxisFormat(d.values[0].value); });
 				
-				areaGroup = svg.selectAll('.area-group')
+				areaGroup = svgGroup.selectAll('.area-group')
 					.data(data)
 					.enter()
 					.append('g')
@@ -217,12 +217,12 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.style('stroke', function(d, i){return lineColor(i);})
 					.attr("d", function(d){ d.line = this; return line(d.values);});
 
-				xAxisGroup = svg.append("g")
+				xAxisGroup = svgGroup.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
 					.call(xAxis);
                 
-				yAxisGroup = svg.append("g")
+				yAxisGroup = svgGroup.append("g")
 					.attr("class", "y axis")
 					.call(yAxis);
 
@@ -233,7 +233,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.style("text-anchor", "begin")
 					.text(yAxisLabel);
 
-				focus = svg.append("g")
+				focus = svgGroup.append("g")
 					.attr("class", "focus")
 					.attr("transform", "translate(" + 0 + "," + 0 + ")")
 					.style('opacity', 0);
@@ -250,20 +250,8 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.attr('y', height)
 					.attr("rx", 1)
 					.attr('ry', 1);
-				/*
-				focus.append('text')
-					.attr('class', 'shadow')
-					.attr('x', 0)
-					.attr('y', height - 7)
-					.attr('dy','.35em');
 
-				focus.append('text')
-					.attr('x', 0)
-					.attr('y', height - 8)
-					.attr('dy','.35em');
-				*/
-
-				voronoiGroup = svg.append("g")
+				voronoiGroup = svgGroup.append("g")
 					.attr("class", "voronoi");
 
 				nestVoronoi = d3.nest()
@@ -285,10 +273,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 						hoverLegend.transition().style('opacity', 1);
 					})
 					.on('mouseleave', function(){
-						var $ele = $(d3.event.toElement);
-						if($ele.hasClass('popover') || $ele.parents('.popover').length){
-							return;
-						}
 						focus.transition().style('opacity', 0);
 						hoverLegend.transition().style('opacity', 0);
 					})
@@ -339,7 +323,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			};
 			
 			scope.resize = function(){
-				
 				width = (typeof(config.width) === "function") ?
 					config.width(element) - margin.left - margin.right:
 					width - margin.left - margin.right;
@@ -354,13 +337,11 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			};
 
 			function moveFocus(){
-				var x0 = d3.mouse(this)[0];
+				var x0 = d3.mouse(this)[0] - margin.left;
 				x0 = Math.max(0, x0);
 				x0 = Math.min(width, x0);
 				moveTooltip(x0);
 				focus.attr('transform', "translate(" + x0 + "," + 0 + ")");
-				//focus.selectAll('text')
-				//	.text(d3.time.format('%-m/%-d')(x.invert(x0)));
 			}
 			
 			function moveTooltip(x0){
