@@ -34,6 +34,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			interpolation: 'monotone',
 			yAxisLabel: '',
 			yAxisFormat: d3.format('s'),
+			xAxisTickValues: [],
 			xAxisFormat: d3.time.format.multi([
 				[".%L", function(d) { return d.getMilliseconds(); }],
 				[":%S", function(d) { return d.getSeconds(); }],
@@ -90,9 +91,9 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				lineColor = d3.scale.ordinal().range(config.lineColors),
 				areaColor = d3.scale.ordinal().range(config.areaColors),
 				parseDate = config.parseDate,
-				//formatValue = config.formatValue,
 				hoverDateFormat = config.hoverDateFormat,
 				xAxisFormat = config.xAxisFormat,
+				xAxisTickValues = config.xAxisTickValues,
 				yAxisFormat = config.yAxisFormat,
 				yAxisLabel = config.yAxisLabel,
 				interpolation = config.interpolation,
@@ -119,6 +120,10 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				.tickFormat(xAxisFormat)
 				.tickPadding(12);
 
+			if(xAxisTickValues.length){
+				xAxis.tickValues(xAxisTickValues);
+			}
+
 			var yAxis = d3.svg.axis()
 				.scale(y)
 				.orient("left")
@@ -142,6 +147,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				.y1(function(d){return y(d.value);});
 
 			var line = d3.svg.line()
+				.defined(function(d) {console.log(d);return d.value != null;})
 				.interpolate(interpolation)
 				.x(function(d){return x(d.date);})
 				.y(function(d){return y(d.value);});
@@ -167,7 +173,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 						return v.date;
 					});
 				});
-				
 				x.domain(d3.extent(d3.merge(xExtents)));
 				y.domain([0, d3.max(data, function(d){
 						return d3.max(d.values, function(d){
@@ -368,6 +373,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				legendContent.data(values)
 					.select('.key-value')
 					.text(function(d){
+						if(!d) return d3.select(this).text();
 						return (d >= 100)? d3.format('.3s')(d): d.toFixed(0);
 					});
 			}
