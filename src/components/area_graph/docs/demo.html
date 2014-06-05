@@ -126,6 +126,11 @@
 }]
 </pre>
 
+<h3>Graph Line Manipulation </h3>
+<p>Setting a values[i].value to null will allow a gap between graph lines. <br>
+    This applies to the both start and end points, allowing the X-Axis to be extended.
+</p>
+
 <script type="text/ng-template" id="area-graph-1.html">
     <h3>Standard</h3>
     <div ng-controller="obAreaGraphControllerDemo">
@@ -168,6 +173,8 @@
     </div>
 
     <h3>Date Range</h3>
+
+
     <div ng-controller="obDateRangeAreaGraphControllerDemo">
         <div class="clearfix" style="margin-bottom: 10px">
             <input class="col-xs-6" type="daterange"

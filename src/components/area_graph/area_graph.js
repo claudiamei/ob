@@ -141,13 +141,14 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 			var area = d3.svg.area()
+				.defined(function(d) {return d.value != null;})
 				.interpolate(interpolation)
 				.x(function(d){return x(d.date);})
 				.y0(height)
 				.y1(function(d){return y(d.value);});
 
 			var line = d3.svg.line()
-				.defined(function(d) {console.log(d);return d.value != null;})
+				.defined(function(d) {return d.value != null;})
 				.interpolate(interpolation)
 				.x(function(d){return x(d.date);})
 				.y(function(d){return y(d.value);});
