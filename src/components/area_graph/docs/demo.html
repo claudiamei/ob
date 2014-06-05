@@ -1,3 +1,9 @@
+<style>
+  .dropdown-menu {
+    max-height: none;
+    display: none;
+  }
+</style>
 <div ob-demo-list demo-list="area-graph-1.html"></div>
 
 <h3>OBAreaGraphConfig Options</h3>
@@ -94,7 +100,7 @@
 
 <script type="text/ng-template" id="area-graph-1.html">
 	<h3>Standard</h3>
-	<div ng-controller="obAreaGraphControllerDemo">
+  <div ng-controller="obAreaGraphControllerDemo">
 		<ob-area-graph data="data"></ob-area-graph>
 		<form class="form-horizontal">
 			<div class="form-group">
@@ -126,6 +132,24 @@
 			</div>
 		</form>
 	</div>
+
+  <h3>Date Range</h3>
+  <div ng-controller="obDateRangeAreaGraphControllerDemo">
+    <div class="clearfix" style="margin-bottom: 10px">
+      <input class="col-xs-6" type="daterange"
+              ng-model="dates"
+              format="MMMM D, YYYY"
+              max-date="{{maxDate}}"
+              ranges="dateRanges"
+              show-calendars="true" style="margin-right: 10px"/>
+
+      <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="month" id="input-month"/><label for="input-month" style="margin-right: 10px" >Monthly</label>
+      <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="day" id="input-day"/><label for="input-day">Daily</label>
+    </div>
+    <ob-area-graph class="col-xs-6" data="clicks"></ob-area-graph>
+    <ob-area-graph class="col-xs-6" data="ctr"></ob-area-graph>
+  </div>
+
 </script>
 
 <script type="text/ng-template"id="area-graph-2.html">

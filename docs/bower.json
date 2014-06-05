@@ -8,7 +8,8 @@
     "angular-bootstrap": "~0.10.0",
     "fontawesome": "~4.0.3",
     "bootstrap": "~3.1.1",
-    "angular-sanitize": "~1.2.16"
+    "angular-sanitize": "~1.2.16",
+    "ng-bs-daterangepicker": "https://github.com/sagivf/ng-bs-daterangepicker.git#develop"
   },
   "devDependencies": {
     "angular-highlightjs": "~0.2.5",
