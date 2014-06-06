@@ -66,7 +66,6 @@
     }
   }
 
-
   .popover {
     margin-top: 328px;
     max-width: 600px;
@@ -76,7 +75,7 @@
     color: #333;
     padding: 0px 20px 30px 20px;
     border-radius: 3px;
-    font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
     h2 {
       font-size: 18px;
@@ -221,6 +220,7 @@
   display: inline;
   padding-right: .5em;
 }
+
 .ob-kpi-box label .value {
   font-size: 12px;
   padding-right: 1em;
@@ -258,24 +258,67 @@
 
 .ob-kpi-box .font-lg {
   font-size: 60px;
-font-weight: 400;
+  font-weight: 400;
 }
 
 /* kpi-box utilities */
 
-.center-table {
-  margin: 0 auto;
-  display: table;
-}
+.ob-kpi-box {
 
-.equal-height-cols {
-  display: table;
-  min-width: 100%;
-}
+  .center-table {
+    margin: 0 auto;
+    display: table;
+  }
 
-.equal-height-cols > div {
-  display: table-cell;
-  vertical-align: middle;
-  float: none;
+  .equal-height-cols {
+    display: table;
+    min-width: 100%;
+  }
+
+  .equal-height-cols > div {
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+  }
+
+  .multi-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .multi-row .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .multi-row .row + .row {
+    border-top: none;
+  }
+
+  .highlight {
+    background-color: #EEE;
+  }
+
+  .aligned-block-container {
+    padding-bottom: 70px;
+  }
+
+  /* Allows a row underneath a column, parent row is equal height with a following col
+
+    [parent-col] [after-parent-col]  <-- equal height row
+    [align-to-parent-col]            <-- will not inc height of parent row
+
+   */
+  .parent-aligned-block {
+    position: absolute;
+    margin-top: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    div {
+      margin-right: 2px;
+      display: inline-block;
+    }
+  }
 }
 

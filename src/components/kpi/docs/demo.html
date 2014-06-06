@@ -1,4 +1,4 @@
-<div ob-demo-list demo-list="engage-dashboard, amplify-dashboard,editorial-recommend,editorial-content,editorial-frontpage,editorial-social"></div>
+<div ob-demo-list demo-list="engage-dashboard, amplify-dashboard,editorial-recommend,editorial-content,editorial-content-demo,editorial-frontpage,editorial-social"></div>
 
 <script type="text/ng-template" id="engage-dashboard">
 	<h3>engage-dashboard</h3>
@@ -44,6 +44,14 @@
 	<div ng-controller="kpiEditorialContentController">
 		<div ob-kpi-box-editorial-content kpi_data="kpi_data"></div>
 	</div>
+</script>
+
+<!-- Created for Report demo (May replace editorial-content) -->
+<script type="text/ng-template" id="editorial-content-demo">
+    <h3>editorial-content-demo</h3>
+    <div ng-controller="kpiEditorialContentDemoController">
+        <div ob-kpi-box-editorial-content-demo kpi_data="kpi_data"></div>
+    </div>
 </script>
 
 <script type="text/ng-template" id="editorial-frontpage">
@@ -95,10 +103,6 @@
         }
       }
     };
-  };
-
-  var kpiControllerEditorialContent = function($scope) {
-    $scope.kpi_data = {};
   };
 
   var kpiControllerEditorialFrontpage = function($scope) {

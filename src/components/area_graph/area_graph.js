@@ -164,8 +164,8 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			
 			var areaGroup, xAxisGroup, yAxisGroup, voronoiGroup, xExtents, nestVoronoi, 
 				focus, legendTitle, legendContent;
-			
-			scope.create = function(data){
+
+			function setScale(data){
 				// gets extent of x axis and formats data into date using accessor
 				xExtents = data.map(function(d){
 					return d3.extent(d.values, function(v){
@@ -176,11 +176,14 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				});
 				x.domain(d3.extent(d3.merge(xExtents)));
 				y.domain([0, d3.max(data, function(d){
-						return d3.max(d.values, function(d){
-							return d.value;
-						});
-					})
-				]);
+					return d3.max(d.values, function(d){
+						return d.value;
+					});
+				})]);
+			}
+
+			scope.create = function(data){
+				setScale(data);
 				
 				// Init hover legend - set all values to first point
 				legendTitle = hoverLegend.select('.popover-title')
@@ -286,21 +289,8 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			};
 
 			scope.update = function(data, resize){
-				
-				xExtents = data.map(function(d){
-					return d3.extent(d.values, function(v){
-						v.ref = d; //creates a reference to the parent object
-						v.date = resize ? v.date : parseDate(v);
-						return v.date;
-					});
-				});
-				x.domain(d3.extent(d3.merge(xExtents)));
-				y.domain([0, d3.max(data, function(d){
-						return d3.max(d.values, function(d){
-							return d.value;
-						});
-					})
-				]);
+
+				setScale(data);
 				
 				yAxisGroup.transition()
 					.call(yAxis);

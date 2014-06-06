@@ -150,6 +150,18 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
 		// }
     };
   })
+	.directive('obKpiBoxEditorialContentDemo', function () {
+		return {
+			restrict: 'AE',
+			templateUrl: '../src/components/kpi/templates/editorial-content-demo.html',
+			replace: true,
+			transclude: true,
+			//scope: {
+			//kpi_data : '=',
+			// currency: '@'
+			// }
+		};
+	})
   .directive('obKpiBoxEditorialFrontpage', function () {
     return {
       restrict: 'AE',
