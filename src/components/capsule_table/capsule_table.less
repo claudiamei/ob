@@ -1,71 +1,77 @@
-
 /* Capsule CSS*/
 .capsule-table {
 	display: table;
 	width: 100%;
 }
 
-.capsule-table > div{
+.capsule-table > .capsule-cell{
 	display: table-cell;
 }
 
 .capsule-group{
 	width: 46px;
 	margin: 0 auto;
+
+  .source{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 25px;
+  }
+  .value{
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+ .value .kpi-suffix{
+    font-size: 8px;
+  }
 }
 
 .capsule {
 	position: relative;
 	height: 115px;
 	left: 8px;
-}
 
-.capsule .base {
-	position: absolute;
+  .glass:before {
+    position: absolute;
     z-index: 5;
-	width: 30px;
-	height: 2px;
-	bottom: 0;
-	margin-left: 0px;
-	background-color: #ccc;
-}
+    content: "";
+    width: 30px;
+    height: 2px;
+    bottom: -1px;
+    right: -3px;
+    background-color: #CCC;
+  }
 
-.capsule .glass {
-	position: absolute;
-	left: 2px;
-	width: 26px;
-	padding-bottom: 0px;
-	padding-top: 3px;
-	height: 100%;
-	border: solid 1px #ccc;
+  .glass {
+    position: absolute;
+    left: 2px;
+    width: 26px;
+    padding-bottom: 0px;
+    height: 100%;
+    border: solid 1px #ccc;
     background-color: #eee;
-	border-radius: 3px 3px 0 0;
-    
-}
+    border-radius: 3px 3px 0 0;
+  }
 
-/* Adjust height 0 - 100% */
-.capsule .bar {
-	position: relative;
-	left: 3px;
-	width: 18px;
-	height: 100%;
-	background-color: @brand-success;
+  .chamber{
+    position: absolute;
+    height: 110px;
+    bottom: 0;
+  }
+
+  /* Adjust height 0 - 100% */
+  .bar {
+    position: absolute;
+    left: 3px;
+    bottom: 0px;
+    width: 18px;
+    height: 100%;
+    background-color: @brand-success;
     border: 1px solid darken(@brand-success, 8%);
     border-radius: 3px 3px 0 0;
+  }
 }
 
-.capsule ~ .source{
-	font-size: 10px;
-	text-align: center;
-	margin-top: 25px;
-}
-.capsule ~ .value{
-	font-weight: bold;
-	font-size: 10px;
-	text-align: center;
-    margin-top: 2px;
-}
-
-.capsule ~ .value .kpi-suffix{
-  font-size: 8px;
-}
