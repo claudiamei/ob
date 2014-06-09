@@ -165,12 +165,12 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			var areaGroup, xAxisGroup, yAxisGroup, voronoiGroup, xExtents, nestVoronoi, 
 				focus, legendTitle, legendContent;
 
-			function setScale(data){
+			function setScale(data, resize){
 				// gets extent of x axis and formats data into date using accessor
 				xExtents = data.map(function(d){
 					return d3.extent(d.values, function(v){
 						v.ref = d; //creates a reference to the parent object
-						v.date = parseDate(v);
+						v.date = resize ? v.date : parseDate(v);
 						return v.date;
 					});
 				});
@@ -290,7 +290,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 
 			scope.update = function(data, resize){
 
-				setScale(data);
+				setScale(data, resize);
 				
 				yAxisGroup.transition()
 					.call(yAxis);
