@@ -52,12 +52,9 @@ h2 {
   background-color: #FFFFFF;
 
   .report-options {
-    border-top: 1px solid #DDD;
-  }
-
-  .report-options {
     padding: 10px 20px;
     background-color: #EEEEEE;
+    border-top: 1px solid #DDD;
 
     .right-options {
       float: right;
@@ -74,13 +71,56 @@ h2 {
     }
   }
 
+  .table-filters {
+    padding: 15px;
+
+    .search {
+      float: right;
+    }
+    .search .btn {
+      padding-right: 40px;
+    }
+  }
+
+  .report-graphs .area-graph-legend {
+    position: absolute;
+    bottom: 18px;
+
+    .legend-item {
+      padding-left: 30px;
+    }
+
+    .fa {
+      color: white;
+    }
+
+    .legend-icon-box {
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+      border-radius: 4px;
+    }
+
+    span.legend-item:nth-child(1) .legend-icon-box {
+      background-color: #1f77b4;
+    }
+
+    span.legend-item:nth-child(2) .legend-icon-box {
+      background-color: #ff7f0e;
+    }
+
+    span.legend-item:nth-child(3) .legend-icon-box {
+      background-color: #2ca02c;
+    }
+  }
+
   ob-pie-chart {
     width: 280px;
     margin: 0 auto;
   }
 
   ob-area-graph {
-    margin: 20px 0;
+    margin: 20px 0px 60px;
   }
 
   .pie-group {
@@ -88,6 +128,7 @@ h2 {
   }
 
   .report-graphs {
+    height: 281px;
     border-bottom: 1px solid #DDD;
   }
 

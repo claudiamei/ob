@@ -33,54 +33,90 @@
     </div>
 
     <div class="report-kpi">
-        <!-- KPI Box -->
         <div ng-controller="kpiEditorialContentDemoController">
             <div ob-kpi-box-editorial-content-demo kpi_data="kpi_data"></div>
         </div>
     </div>
 
-    <div class="report-graphs col-sm-12">
-        <div class="area-graph-group col-sm-6">
-            <div ng-controller="obAreaGraphControllerDemo">
-                <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 240}" data="data"></ob-area-graph>
-            </div>
-        </div>
-        <div class="pie-group col-sm-6">
-            <div class="col-sm-8">
-                <div ng-controller="obPieChartController">
-                    <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
+    <div class="report-graphs">
+        <div class="col-sm-12">
+            <div class="area-graph-group col-sm-6">
+                <div ng-controller="obAreaGraphControllerDemo">
+                    <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 200}" data="data"></ob-area-graph>
+                </div>
+                <div class="area-graph-legend">
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>lighthouse.com</span>
+                </span>
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>outbrain.com</span>
+                </span>
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>amelia.com</span>
+                </span>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <div class="pie-legend">
-                    <div class="legend-row">
-                        <div class="legend-color"></div>
-                        <div class="legend-label">Fox News</div>
+            <div class="pie-group col-sm-6">
+                <div class="col-sm-8">
+                    <div ng-controller="obPieChartController">
+                        <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
                     </div>
-                    <div class="legend-row">
-                        <div class="legend-color"></div>
-                        <div class="legend-label">CNN</div>
-                    </div>
-                    <div class="legend-row">
-                        <div class="legend-color"></div>
-                        <div class="legend-label">ESPN</div>
-                    </div>
-                    <div class="legend-row">
-                        <div class="legend-color"></div>
-                        <div class="legend-label">Forbes</div>
-                    </div>
-                    <div class="legend-row">
-                        <div class="legend-color"></div>
-                        <div class="legend-label">Other</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="pie-legend">
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Fox News</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">CNN</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">ESPN</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Forbes</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Other</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="btn-group" ng-init="radioModel='clicks'">
-        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'clicks'">Most Clicked</button>
-        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'earning'">Highest Earning</button>
+    <div class="table-filters">
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Category: All
+                <span class="caret"></span>
+            </button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Author: All
+                <span class="caret"></span>
+            </button>
+        </div>
+        <div class="btn-group search">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Search
+            </button>
+        </div>
     </div>
 
     <div ob-table class="show-totals">
