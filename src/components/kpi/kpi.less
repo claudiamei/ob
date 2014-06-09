@@ -62,7 +62,7 @@
       font-size: 12px;
       position: relative;
       vertical-align: middle;
-      line-height: 1.84;
+      line-height: 1.75;
     }
   }
 
@@ -86,14 +86,17 @@
       color: inherit;
     }
 
-    h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-      margin-top: 28px;
-      font-family: inherit;
-      font-weight: 500;
-      line-height: 1.1;
-      color: inherit;
+    .popover-content {
+      font-weight: normal;
+      h3 {
+        font-size: 16px;
+        margin-bottom: 5px !important;
+        margin-top: 28px;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+      }
     }
 
   }
@@ -103,14 +106,10 @@
   }
 
   .popover.left > .arrow {
-    top: 26px;
+    top: 35px;
     &:after {
       border-left-color: #eee;
     }
-  }
-
-  .popover-content {
-    font-weight: normal;
   }
 
   p {
@@ -278,7 +277,6 @@
   .equal-height-cols > div {
     display: table-cell;
     vertical-align: middle;
-    float: none;
   }
 
   .multi-row {
