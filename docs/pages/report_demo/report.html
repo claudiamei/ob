@@ -8,7 +8,12 @@
     </div>
 
     <div class="report-graphs col-sm-12">
-        <div class="pie-group col-sm-5">
+        <div class="area-graph-group col-sm-6">
+            <div ng-controller="obAreaGraphControllerDemo">
+                <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 240}" data="data"></ob-area-graph>
+            </div>
+        </div>
+        <div class="pie-group col-sm-6">
             <div class="col-sm-8">
                 <div ng-controller="obPieChartController">
                     <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
@@ -39,11 +44,6 @@
                 </div>
             </div>
 
-        </div>
-        <div class="col-sm-7">
-            <div ng-controller="obAreaGraphControllerDemo">
-                <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 240}" data="data"></ob-area-graph>
-            </div>
         </div>
     </div>
 

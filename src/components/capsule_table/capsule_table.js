@@ -2,7 +2,8 @@ angular.module('amelia-ui.charts.capsule-table', [])
 
 .constant('obCapsuleTableConfig', {
 	animate: true,
-	max: 100
+	max: 100,
+	autoScale: false,
 })
 
 .controller('obCapsuleTableController', ['$scope', '$attrs', 'obCapsuleTableConfig', function($scope, $attrs, obCapsuleTableConfig) {
@@ -11,17 +12,34 @@ angular.module('amelia-ui.charts.capsule-table', [])
 
 		$scope.capsule = {};
 		$scope.max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : obCapsuleTableConfig.max;
+		$scope.autoScale = angular.isDefined($attrs.autoScale) ? $scope.$parent.$eval($attrs.autoScale) : obCapsuleTableConfig.autoScale;
+		$scope.total = 0;
+
+		function scaleBars(){
+			$scope.total = 0;
+			angular.forEach($scope.capsule, function(d){
+				$scope.total += +d.value
+			});
+			angular.forEach($scope.capsule, function(d){
+				d.percent = +(100 * d.value / $scope.total).toFixed(2);
+			});
+		}
 
 		this.add = function(type, capsule, element) {
 			if ( !animate ) {
 				element.css({'transition': 'none'});
 			}
-
 			$scope[type][capsule.name] = capsule;
 
-			capsule.$watch('barValue', function( value ) {
-				capsule.percent = +(100 * value / $scope.max).toFixed(2);
-			});
+			if(!$scope.autoScale){
+				capsule.$watch('barValue', function( value ) {
+					capsule.percent = +(100 * value / $scope.max).toFixed(2);
+				});
+			}else{
+				capsule.$watch('value', function( value ) {
+					scaleBars();
+				});
+			}
 
 			capsule.$on('$destroy', function() {
 				element = null;

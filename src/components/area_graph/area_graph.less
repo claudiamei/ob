@@ -20,51 +20,51 @@ ob-area-graph {
   .focus text.shadow {
     fill: #47484A;
   }
-}
 
-.area-graph text {
-  fill: #AAAAAA;
-  font-size: 12px;
-}
+  .axis path {
+    fill: none;
+    stroke: #ccc;
+    shape-rendering: crispEdges;
+  }
 
-.axis path {
-  fill: none;
-  stroke: #ccc;
-  shape-rendering: crispEdges;
-}
+  .axis line {
+    stroke: none;
+  }
 
-.axis line {
-  stroke: none;
-}
+  .axis text.y-label {
+    font-size: 16px;
+    font-weight: normal;
+  }
 
-.axis text.y-label {
-  font-size: 16px;
-  font-weight: normal;
-}
+  .area {
+    stroke: none;
+  }
 
-.area {
-  stroke: none;
-}
+  .area-group {
+    -webkit-transition: all .5s ease-in-out;
+    opacity: .3;
+  }
 
-.area-group {
-  -webkit-transition: all .5s ease-in-out;
-  opacity: .3;
-}
+  .line {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3px;
+  }
 
-.line {
-  fill: none;
-  stroke: blue;
-  stroke-width: 3px;
-}
+  .voronoi path {
+    fill: none;
+    pointer-events: all;
+  }
 
-.voronoi path {
-  fill: none;
-  pointer-events: all;
-}
+  .voronoi--show path {
+    stroke: red;
+    stroke-opacity: .2;
+  }
 
-.voronoi--show path {
-  stroke: red;
-  stroke-opacity: .2;
+  .area-graph text {
+    fill: #AAAAAA;
+    font-size: 12px;
+  }
 }
 
 .popover.popover-legend {
