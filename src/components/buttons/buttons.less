@@ -141,6 +141,20 @@ button,
     }    
 }
 
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+  margin-left: -2px;
+}
+
+.btn-options-group > .btn:last-child:not(:first-child),
+.btn-options-group > .dropdown-toggle:not(:first-child) {
+  border-left: none;
+}
+
+.btn-options-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-right: none;
+  border-left: none;
+}
+
 // //
 // // Buttons
 // // --------------------------------------------------

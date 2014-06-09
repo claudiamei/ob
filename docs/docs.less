@@ -3,92 +3,116 @@
 @import "pages/main/main";
 
 #ob-doc-nav {
-	position: fixed;
-	width: 100%;
-	z-index: 1;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 
-	nav {
-		padding: 0 10px;
-	}
+  nav {
+    padding: 0 10px;
+  }
 }
 
 [ob-wrapper] {
-	height: 100%;
+  height: 100%;
 }
 
-.navbar-default .active a{
-    background-color: #e17613 ;
+.navbar-default .active a {
+  background-color: #e17613;
 }
 
-.navbar-default a:active{
-    background-color: #e17613 !important ;
+.navbar-default a:active {
+  background-color: #e17613 !important;
 }
 
+.navbar-default {
+  background-color: #ff9900;
+  border-bottom: 1px #e17613 solid;
+  padding: 0 30px;
+  letter-spacing: .075em;
+  font-weight: 300;
 
-.navbar-default{
-    background-color: #ff9900;
-    border-bottom:1px #e17613  solid;
-    padding: 0 30px;
-     letter-spacing: .075em;
-        font-weight: 300;
-
-    a{}
+  a {
+  }
 }
 
-.navbar-brand{
-    font-size: 24px;
-    margin: 0 20px;
+.navbar-brand {
+  font-size: 24px;
+  margin: 0 20px;
 
-   &:hover{
+  &:hover {
     color: #fff !important;
-    }
+  }
 }
 
-h2{
-    font-weight: 700;
+h2 {
+  font-weight: 700;
 }
 
-.report-demo{
+.report-demo {
   background-color: #FFFFFF;
 
-  ob-pie-chart{
+  .report-options {
+    border-top: 1px solid #DDD;
+  }
+
+  .report-options {
+    padding: 10px 20px;
+    background-color: #EEEEEE;
+
+    .right-options {
+      float: right;
+    }
+
+    .right-options .fa {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .download-option,
+    .calendar-option {
+      margin-left: 15px;
+    }
+  }
+
+  ob-pie-chart {
     width: 280px;
     margin: 0 auto;
   }
 
-  ob-area-graph{
+  ob-area-graph {
     margin: 20px 0;
   }
 
-  .pie-group{
+  .pie-group {
     background-color: #F8F8F8;
   }
 
-  .report-graphs{
+  .report-graphs {
     border-bottom: 1px solid #DDD;
   }
 
-  .pie-legend{
+  .pie-legend {
     padding: 25px 0px;
   }
 
-  .area-graph-group{
+  .area-graph-group {
     border-right: 1px solid #DDD;
   }
 
   /*Disposable legend Css */
-  .legend-row{
+  .legend-row {
     padding: 0px 5px 5px 5px;
   }
 
-  .legend-row .legend-color{
+  .legend-row .legend-color {
     margin-right: 5px;
     display: inline-block;
+    vertical-align: middle;
     width: 20px;
     height: 20px;
   }
 
-  .legend-row .legend-label{
+  .legend-row .legend-label {
     display: inline-block;
     vertical-align: bottom;
     overflow: hidden;
@@ -96,31 +120,25 @@ h2{
     white-space: nowrap;
   }
 
-  div.legend-row:nth-child(1) .legend-color{
+  div.legend-row:nth-child(1) .legend-color {
     background-color: #FFDFCC;
   }
 
-  div.legend-row:nth-child(2) .legend-color{
+  div.legend-row:nth-child(2) .legend-color {
     background-color: #FFA066;
   }
 
-  div.legend-row:nth-child(3) .legend-color{
+  div.legend-row:nth-child(3) .legend-color {
     background-color: #FF6000;
   }
 
-  div.legend-row:nth-child(4) .legend-color{
+  div.legend-row:nth-child(4) .legend-color {
     background-color: #BF4800;
   }
 
-  div.legend-row:nth-child(5) .legend-color{
+  div.legend-row:nth-child(5) .legend-color {
     background-color: #200C00;
   }
 }
-
-
-
-
-
-
 
 /*'#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00' */

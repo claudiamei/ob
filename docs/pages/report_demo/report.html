@@ -1,6 +1,38 @@
 <div class="report-demo">
 
-    <div class="report-header">
+    <div class="report-options">
+        <div class="btn-group btn-options-group">
+            <button class="btn btn-default active">Daily</button>
+            <button class="btn btn-default">Monthly</button>
+            <button class="btn btn-default">Section</button>
+            <button class="btn btn-default">Widget</button>
+        </div>
+        <button class="btn btn-default calendar-option">
+            <span class="fa fa-calendar"></span>
+            12/1/2013 - 12-16-2013
+        </button>
+        <div class="right-options">
+            <div class="btn-group btn-options-group device-options">
+                <button class="btn btn-default active">
+                    <span class="fa fa-th"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-desktop"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-tablet"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-mobile"></span>
+                </button>
+            </div>
+            <button class="btn btn-default download-option">
+                <span class="fa fa-download"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="report-kpi">
         <!-- KPI Box -->
         <div ng-controller="kpiEditorialContentDemoController">
             <div ob-kpi-box-editorial-content-demo kpi_data="kpi_data"></div>
@@ -23,19 +55,19 @@
                 <div class="pie-legend">
                     <div class="legend-row">
                         <div class="legend-color"></div>
-                        <div class="legend-label">AnExample1.com</div>
+                        <div class="legend-label">Fox News</div>
                     </div>
                     <div class="legend-row">
                         <div class="legend-color"></div>
-                        <div class="legend-label">AnExample2.com</div>
+                        <div class="legend-label">CNN</div>
                     </div>
                     <div class="legend-row">
                         <div class="legend-color"></div>
-                        <div class="legend-label">AnExample4.com</div>
+                        <div class="legend-label">ESPN</div>
                     </div>
                     <div class="legend-row">
                         <div class="legend-color"></div>
-                        <div class="legend-label">AnExample4.com</div>
+                        <div class="legend-label">Forbes</div>
                     </div>
                     <div class="legend-row">
                         <div class="legend-color"></div>
@@ -43,7 +75,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -60,10 +91,12 @@
                     <li class="td col-sm-2 sortable active-sort" data-sortable="total-clicks"
                         ng-click="applySort('total-clicks')">Total Clicks
                     </li>
-                    <li class="td col-sm-2 sortable" data-sortable="organic-clicks" ng-click="applySort('organic-clicks')">
+                    <li class="td col-sm-2 sortable" data-sortable="organic-clicks"
+                        ng-click="applySort('organic-clicks')">
                         Organic Clicks
                     </li>
-                    <li class="td col-sm-2 sortable" data-sortable="paid-clicks" ng-click="applySort('paid-clicks')">Paid
+                    <li class="td col-sm-2 sortable" data-sortable="paid-clicks" ng-click="applySort('paid-clicks')">
+                        Paid
                         Clicks
                     </li>
                     <li class="td col-sm-2 sortable" data-sortable="page-views" ng-click="applySort('page-views')">Page

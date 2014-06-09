@@ -1,19 +1,19 @@
 <ob-wrapper>
 	<div id="main" role="main">
+        <div id="content">
+            <header class="ob-header">
+                <ul class="breadcrumbs">
+                    <li ob-dropdown title="Publisher" ng-controller="DropdownNewsPropertyCtrl"></ob-dropdown>
+                    <li ob-dropdown title="News Property" ng-controller="DropdownFrontpageCtrl"></ob-dropdown>
+                </ul>
+                <ob-dropdown h-pos="left" title="Johnny Appleseed" class="account fr">
+                    Test Test
+                </ob-dropdown>
+            </header>
 
-		<div id="content">
-			<header class="ob-header">
-				<ul class="breadcrumbs">
-					<li ob-dropdown ng-controller="DropdownNewsPropertyCtrl"></ob-dropdown>
-					<li ob-dropdown ng-controller="DropdownFrontpageCtrl"></ob-dropdown>
-				</ul>
-				<ob-dropdown h-pos="left" class="account fr">
-					Test Test
-				</ob-dropdown>
-			</header>
+            <ng-include src="'pages/report_demo/report.html'"></ng-include>
+        </div>
 
-			<ng-include src="'pages/report_demo/report.html'"></ng-include>
-		</div>
 	</div>
 
 	<div id="left-sidebar" ob-sidebar-navigation>
