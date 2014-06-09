@@ -51,6 +51,7 @@ h2 {
 .report-demo {
   background-color: #FFFFFF;
 
+  /* Top Options bars (Daily/Weekly) */
   .report-options {
     padding: 10px 20px;
     background-color: #EEEEEE;
@@ -71,6 +72,7 @@ h2 {
     }
   }
 
+  /* Table Filter Row */
   .table-filters {
     padding: 15px;
 
@@ -82,6 +84,7 @@ h2 {
     }
   }
 
+  /* Area graph legend (Temporary) */
   .report-graphs .area-graph-legend {
     position: absolute;
     bottom: 18px;
@@ -90,11 +93,8 @@ h2 {
       padding-left: 30px;
     }
 
-    .fa {
-      color: white;
-    }
-
     .legend-icon-box {
+      color: white;
       display: inline-block;
       height: 15px;
       width: 15px;
@@ -114,6 +114,15 @@ h2 {
     }
   }
 
+  .report-graphs {
+    height: 281px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .area-graph-group {
+    border-right: 1px solid #DDD;
+  }
+
   ob-pie-chart {
     width: 280px;
     margin: 0 auto;
@@ -125,61 +134,53 @@ h2 {
 
   .pie-group {
     background-color: #F8F8F8;
-  }
 
-  .report-graphs {
-    height: 281px;
-    border-bottom: 1px solid #DDD;
-  }
+    /* Pie Chart Legend (Temporary) */
+    .pie-legend {
+      padding: 25px 0px;
+    }
 
-  .pie-legend {
-    padding: 25px 0px;
-  }
+    /*Disposable legend Css */
+    .legend-row {
+      padding: 0px 5px 5px 5px;
+    }
 
-  .area-graph-group {
-    border-right: 1px solid #DDD;
-  }
+    .legend-row .legend-color {
+      margin-right: 5px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
 
-  /*Disposable legend Css */
-  .legend-row {
-    padding: 0px 5px 5px 5px;
-  }
+    .legend-row .legend-label {
+      display: inline-block;
+      vertical-align: bottom;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-  .legend-row .legend-color {
-    margin-right: 5px;
-    display: inline-block;
-    vertical-align: middle;
-    width: 20px;
-    height: 20px;
-  }
+    /*'#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00' */
+    div.legend-row:nth-child(1) .legend-color {
+      background-color: #FFDFCC;
+    }
 
-  .legend-row .legend-label {
-    display: inline-block;
-    vertical-align: bottom;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+    div.legend-row:nth-child(2) .legend-color {
+      background-color: #FFA066;
+    }
 
-  div.legend-row:nth-child(1) .legend-color {
-    background-color: #FFDFCC;
-  }
+    div.legend-row:nth-child(3) .legend-color {
+      background-color: #FF6000;
+    }
 
-  div.legend-row:nth-child(2) .legend-color {
-    background-color: #FFA066;
-  }
+    div.legend-row:nth-child(4) .legend-color {
+      background-color: #BF4800;
+    }
 
-  div.legend-row:nth-child(3) .legend-color {
-    background-color: #FF6000;
-  }
-
-  div.legend-row:nth-child(4) .legend-color {
-    background-color: #BF4800;
-  }
-
-  div.legend-row:nth-child(5) .legend-color {
-    background-color: #200C00;
+    div.legend-row:nth-child(5) .legend-color {
+      background-color: #200C00;
+    }
   }
 }
 
-/*'#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00' */
