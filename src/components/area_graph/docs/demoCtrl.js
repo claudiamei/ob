@@ -102,3 +102,23 @@ angular.module('amelia.docs.controllers').controller('obAreaGraphControllerDemo'
 		}]
 	}];
 }]);
+
+angular.module('amelia.docs.controllers').controller('obAreaGraphCustomTicksControllerDemo', ['$scope', function($scope) {
+	$scope.data = [{
+		name: 'TestPub1',
+		values: [{
+			value : 100,
+			date: '4/5/2014',
+		}, {
+			value : 150,
+			date: '4/8/2014',
+		}, {
+			value : 125,
+			date: '4/11/2014',
+		}]
+	}]
+
+
+
+
+}]);

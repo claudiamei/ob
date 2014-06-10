@@ -7,10 +7,17 @@
             <button class="btn btn-default">Section</button>
             <button class="btn btn-default">Widget</button>
         </div>
-        <button class="btn btn-default calendar-option">
-            <span class="fa fa-calendar"></span>
-            12/1/2013 - 12-16-2013
-        </button>
+        <div ng-controller="obDateRangeAreaGraphControllerDemo" class="demo-datepicker">
+            <div class="input-icon-group">
+                <input class="btn btn-default" type="daterange"
+                       ng-model="dates"
+                       format="M/D/YYYY"
+                       max-date="{{maxDate}}"
+                       ranges="dateRanges"
+                       show-calendars="true" style="margin-right: 10px"/>
+                <span class="fa fa-calendar input-icon"></span>
+            </div>
+        </div>
         <div class="est-time">*EST Time</div>
         <div class="right-options">
             <div class="btn-group btn-options-group device-options">

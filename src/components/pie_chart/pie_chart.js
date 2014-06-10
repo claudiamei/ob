@@ -147,13 +147,13 @@ angular.module('amelia-ui.charts.pie-chart', [])
 								ele = ele.parentNode;
 							}
 						}
-
 						var popoverElement = findParentWithClass(d3.event.toElement, 'popover');
+
 						// Don't destroy the the sunburst if user hovers over a popover
 						if(!popoverElement){
 							scope.destroySunburst();
 						}else{
-							// Fix for issue of not destroying sunburst after entering popover
+							// Fix for issue of not destroying sunburst after entering popover (for browsers that dont support pointer events)
 							d3.select(popoverElement).on('mouseleave', function(){
 								if(!isChildOf(d3.event.toElement, svg[0][0])){
 									scope.destroySunburst();
