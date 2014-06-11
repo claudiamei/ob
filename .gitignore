@@ -4,3 +4,4 @@ dist
 docs/.tmp
 .DS_Store
 .idea/
+*.iml
