@@ -55,7 +55,8 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 	return {
 		restrict: 'EA',
 		scope: {
-			data: '='
+			data: '=',
+			xAxisFormat: '@',
 		},
 		templateUrl: '../src/components/area_graph/area-legend.html',
 		link: function(scope, element, attrs) {
@@ -70,7 +71,34 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					scope.update(data || []);
 				}
 			}, true);
-			
+
+			scope.$watch('xAxisTickValues', function(newTicks){
+				setTicks(newTicks);
+			}, true);
+
+			scope.$watch('xAxisFormat', function(newFormat){
+				setAxisFormat(newFormat);
+			}, true);
+
+			function setAxisFormat(newFormat){
+				console.log('set form')
+				if(newFormat && newFormat.length){
+					console.log('new format')
+					xAxisFormat = newFormat;
+					xAxis.tickFormat(xAxisFormat);
+					scope.update(data, true);
+				}
+			}
+
+			function setTicks(newTicks){
+				console.log('set ticks')
+				if(newTicks && newTicks.length){
+					console.log('new ticks')
+					xAxisTickValues = newTicks;
+					xAxis.tickValues(xAxisTickValues);
+				}
+			}
+
 			var resizeDebounced = debounce(function() {
 				scope.resize();
 				scope.update(data, true);
@@ -115,10 +143,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				.ticks(8)
 				.tickFormat(xAxisFormat)
 				.tickPadding(12);
-
-			if(xAxisTickValues.length){
-				xAxis.tickValues(xAxisTickValues);
-			}
 
 			var yAxis = d3.svg.axis()
 				.scale(y)

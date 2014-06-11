@@ -101,6 +101,21 @@ angular.module('amelia.docs.controllers').controller('obAreaGraphControllerDemo'
 			date: '4/11/2014',
 		}]
 	}];
+
+	setTimeout(function(){
+		console.log('format')
+		$scope.xAxisFormat = d3.time.format.multi([
+			[".%L", function(d) { return d.getMilliseconds(); }],
+			[":%S", function(d) { return d.getSeconds(); }],
+			["%I:%M", function(d) { return d.getMinutes(); }],
+			["%I %p %p", function(d) { return d.getHours(); }],
+			//["%a %d", function(d) { return d.getDay() && d.getDate() !== 1; }],
+			["%-m/%-d %d %d", function(d) { return d.getDate() !== 1; }],
+			["%B hj", function(d) { return d.getMonth(); }],
+			["%Y hjj", function() { return true; }]
+		])
+	}, 7000)
+
 }]);
 
 angular.module('amelia.docs.controllers').controller('obAreaGraphCustomTicksControllerDemo', ['$scope', function($scope) {
