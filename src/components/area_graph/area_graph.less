@@ -1,93 +1,119 @@
 
-ob-area-graph{
-	display: block;
-	position: relative;
+ob-area-graph {
+  display: block;
+  position: relative;
+  margin: 40px 0;
+  overflow: hidden;
+
+  .focus rect {
+    fill: #333;
+  }
+
+  .focus text {
+    fill: #EEE;
+    font-size: 9px;
+    font-weight: 700;
+    text-anchor: middle;
+    font-family: arial, helvetica, sans-serif;
+  }
+
+  .focus text.shadow {
+    fill: #47484A;
+  }
+
+  .axis path {
+    fill: none;
+    stroke: #ccc;
+    shape-rendering: crispEdges;
+  }
+
+  .axis line {
+    stroke: none;
+  }
+
+  .axis text.y-label {
+    font-size: 16px;
+    font-weight: normal;
+  }
+
+  .area {
+    stroke: none;
+  }
+
+  .area-group {
+    -webkit-transition: all .5s ease-in-out;
+    opacity: .3;
+  }
+
+  .line {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3px;
+  }
+
+  .voronoi path {
+    fill: none;
+    pointer-events: all;
+  }
+
+  .voronoi--show path {
+    stroke: red;
+    stroke-opacity: .2;
+  }
+
+  .area-graph text {
+    fill: #333;
+    font-size: 12px;
+  }
 }
 
-.area-graph text{
-	fill: #AAAAAA;
+.popover.popover-legend {
+  display: block;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, .7);
+    top: 20 !important;
+//    TODO: Can't find what's controlling top height so i used important again
+  //    TODO: I don't think this is the right way to handle the h3 tag here but it was all i could figure out for now.
+
+  h3 {
+    margin-bottom: 0 !important;
+  }
 }
 
-.axis path{
-	fill: none;
-	stroke: #000;
-	shape-rendering: crispEdges;
+ob-area-graph .ob-popover {
+  pointer-events: none;
 }
 
-.axis line{
-	stroke: none;
+.ob-popover.popover-legend .popover-content {
+  padding: 0px 5px;
 }
 
-.axis text.y-label{
-	font-size: 16px;
-	font-weight: bold;
+.graph-key-row {
+  display: table-row;
 }
 
-.area{
-	stroke: none;
+.graph-key-row div {
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.area-group{
-	-webkit-transition: all .5s ease-in-out;
-	opacity: .3;
+.graph-key-row .key-label {
+  padding: 0px 10px;
 }
 
-.line{
-	fill: none;
-	stroke: blue;
-	stroke-width: 3px;
+.graph-key-row .key-color {
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  border-radius: 8px;
+  border: 2px solid #444;
 }
 
-.voronoi path {
-  fill: none;
-  pointer-events: all;
+.graph-key-row .key-value {
+  font-weight: 700;
 }
 
-.voronoi--show path {
-  stroke: red;
-  stroke-opacity: .2;
-}
 
-.focus rect {
-	fill: #696969;
-}
 
-.focus text {
-	fill: #EEE;
-	font-size: 9px;
-	font-weight: 700;
-	text-anchor: middle;
-	font-family: arial,helvetica,sans-serif;
-}
 
-.focus text.shadow {
-	fill: #47484A;
-}
-
-.popover.popover-legend{
-	display: block;
-}
-
-.ob-popover.popover-legend .popover-content{
-	padding: 0px 5px;
-}
-
-.graph-key-row{
-	display: table-row;
-}
-
-.graph-key-row div{
-	display: table-cell;
-	vertical-align: middle;
-}
-
-.graph-key-row .key-label{
-	padding: 0px 10px;
-}
-
-.graph-key-row .key-color{
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
 

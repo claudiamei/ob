@@ -1,20 +1,26 @@
-<div ob-demo-list demo-list="engage-dashboard, amplify-dashboard,editorial-recommend,editorial-content,editorial-frontpage,editorial-social"></div>
+<div ob-demo-list demo-list="engage-dashboard, amplify-dashboard,editorial-recommend,editorial-content,editorial-content-demo,editorial-frontpage,editorial-social"></div>
 
 <script type="text/ng-template" id="engage-dashboard">
 	<h3>engage-dashboard</h3>
 	<div ng-controller="kpiControllerEngageDashboard">
 		<div ob-kpi-box-engage-dashboard boxes="kpi_boxes" currency="$"></div>
-    <div>
-      <div>{</div>
-      <div style="margin-left: 20px; margin-bottom: 10px">CTR: <input ng-model="kpi_boxes.ctr.value" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">PVs with Outbrain: <input ng-model="kpi_boxes.pv.value" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">Clicks: <input ng-model="kpi_boxes.clicks.value" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">Organic: <input ng-model="kpi_boxes.clicks.organic" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">Paid: <input ng-model="kpi_boxes.clicks.paid" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">RPM: <input ng-model="kpi_boxes.rpm.value" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">PVs with Paid Links: <input ng-model="kpi_boxes.paidImpressions.value" type="text" /></div>
-      <div style="margin-left: 20px; margin-bottom: 10px">Revenue: <input ng-model="kpi_boxes.net.value" type="text" /></div>
-      <div>}</div>
+    <div class="kpi-input-group col-sm-12">
+      <div class="kpi-input-col col-sm-3">
+            <div class="kpi-input"><label>CTR: </label><input ng-model="kpi_boxes.ctr.value" type="text" /></div>
+            <div class="kpi-input"><label>PVs with Outbrain: </label><input ng-model="kpi_boxes.pv.value" type="text" /></div>
+      </div>
+      <div class="kpi-input-col col-sm-3">
+          <div class="kpi-input"><label>Clicks: </label><input ng-model="kpi_boxes.clicks.value" type="text" /></div>
+          <div class="kpi-input"><label>Organic: </label><input ng-model="kpi_boxes.clicks.organic" type="text" /></div>
+      </div>
+      <div class="kpi-input-col col-sm-3">
+          <div class="kpi-input"><label>Paid: </label><input ng-model="kpi_boxes.clicks.paid" type="text" /></div>
+          <div class="kpi-input"><label>RPM: </label><input ng-model="kpi_boxes.rpm.value" type="text" /></div>
+      </div>
+      <divc class="kpi-input-col col-sm-3">
+          <div class="kpi-input"><label>PVs with Paid Links: </label><input ng-model="kpi_boxes.paidImpressions.value" type="text" /></div>
+          <div class="kpi-input"><label>Revenue:</label> <input ng-model="kpi_boxes.net.value" type="text" /></div>
+      </div>
     </div>
 	</div>
 </script>
@@ -35,9 +41,17 @@
 
 <script type="text/ng-template"id="editorial-content">
 	<h3>editorial-content</h3>
-	<div ng-controller="kpiControllerEditorialContent">
-		<div ob-kpi-box-editorial-content boxes="kpi_data"></div>
+	<div ng-controller="kpiEditorialContentController">
+		<div ob-kpi-box-editorial-content kpi_data="kpi_data"></div>
 	</div>
+</script>
+
+<!-- Created for Report demo (May replace editorial-content) -->
+<script type="text/ng-template" id="editorial-content-demo">
+    <h3>editorial-content-demo</h3>
+    <div ng-controller="kpiEditorialContentDemoController">
+        <div ob-kpi-box-editorial-content-demo kpi_data="kpi_data"></div>
+    </div>
 </script>
 
 <script type="text/ng-template" id="editorial-frontpage">
@@ -89,10 +103,6 @@
         }
       }
     };
-  };
-
-  var kpiControllerEditorialContent = function($scope) {
-    $scope.kpi_data = {};
   };
 
   var kpiControllerEditorialFrontpage = function($scope) {

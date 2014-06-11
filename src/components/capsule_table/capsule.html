@@ -1,0 +1,13 @@
+<div class="capsule-cell">
+    <div class="capsule-group" ng-class="class">
+        <div class="capsule">
+            <div class="glass">
+                <div class="chamber">
+                    <div class="bar" ng-style="{height: percent + '%'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="source">{{name}}</div>
+        <div class="value" ng-bind-html="value | kpiNumber:1:4:true"></div>
+    </div>
+</div>

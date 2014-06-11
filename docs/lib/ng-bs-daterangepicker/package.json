@@ -1,0 +1,37 @@
+{
+  "name": "ng-bs-daterangepicker-sagiv",
+  "description": "AngularJS directive for bootstrap-daterangepicker",
+  "version": "0.0.3",
+  "filename": "./src/ng-bs-daterangepicker.js",
+  "homepage": "http://github.com/luisfarzati/ng-bs-daterangepicker",
+  "author": {
+    "name": "Sagiv Frankel",
+    "email": "sagivf@gmail.com",
+    "url": "http://github.com/sagivf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sagivf/ng-bs-daterangepicker.git"
+  },
+  "keywords": [
+    "angular",
+    "bootstrap",
+    "daterangepicker",
+    "datepicker",
+    "moment",
+    "time",
+    "interval",
+    "calendar"
+  ],
+  "bugs": {
+    "url": "http://github.com/sagivf/ng-bs-daterangepicker/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-karma": "latest",
+    "grunt-contrib-jshint": "latest",
+   "grunt-contrib-uglify": "latest"
+  }
+}

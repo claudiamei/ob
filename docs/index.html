@@ -26,6 +26,7 @@
         document.write('<link rel="stylesheet" href="../dist/amelia-ui.css">');
     }
     document.write('<link rel="stylesheet" href=".tmp/docs.css" />');
+    document.write('<link rel="stylesheet" href="lib/bootstrap-daterangepicker/daterangepicker-bs3.css" />');
     document.close();
     </script>
 </head>
@@ -67,13 +68,17 @@
 
     <div ng-view="" id="doc-wrapper" class="container-fluid"></div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="lib/jquery/jquery-1.11.0.min.js"></script>
     <script src="lib/highlightjs/highlight.pack.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-highlightjs/angular-highlightjs.js"></script>
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="lib/ng-table/ng-table.js"></script>
+    <script src="lib/momentjs/moment.js"></script>
+    <script src="lib/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="lib/ng-bs-daterangepicker/src/ng-bs-daterangepicker.js"></script>
 
     <script src="docs.js"></script>
     <script src="pages/components/components.js"></script>
@@ -91,17 +96,31 @@
     <script src="../src/components/d3/d3_service.js"></script>
     <script src="../src/components/dropdown/dropdown.js"></script>
     <script src="../src/components/filters/filters.js"></script>
+
     <script src="../src/components/kpi/kpi.js"></script>
+    <script src="../src/components/kpi/docs/demoCtrl.js"></script>
+
     <script src="../src/components/line_graph/line_graph.js"></script>
     <script src="../src/components/area_graph/area_graph.js"></script>
     <script src="../src/components/area_graph/docs/demoCtrl.js"></script>
+
+
+    <script src="../src/components/timeline_graph/timeline_module.js"></script>
+    <script src="../src/components/timeline_graph/timeline_graph.js"></script>
+    <script src="../src/components/timeline_graph/docs/demoCtrl.js"></script>
+
+
     <script src="../src/components/pie_chart/pie_chart.js"></script>
     <script src="../src/components/pie_chart/pieover.js"></script>
     <script src="../src/components/pie_chart/docs/demoCtrl.js"></script>
+
+    <script src="../src/components/capsule_table/capsule_table.js"></script>
+
     <script src="../src/components/services/services.js"></script>
     <script src="../src/components/sidebars/sidebars.js"></script>
     <script src="../src/components/utils/debounce.js"></script>
     <script src="../src/components/typography/typography.js"></script>
+    <script src="../src/components/tables/tables.js"></script>
 
 
     <script>

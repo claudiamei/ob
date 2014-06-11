@@ -12,7 +12,7 @@ var build = {
 		var dest = path.join('docs', '.tmp');
 		return gulp.src(docs)
 			.pipe(tasks.less({
-				sourceMap: true
+				// sourceMap: true
 			}))
 			.pipe(gulp.dest(dest));
 	}

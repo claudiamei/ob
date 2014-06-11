@@ -1,0 +1,22 @@
+{
+  "name": "ng-bs-daterangepicker-sagiv",
+  "main": "./src/ng-bs-daterangepicker.js",
+  "dependencies": {
+    "angular": ">= 1.0.7",
+    "bootstrap-daterangepicker": "*",
+    "bootstrap": "~3.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": ">= 1.0.7"
+  },
+  "homepage": "https://github.com/sagivf/ng-bs-daterangepicker",
+  "_release": "f2cce8f148",
+  "_resolution": {
+    "type": "branch",
+    "branch": "develop",
+    "commit": "f2cce8f1485d47b65501cabfa47a33ecb695e908"
+  },
+  "_source": "https://github.com/sagivf/ng-bs-daterangepicker.git",
+  "_target": "develop",
+  "_originalSource": "https://github.com/sagivf/ng-bs-daterangepicker.git"
+}

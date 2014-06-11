@@ -5,19 +5,19 @@
 
 /* Bullet Graph CSS */
 .ob-bullet-graph {
-	height: 22px;
-	margin: 16px 0;
-	position: relative
+	height: 30px;
+	margin: 26px 0;
+	position: relative;
 }
 
 .ob-bullet-graph:before {
 	content: "";
-	background: #b9b9b9;
+	background:  #bbb;
 	display: block;
 	float: left;
-	margin-top: -6px;
-	width: 3px;
-	height: 36px;
+    margin-top: -10px;
+    width: 5px;
+    height: 40px;
 }
 
 .ob-bullet-graph-bar {
@@ -27,43 +27,73 @@
 	height: 100%;
 	font-size: 12px;
 	line-height: 20px;
-	-webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-	box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
-	-webkit-transition: width 0.6s ease;
 	transition: width 0.6s ease;
 	text-align: center;
 }
 
 .ob-bullet-graph-benchmark {
-	background: #000;
-	position: absolute;
-	transition: margin-left ease-in-out 0.5s;
-	width: 3px;
-	height: 30px;
-	left: 0;
-	top: -4px;
-}
+    background: #004555;
+    border-right: 1px solid #005b72;
+    position: absolute;
+    transition: margin-left ease-in-out 0.5s;
+    width: 7px;
+    height: 48px;
+    left: 0;
+    top: -18px;
+    border-radius: 3px 3px 0 0;
+
+    }
 
 .table {
 	.ob-bullet-graph {
-		height: 11px;
+		height: 20px;
 		margin: 5px 0;
 	}
 	.ob-bullet-graph:before {
-		height: 19px;
-		width: 1px;
-		margin-top: -4px;
+		height: 20px;
+		width: 4px;
+		margin-top: 0px;
+        background-color: @brand-primary;
 	}
 	.ob-bullet-graph-benchmark {
-		top: -2px;
-		height: 15px;
-		width: 2px;
+		top: -5px;
+		height: 25px;
+		width: 4px;
+        border-radius: 2px 2px 0 0;
 	}
 	td:hover .ob-bullet-graph-benchmark,
 	li:hover .ob-bullet-graph-benchmark {
-		height: 19px;
-		top: -4px;
+//		height: 19px;
+//		top: -4px;
 	}
+}
+
+.progress-bar-info{
+    border-radius: 0 4px 4px 0;
+    background-color: #ddd;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #aaa;
+
+}
+
+.progress-bar-success {
+    border-left: 1px solid @brand-success;
+//    box-shadow: 2px 0px 5px 0 rgba(0,0,0,.125) inset;
+}
+
+
+#demo-bullet_graph {
+    
+    .ob-kpi-box{        
+        border: none;
+    }
+    
+    td{        
+        border: none;
+    }
+
 }
 
 // @ob-bullet-graph-height: 2;

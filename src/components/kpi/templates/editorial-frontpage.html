@@ -6,7 +6,7 @@
 				<div class="col-xs-6">
 					<div class="font-lg">
 						<div class="value">
-							<span ng-bind="96.5 | kpiNumber:2"></span>
+							<span ng-bind-html="96.5 | kpiNumber:2"></span>
 							<span class="percent">%</span>
 						</div>
 						<label>Homepage CTR /hr</label>
@@ -24,13 +24,13 @@
 			<div class="row">
 				<div class="col-xs-12 col-lg-6">
 					<div class="font-md">
-						<div class="value" ng-bind="1468345 | kpiNumber:2"></div>
+						<div class="value" ng-bind-html="1468345 | kpiNumber:2"></div>
 						<label>Front Page Views /hr</label>
 					</div>
 				</div>
 				<div class="col-xs-12 col-lg-6">
 					<div class="font-md">
-						<div class="value"  ng-bind="368345 | kpiNumber:2"></div>
+						<div class="value"  ng-bind-html="368345 | kpiNumber:2"></div>
 						<label>Clicks into content /hr</label>
 					</div>
 				</div>

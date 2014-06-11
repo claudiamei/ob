@@ -29,7 +29,9 @@ angular.module('amelia-ui.dropdown', [])
     // },
     controller: 'obDropdownController',
     templateUrl: '../src/components/dropdown/dropdown.html',
-
+	link: function(scope, ele, attr){
+		scope.title = attr.title;
+	},
   };
 })
 // .controller('obDropdownToggleController', ['$scope', '$attrs', 'obDropdownConfig', function ($scope, $attrs, obDropdownConfig) {

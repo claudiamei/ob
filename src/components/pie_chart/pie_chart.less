@@ -1,38 +1,44 @@
-ob-pie-chart{
-	position: relative;
-	display: block;
-}
+ob-pie-chart {
+  position: relative;
+  display: block;
 
-.pie-path{
-	opacity: .9;
-	stroke: none;
-}
+  .pie-path {
+    opacity: 1;
+    stroke: none;
+  }
 
-.pie-path:hover{
-	opacity: 1;
-}
+  .pie-path:hover {
+    opacity: 1;
+  }
 
-.pie-label{
-	position: absolute;
-	width: 140px;
-	text-align: center;
-	font-family: Arimo, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	z-index: -1;
-}
+  .pie-label {
+    position: absolute;
+    width: 140px;
 
-.pie-text{
-	line-height: 1px;
-	font-size: 32px;
-}
+    text-align: center;
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    pointer-events: none;
+  }
 
-.pie-text:after{
-	position: absolute;
-	content: "%";
-	font-size: 16px;
-	margin-top: 2px;
-}
+  .pie-text {
+    line-height: 1px;
+    font-size: 32px;
+    color: #666;
+  }
 
-.pie-desc{
-	line-height: 1;
-	font-size: 8px;
+    //TODO - let's round the data in the pie and use small percentile 
+    
+  .pie-text:after {
+    position: absolute;
+    content: "%";
+    font-size: 16px;
+    margin-top: 5px;
+  } 
+
+  .pie-desc {
+    line-height: 1;
+    font-size: 10px;
+    margin-top: 3px;
+    color: #666;
+  }
 }

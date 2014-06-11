@@ -1,6 +1,7 @@
 var app = angular.module('amelia.docs', [
 	'ngRoute',
 	'ngTable',
+  'ngBootstrap',
 	'hljs',
 	'amelia.docs.components',
 	'amelia.docs.controllers',

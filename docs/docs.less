@@ -1,51 +1,246 @@
-@import "lib/bootstrap/less/variables";
+@import "/src/bootstrap_variables";
 @import "pages/components/components";
 @import "pages/main/main";
 
 #ob-doc-nav {
-	position: fixed;
-	width: 100%;
-	z-index: 1;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 
-	nav {
-		padding: 0 10px;
-	}
+  nav {
+    padding: 0 10px;
+  }
 }
 
 [ob-wrapper] {
-	height: 100%;
+  height: 100%;
 }
 
-.navbar-default .active a{
-    background-color: #e17613 ;
+.navbar-default .active a {
+  background-color: #e17613;
 }
 
-.navbar-default a:active{
-    background-color: #e17613 !important ;
+.navbar-default a:active {
+  background-color: #e17613 !important;
 }
 
+.navbar-default {
+  background-color: #ff9900;
+  border-bottom: 1px #e17613 solid;
+  padding: 0 30px;
+  letter-spacing: .075em;
+  font-weight: 300;
 
-.navbar-default{
-    background-color: #ff9900;
-    border-bottom:1px #e17613  solid;
-    padding: 0 30px;
-     letter-spacing: .075em;
-        font-weight: 300;
-
-    a{}
-
-
+  a {
+  }
 }
 
-.navbar-brand{
-    font-size: 24px;
-    margin: 0 20px;
+.navbar-brand {
+  font-size: 24px;
+  margin: 0 20px;
 
- &:hover{
+  &:hover {
     color: #fff !important;
-    }
+  }
 }
 
-h2{
-    font-weight: 700;
+h2 {
+  font-weight: 700;
 }
+
+.daterangepicker.dropdown-menu{
+  max-height: none;
+  display: none;
+}
+
+.report-demo {
+  background-color: #FFFFFF;
+
+  /* Top Options bars (Daily/Weekly) */
+  .report-options {
+    padding: 10px 20px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #DDD;
+
+    .right-options {
+      float: right;
+    }
+
+    .right-options .fa {
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .download-option,
+    .calendar-option {
+      margin-left: 15px;
+    }
+
+    .demo-datepicker{
+      color: #888;
+      display: inline-block;
+      input{
+      }
+    }
+
+    .input-icon-group{
+      position: relative;
+
+      input{
+        padding-left: 30px;
+      }
+    }
+
+    .input-icon{
+      position: absolute;
+      top: 3px;
+      left: 0px;
+      display: block;
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+    }
+
+  }
+
+  /* Table Filter Row */
+  .table-filters {
+    padding: 15px;
+
+    .search {
+      float: right;
+    }
+    .search .btn {
+      padding-right: 40px;
+    }
+  }
+
+  /* Area graph legend (Temporary) */
+  .report-graphs .area-graph-legend {
+    position: absolute;
+    bottom: 15px;
+    font-size: 14px;
+    color: #666;
+
+    .legend-item {
+      padding-left: 30px;
+    }
+
+    .legend-icon-box {
+      color: white;
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    span.legend-item:nth-child(1) .legend-icon-box {
+      background-color: #52bad5;
+    }
+
+    span.legend-item:nth-child(2) .legend-icon-box {
+      background-color: @brand-primary;
+    }
+
+    span.legend-item:nth-child(3) .legend-icon-box {
+      background-color: #5cb85c;
+    }
+  }
+
+  .report-graphs {
+    height: 281px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .area-graph-group {
+    border-right: 1px solid #DDD;
+  }
+
+  ob-pie-chart {
+    width: 280px;
+    margin: 0 auto;
+  }
+
+  ob-area-graph {
+    margin: 15px 0px 54px;
+  }
+
+  .pie-group {
+    background-color: #F8F8F8;
+
+    /* Pie Chart Legend (Temporary) */
+    .pie-legend {
+        padding-bottom: 10px;
+        background: #fff;
+        border: 1px solid #ddd;
+        color: #666;
+        position: relative;
+        top: 30px;
+        right: 42%;
+        border-radius: 5px;
+    }
+
+    /*Disposable legend Css */
+    .legend-row {
+      padding: 0px 15px 5px 15px;
+    }
+
+    .legend-row .legend-color {
+      margin-right: 5px;
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+    }
+
+    .legend-row .legend-label {
+      display: inline-block;
+      vertical-align: bottom;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /*'#ff9900','#ffb84f', '#be7100' ,'#333333','#ffdca80' */
+    div.legend-row:nth-child(2) .legend-color {
+      background-color: #ff9900;
+    }
+
+    div.legend-row:nth-child(3) .legend-color {
+      background-color: #ffb84f;
+    }
+
+    div.legend-row:nth-child(4) .legend-color {
+      background-color: #be7100;
+    }
+
+    div.legend-row:nth-child(5) .legend-color {
+      background-color: #333333;
+    }
+
+    div.legend-row:nth-child(6) .legend-color {
+      background-color: #ffdca8;
+    }
+  }
+}
+
+
+.area-title{
+    color: #217287;
+    margin: 20px 0 0px 5%;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.pie-legend-title{
+    color: #217287;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #eee;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 15px;
+    margin: 0 0 10px 0;
+}
+

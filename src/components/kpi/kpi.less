@@ -1,12 +1,32 @@
 .ob-kpi-box {
-	border-radius: 0;
-	border-top: solid 1px #DDD;
-    border-bottom: solid 1px #DDD;
-	margin-bottom: 15px;
-	line-height: 1;
-	white-space: nowrap;
-    font-weight: 700;
-    min-width: 964px;
+  border-radius: 0;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+  line-height: 1;
+  white-space: nowrap;
+  font-weight: 700;
+  min-width: 964px;
+
+  .kpi-suffix {
+    font-size: 30px;
+  }
+
+  .organic-paid {
+    position: absolute;
+    bottom: 25px;
+    .kpi-suffix {
+      font-size: 10px;
+    }
+  }
+
+  .kpi-suffix-top {
+    font-size: 30px;
+    line-height: 1.2;
+    vertical-align: top;
+    &.currency {
+      float: left;
+    }
+  }
 
   .ob-period {
     position: absolute;
@@ -21,19 +41,30 @@
     position: absolute;
     right: 12px;
     top: 12px;
-    background-color: #181818;
-    padding: 3px 6px;
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #888;
     text-align: center;
+    border-radius: 50%;
     cursor: pointer;
-  }
 
-  .ob-help:after {
-    content: '?';
-    color: white;
-    font-size: 12px;
-  }
+    &.helpOpen {
+      background-color: #181818;
+    }
 
+    &:hover {
+      background-color: #181818;
+    }
+
+    &:after {
+      content: '?';
+      color: white;
+      font-size: 12px;
+      position: relative;
+      vertical-align: middle;
+      line-height: 1.75;
+    }
+  }
 
   .popover {
     margin-top: 328px;
@@ -44,7 +75,7 @@
     color: #333;
     padding: 0px 20px 30px 20px;
     border-radius: 3px;
-    font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
     h2 {
       font-size: 18px;
@@ -55,14 +86,17 @@
       color: inherit;
     }
 
-    h3 {
-      font-size: 16px;
-      margin-bottom: 5px;
-      margin-top: 28px;
-      font-family: inherit;
-      font-weight: 500;
-      line-height: 1.1;
-      color: inherit;
+    .popover-content {
+      font-weight: normal;
+      h3 {
+        font-size: 16px;
+        margin-bottom: 5px !important;
+        margin-top: 28px;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+        color: inherit;
+      }
     }
 
   }
@@ -72,14 +106,10 @@
   }
 
   .popover.left > .arrow {
-    top: 26px;
+    top: 35px;
     &:after {
       border-left-color: #eee;
     }
-  }
-
-  .popover-content {
-    font-weight: normal;
   }
 
   p {
@@ -153,103 +183,144 @@
 }
 
 .ob-kpi-box > .row {
-	margin: 0;
+  margin: 0;
 }
 
 .ob-kpi-box > .row > div:nth-child(n+2) {
-	border-left: 1px solid #DDD;
+//  border-left: 1px dashed #e7e7e7;
 }
 
 .ob-kpi-box .row + .row {
-	border-top: 1px solid #DDD;
+  border-top: 1px solid #ccc;
 }
 
 .ob-kpi-box [class*="col-"] {
-	padding-bottom: 40px;
-	padding-top: 40px;
+  padding-bottom: 35px;
+  padding-top: 35px;
 }
 
 .ob-kpi-box [class*="col-"] [class*="col-"] {
-	padding-top: 0;
-	padding-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .ob-kpi-box label {
-	font-size: 14px;
-	font-weight: normal;
-	padding: 0;
-	margin-top: 5px;
-	display: block;
-	text-align: left;
-	color: #aaa;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 0;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+  color: #aaa;
 }
 
 .ob-kpi-box label label {
-	font-size: 12px;
-	display: inline;
-	padding-right: .5em;
+  font-size: 12px;
+  display: inline;
+  padding-right: .5em;
 }
+
 .ob-kpi-box label .value {
-	font-size: 12px;
-	padding-right: 1em;
-	color: #444;
-	font-weight: 700;
+  font-size: 12px;
+  padding-right: 1em;
+  color: #444;
+  font-weight: 700;
 }
 
 /* kpi group list */
 .ob-kpi-box ul {
-	list-style: none;
-	margin: 0;
+  list-style: none;
+  margin: 0;
 }
 
 .ob-kpi-box li + li {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .ob-kpi-box li .value {
-	margin-left: 15px;
-	font-weight: bold;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
 /* Kpi button group */
 
 .ob-kpi-box .btn-group {
-	position: absolute;
-	top: 7px;
-	left: 7px;
+  position: absolute;
+  top: 7px;
+  left: 7px;
 }
 
 /* Font styles */
 .ob-kpi-box .font-md {
-	font-size: 30px;
+  font-size: 30px;
 }
 
 .ob-kpi-box .font-lg {
-	font-size: 55px;
-}
-
-.ob-kpi-box .percent,
-.ob-kpi-box .currency {
-	font-size: .6em;
-}
-.ob-kpi-box .currency {
-	vertical-align: top;
+  font-size: 60px;
+  font-weight: 400;
 }
 
 /* kpi-box utilities */
 
-.center-table {
-	margin: 0 auto;
-	display: table;
-}
+.ob-kpi-box {
 
-.equal-height-cols {
-	display: table;
-	min-width: 100%;
-}
+  .center-table {
+    margin: 0 auto;
+    display: table;
+  }
 
-.equal-height-cols > div {
+  .equal-height-cols {
+    display: table;
+    min-width: 100%;
+  }
+
+  .equal-height-cols > div {
     display: table-cell;
     vertical-align: middle;
-    float: none;
+  }
+
+  .multi-row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .multi-row .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .multi-row .row + .row {
+    border-top: none;
+  }
+
+  .highlight {
+    background-color: #eee;
+    color: #666;
+    font-weight: 300;
+  }
+
+  .aligned-block-container {
+    padding-bottom: 70px;
+  }
+
+  /* Allows a row underneath a column, parent row is equal height with a following col
+
+    [parent-col] [after-parent-col]  <-- equal height row
+    [align-to-parent-col]            <-- will not inc height of parent row
+
+   */
+  .parent-aligned-block {
+    position: absolute;
+    margin-top: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    div {
+      margin-right: 2px;
+      display: inline-block;
+    }
+  }
 }
+
+
+

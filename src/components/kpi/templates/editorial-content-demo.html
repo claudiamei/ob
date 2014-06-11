@@ -1,0 +1,44 @@
+<div class="ob-kpi-box">
+	<div class="row equal-height-cols">
+		<div class="col-xs-5">
+			<div class="row equal-height-cols aligned-block-container">
+				<div class="col-xs-6">
+					<div class="center-table font-lg">
+						<div class="value" ng-bind-html="kpi_data.content_hr.today | kpiNumber:1:4:true"></div>
+						<label>Total Content Views /hr</label>
+                        <div class="parent-aligned-block row highlight">
+                            <div class="font-md center-table">
+                                <div class="value" ng-bind-html="kpi_data.content_hr.last_week | kpiNumber:1:4:true"></div>
+                                <label>Last Tuesday</label>
+                            </div>
+                            <div class="font-md center-table">
+                                <div class="value" ng-bind-html="kpi_data.content_hr.last_month | kpiNumber:1:4:true"></div>
+                                <label>Last Month</label>
+                            </div>
+                        </div>
+					</div>
+				</div>
+				<div class="col-xs-6">
+                    <ob-bullet-graph max="100">
+                        <ob-bullet-bar value="50" class="progress-bar-danger" name="social"></ob-bullet-bar>
+                        <ob-bullet-bar value="20" class="progress-bar-info" name="search"></ob-bullet-bar>
+                        <ob-bullet-benchmark value="60"></ob-bullet-benchmark>
+                    </ob-bullet-graph>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-7">
+            <div class="capsule-title">Traffic Sources</div>
+            <ob-capsule-table auto-scale="false" max="100">
+                <ob-capsule bar-value="50" class="high-performance" name="Front Page" value="85377"></ob-capsule>
+                <ob-capsule bar-value="12" class="low-performance" name="Aggregators" value="40387"></ob-capsule>
+                <ob-capsule bar-value="56" class="high-performance" name="Originators" value="2918"></ob-capsule>
+                <ob-capsule bar-value="34" name="Social" value="1148"></ob-capsule>
+                <ob-capsule bar-value="22" name="Search" value="72590"></ob-capsule>
+                <ob-capsule bar-value="90" class="high-performance" name="Direct" value="25064"></ob-capsule>
+                <ob-capsule bar-value="2" name="RSS / Email" value="189"></ob-capsule>
+                <ob-capsule bar-value="6" class="low-performance"name="Unclassified" value="6785"></ob-capsule>
+            </ob-capsule-table>
+        </div>
+	</div>
+</div>

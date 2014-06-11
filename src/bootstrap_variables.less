@@ -13,11 +13,11 @@
 @gray-light:             lighten(#000, 60%);   // #999
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #ff5f00;
-@brand-success:         #428bca;
-@brand-info:            @gray-light;
-@brand-warning:         #f0ad4e;
-@brand-danger:          #d9534f;
+@brand-primary:         #ff9900;
+@brand-success:         #52bad5;
+@brand-info:            #ccc;
+@brand-warning:         #ff5f00;
+@brand-danger:          #de4741;
 
 
 //== Scaffolding
@@ -49,9 +49,9 @@
 @font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
 @font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
 
-@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36pxw
 @font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
-@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h3:            ceil((@font-size-base * 2.15)); // ~30px
 @font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
 @font-size-h5:            @font-size-base;
 @font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
@@ -95,9 +95,9 @@
 @line-height-large:         1.33;
 @line-height-small:         1.5;
 
-@border-radius-base:        0px;
-@border-radius-large:       0px;
-@border-radius-small:       0px;
+@border-radius-base:        2px;
+@border-radius-large:       2px;
+@border-radius-small:       2px;
 
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    #fff;
@@ -137,19 +137,19 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              #333;
+@btn-default-color:              #666;
 @btn-default-bg:                 #fff;
 @btn-default-border:             #ccc;
 
-@btn-primary-color:              #fff;
-@btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-color:              #ff9900;
+@btn-primary-bg:                 lighten(@brand-primary, 48%);
+@btn-primary-border:             #ff9900;
 
 @btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 #666;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
@@ -466,20 +466,20 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             #3c763d;
-@state-success-bg:               #dff0d8;
+@state-success-text:             #def0e2;
+@state-success-bg:               #5cb85c;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #31708f;
-@state-info-bg:                  #d9edf7;
+@state-info-text:                #e3ebf0;
+@state-info-bg:                  @brand-success;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #8a6d3b;
-@state-warning-bg:               #fcf8e3;
+@state-warning-text:             #ff5f00;
+@state-warning-bg:               lighten(@brand-warning, 45%);
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #a94442;
-@state-danger-bg:                #f2dede;
+@state-danger-text:              #fff0f0;
+@state-danger-bg:                #de4741;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 
@@ -621,13 +621,13 @@
 @progress-bar-color:          #fff;
 
 //** Default progress bar color
-@progress-bar-bg:             @brand-primary;
+@progress-bar-bg:             @brand-success;
 //** Success progress bar color
-@progress-bar-success-bg:     @brand-success;
+@progress-bar-success-bg:     @brand-primary;
 //** Warning progress bar color
-@progress-bar-warning-bg:     @brand-warning;
+@progress-bar-warning-bg:     @brand-success;
 //** Danger progress bar color
-@progress-bar-danger-bg:      @brand-danger;
+@progress-bar-danger-bg:      @brand-success;
 //** Info progress bar color
 @progress-bar-info-bg:        @brand-info;
 

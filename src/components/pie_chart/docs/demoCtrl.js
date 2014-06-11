@@ -3,27 +3,22 @@ angular.module('amelia.docs.controllers').controller('obPieChartController', fun
     '0': [{
       value : 4,
       key: 'A',
-      testAccessor : {b:'AAA'},
       label : 'CNN.com'
     }, {
       value : 5,
       key: 'B',
-      testAccessor : {b:'BBB'},
       label : 'aLongExampleNameSite.com'
     }, {
       value : 3,
       key: 'C',
-      testAccessor : {b:'CCC'},
       label : 'C'
     }, {
       value : 4,
       key: 'D',
-      testAccessor : {b:'DDD'},
       label : 'D'
     }, {
       value : 6,
       key: 'other',
-      testAccessor : {b:'EEE'},
       label : 'E'
     }],
     '1': [{
@@ -85,5 +80,5 @@ angular.module('amelia.docs.controllers').controller('obPieChartController', fun
   $scope.data = {
       'primaryData': testData[i],
       'otherData': otherData,
-    };
+  };
 });

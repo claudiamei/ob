@@ -1,186 +1,220 @@
+<div class="report-demo">
 
-<!-- <div class="alert alert-info alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	<strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-</div> -->
-<div class="report-header">
-	<!-- KPI Box -->
-	<div class="ob-kpi-box">
-		<div class="row">
-			<div class="col-xs-4">
-				<div class="center-table font-lg">
-					<div class="value">{{10234455455 | kpiNumber:2}}</div>
-					<label>Impressions</label>
-				</div>
-				<div class="btn-group">
-					<button type="button"class="btn btn-xs btn-default">Left</button>
-					<button type="button"class="btn btn-xs btn-default">Middle</button>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="center-table font-lg">
-					<div class="value">{{34343344 | kpiNumber:2 }}</div>
-					<label>Clicks</label>
-				</div>
-			</div>
-			<div class="col-xs-4">
-				<div class="center-table font-lg">
-					<div class="value">
-						<span class="currency">$</span>{{43443 | number}}
-					</div>
-					<label>Spend</label>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row border-bottom">
-		<div ng-controller="obPieChartController">
-			<ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
-		</div>
-	</div>
-</div>
-
-<div class="btn-group" ng-init="radioModel='clicks'">
-        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'clicks'">Most Clicked</button>
-        <button type="button" class="btn btn-info" ng-model="radioModel" btn-radio="'earning'">Highest Earning</button>
+    <div class="report-options">
+        <div class="btn-group btn-options-group">
+            <button class="btn btn-default active">Daily</button>
+            <button class="btn btn-default">Monthly</button>
+            <button class="btn btn-default">Section</button>
+            <button class="btn btn-default">Widget</button>
+        </div>
+        <div ng-controller="obDateRangeAreaGraphControllerDemo" class="demo-datepicker">
+            <div class="input-icon-group">
+                <input class="btn btn-default" type="daterange"
+                       ng-model="dates"
+                       format="M/D/YYYY"
+                       max-date="{{maxDate}}"
+                       ranges="dateRanges"
+                       show-calendars="true" style="margin-right: 10px"/>
+                <span class="fa fa-calendar input-icon"></span>
+            </div>
+        </div>
+        <div class="est-time">*EST Time</div>
+        <div class="right-options">
+            <div class="btn-group btn-options-group device-options">
+                <button class="btn btn-default active">
+                    <span class="fa fa-th"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-desktop"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-tablet"></span>
+                </button>
+                <button class="btn btn-default">
+                    <span class="fa fa-mobile"></span>
+                </button>
+            </div>
+            <button class="btn btn-default download-option">
+                <span class="fa fa-download"></span>
+            </button>
+        </div>
     </div>
 
-<!-- Matrix -->
-<div ng-controller="ulTableDemoCtrl" class="customers-table">
-	<div class="matrix">
-		<div class="thead row">
-			<div class="col-xs-8">Title</div>
-			<div class="col-xs-2">Clicks</div>
-			<div class="col-xs-2"></div>
-		</div>
-		<div class="tbody">
-			<div class="tr row" ng-repeat="article in data">
-				<div class="col-xs-8">{{article.title}}</div>
-				<div class="col-xs-2">{{article.clicks | number}}</div>
-				<div class="col-xs-2">
-					<button class="btn btn-primary">Accept</button>
-					<button class="btn btn-danger">Pass</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="report-kpi">
+        <div ng-controller="kpiEditorialContentDemoController">
+            <div ob-kpi-box-editorial-content-demo kpi_data="kpi_data"></div>
+        </div>
+    </div>
+
+    <div class="report-graphs">
+        <div class="col-sm-12">
+           
+            <div class="area-graph-group col-sm-6">
+                 <div class="area-title">Total Click Traffic</div>
+                <div ng-controller="obAreaGraphControllerDemo">
+                    <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 160}" data="data"></ob-area-graph>
+                </div>
+                <div class="area-graph-legend">
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>roboLemons.com</span>
+                </span>
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>outbrain.com</span>
+                </span>
+                <span class="legend-item">
+                    <div class="legend-icon-box">
+                        <span class="fa fa-eye"></span>
+                    </div>
+                    <span>amelia.com</span>
+                </span>
+                </div>
+            </div>
+            <div class="pie-group col-sm-6">
+                <div class="col-sm-8">
+                    <div ng-controller="obPieChartController">
+                        <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="pie-legend">
+                        <div class="pie-legend-title">Top Sites</div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Fox News</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">CNN</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">ESPN</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Forbes</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color"></div>
+                            <div class="legend-label">Other</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-filters">
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Category: All
+                <span class="caret"></span>
+            </button>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Author: All
+                <span class="caret"></span>
+            </button>
+        </div>
+        <div class="btn-group search">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                Search
+            </button>
+        </div>
+    </div>
+
+    <div ob-table class="show-totals">
+        <ul class="thead">
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2 sortable" data-sortable="date" ng-click="applySort('date')">Date</li>
+                    <li class="td col-sm-2 sortable active-sort" data-sortable="total-clicks"
+                        ng-click="applySort('total-clicks')">Total Clicks
+                    </li>
+                    <li class="td col-sm-2 sortable" data-sortable="organic-clicks"
+                        ng-click="applySort('organic-clicks')">
+                        Organic Clicks
+                    </li>
+                    <li class="td col-sm-2 sortable" data-sortable="paid-clicks" ng-click="applySort('paid-clicks')">
+                        Paid
+                        Clicks
+                    </li>
+                    <li class="td col-sm-2 sortable" data-sortable="page-views" ng-click="applySort('page-views')">Page
+                        Views
+                    </li>
+                    <li class="td col-sm-2 sortable" data-sortable="ctr" ng-click="applySort('ctr')">CTR</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="tbody" data-width="400px">
+            <li class="row totals">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="row">
+                <ul class="tr">
+                    <li class="td col-sm-2">3/10/2014</li>
+                    <li class="td col-sm-2">88,577</li>
+                    <li class="td col-sm-2">1,217</li>
+                    <li class="td col-sm-2">87,360</li>
+                    <li class="td col-sm-2">2,827,196</li>
+                    <li class="td col-sm-2">3.13%</li>
+                </ul>
+            </li>
+            <li class="highlight"></li>
+        </ul>
+    </div>
 </div>
-
-<!-- <div ng-controller="ulTableDemoCtrl" class="customers-table">
-	<div class="matrix">
-		<ul class="thead">
-			<li>
-				<div class="fluid">
-					<div class="col">Name</div>
-				</div>
-				<div class="fixed-left">
-					<div class="col">Title</div>
-					<div class="col">Title</div>
-				</div>
-				<div class="fixed-right">
-					<div class="col">Age</div>
-				</div>
-			</li>
-		</ul>
-		<ul class="tbody">
-			<li ng-repeat="user in data">
-				<div class="fluid">
-					<div class="col">{{user.name}}</div>
-				</div>
-				<div class="fixed-left">
-					<div class="col">{{user.title}}</div>
-					<div class="col">Title</div>
-				</div>
-				<div class="fixed-right">
-					<div class="col age">{{user.age}}</div>
-					<div class="col actions">
-						<button class="btn btn-primary">Accept</button>
-						<button class="btn btn-danger">Pass</button>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div> -->
-
-<style type="text/css">
-	.customers-table .fluid .col {
-		margin: 0 200px 0 100px;
-		float: none;
-	}
-	.customers-table .fixed-left {
-		width: 200px;
-	}
-	.customers-table .fixed-right {
-		width: 200px;
-	}
-	.customers-table .actions {
-		padding: 0 10px;
-		float: right;
-	}
-</style>
-
-<script>
-
-	var data = [{
-		title: "Fresh details on Flight 370's path",
-		clicks: 121345
-	},{
-		title: "Divers see bodies in sunken ferry",
-		clicks: 121345
-	},{
-		title: "See Rosie O'Donnell's 50-lb. weight loss",
-		clicks: 121345
-	},{
-		title: "Walmart joins money-transfer game",
-		clicks: 121345
-	},{
-		title: "Where are Nigeria's abducted girls?",
-		clicks: 121345
-	},{
-		title: "Reid defends 'terrorists' comments",
-		clicks: 121345
-	},{
-		title: "Has smartphone innovation stalled?",
-		clicks: 121345
-	},{
-		title: "League kicks out HIV-positive man",
-		clicks: 121345
-	},{
-		title: "Police: Dad kills son to play games",
-		clicks: 121345
-	},{
-		title: "What's new at New York Auto Show",
-		clicks: 121345
-	},{
-		title: "Miley Cyrus faces long recovery",
-		clicks: 121345
-	},{
-		title: "NHL player takes slapshot to face",
-		clicks: 121345
-	},{
-		title: "TNT reporter has leukemia",
-		clicks: 121345
-	},{
-		title: "Is Charles Barkley leaving TNT?",
-		clicks: 121345
-	}];
-
-
-	// var data = [
-	// 	{name: "Moroni", age: 50, title: 'Mr.'},
-	// 	{name: "Tiancum", age: 43, title: 'Mrs.'},
-	// 	{name: "Jacob", age: 27, title: 'Mr.'},
-	// 	{name: "Nephi", age: 29, title: 'Mrs.'},
-	// 	{name: "Enos", age: 34, title: 'Dr.'},
-	// 	{name: "Tiancum", age: 43, title: 'Sr.'},
-	// 	{name: "Jacob", age: 27, title: 'Rev.'},
-	// 	{name: "Nephi", age: 29, title: 'Ms.'}
-	// ];
-
-	var ulTableDemoCtrl = function ($scope) {
-		$scope.data = data;
-	};
-
-</script>

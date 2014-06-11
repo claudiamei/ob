@@ -17,6 +17,9 @@
     margin: 0;
     position:relative;
   }
+    li:hover{
+        background-color: #ddd;
+    }
   li:hover::before, 
   li.active::before {
     content:"";
@@ -25,8 +28,11 @@
     left: 0;
     height:100%;
     width: 5px;
-    background: #333;
+    background: #63aad1;
   }
+  li:hover::before{
+      background-color: @brand-primary;
+  } 
   a {
     color: #666;
     text-decoration:none;
@@ -38,18 +44,27 @@
 #component-list-wrapper {
   padding: 0;
   list-style: none;
-  h1 {
+    p{
+        font-size: 16px;
+        color: #666;
+    }
+    
+    h1 {
     border-bottom: none;
     font-weight: 700;
     font-size: 3em;
     margin-bottom: 30px;
-    // background-color: rgba(255, 153, 0, .1);
     padding: 20px;
     border-bottom: 1px solid #ff9900;
     border-top: 1px solid #ff9900;
     color: #E17613;
   }
-  &>li {
+    h3{
+    font-weight: 700;
+    margin-bottom: 30px;
+    }
+  
+    &>li {
     background-color: #fff;
     padding: 0px 30px 100px 30px;
     margin-top: 30px;
@@ -70,10 +85,11 @@
   &:hover {
     color: #fff;
     background-color: #ff9900;
-    border-top: 2px #ffaf36 solid;
     border-left: 2px #ffaf36 solid;
     border-right: 2px #ffaf36 solid;
-    text-shadow: 0px 2px 0 #e17613;
+    border-bottom: 2px #E17613 solid;
+    box-shadow: 0px -1px 0 #e17613 inset;
+    text-shadow: 0px 1px 0 #e17613;
   }
   &.active {
     box-shadow: none;
@@ -81,10 +97,10 @@
     background-color: #ffaf36;
     border: 1px solid #ffaf36;
     border-radius: 5px 5px 0 0;
-    text-shadow: 0px 2px 0 #e17613;
+    text-shadow: 0px 1px 0 #e17613;
   }
 }
-pre {
+ pre {
   padding: 0px!important;
   border: none;
   code {
@@ -96,4 +112,103 @@ pre {
     border: 2px solid #ffaf36;
     padding: 20px;
   }
+}
+
+
+hr{
+    &.type_divider{
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,.025), rgba(0,0,0,0.125), rgba(0,0,0,.025)); 
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.25), rgba(0,0,0,0)); 
+    }
+    
+}
+
+
+.form-col{
+    
+    label{
+        text-align: left;
+        color: red;
+        display: block;
+
+    }
+}
+
+
+.form-horizontal .control-label {
+        text-align: left;
+        color: #666;
+}
+
+
+
+input{
+    
+    &.form-control{
+        background-color: #eee;
+        color: #666;
+        font-size: 32px;
+        line-height: 32px;
+        border-color: #ccc;
+        margin: 0;
+        height: 60px;
+        box-shadow: none;
+        font-weight: 300;
+        width: 97%;
+    }
+}
+
+
+.data_format_pre{
+        background: #333;
+        color: #eee;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        border: 2px solid #ffaf36;
+        padding: 20px !important; 
+//        TODO: Not right, the padding is affecting the toggled down state or sample code in the library, can't find where its coming from'
+    }
+
+.kpi-input-group{
+        .kpi-input-col{
+            display:inline-block;
+        }
+        
+        .kpi-input{
+        }
+    
+        input{
+            width: 97%;
+            background-color: #eee;
+            color: #666;
+            font-size: 32px;
+            line-height: 32px;
+            border: 1px solid #ccc;
+            margin: 0 0 20px 0;
+            height: 60px;
+            box-shadow: none;
+            font-weight: 300;
+            padding: 0 10px;
+            border-radius: 2px;
+        }
+        
+        label{
+            color: #666;
+            display: block;
+        }
+    }
+
+
+.est-time{
+    display:inline;
+    text-align: bottom;
+    vertical-align: bottom;
+    font-size: 12px;
+    color: #888;
+    margin: 0 5px;
+    line-height: 20px;
 }

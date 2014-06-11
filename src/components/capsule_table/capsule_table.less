@@ -1,64 +1,95 @@
-
 /* Capsule CSS*/
 .capsule-table {
 	display: table;
 	width: 100%;
 }
 
-.capsule-table > div{
+.capsule-table > .capsule-cell{
 	display: table-cell;
 }
 
 .capsule-group{
 	width: 46px;
 	margin: 0 auto;
+    color: darken(@brand-success, 30%);
+  
+    .source{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  .value{
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 2px;
+  }
+
+ .value .kpi-suffix{
+    font-size: 8px;
+  }
 }
 
 .capsule {
 	position: relative;
 	height: 115px;
 	left: 8px;
+    color: blue;
+
+  .glass:before {
+    position: absolute;
+    z-index: 5;
+    content: "";
+    width: 26px;
+    height: 4px;
+    bottom: -1px;
+    right: -1px;
+    background-color: #bbb;
+  }
+
+  .glass {
+    position: absolute;
+    left: 2px;
+    width: 26px;
+    padding-bottom: 0px;
+    height: 100%;
+    border: solid 1px #bbb;
+    background-color: #ddd;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .chamber{
+    position: absolute;
+    height: 110px;
+    bottom: 0;
+  }
+
+  /* Adjust height 0 - 100% */
+  .bar {
+    position: absolute;
+    left: 3px;
+    bottom: 0px;
+    width: 18px;
+    height: 0%;
+    background-color: @brand-success;
+    border: 1px solid darken(@brand-success, 15%);
+    border-radius: 3px 3px 0 0;
+  }
+
 }
 
-.capsule .base {
-	position: absolute;
-	width: 32px;
-	height: 1px;
-	bottom: 0;
-	margin-left: 0px;
-	background-color: grey;
+
+.capsule-title{
+    color: darken(@brand-success, 25%);
+    margin: 0 0 15px 5%;
 }
 
-.capsule .glass {
-	position: absolute;
-	left: 5px;
-	width: 22px;
-	padding-bottom: 3px;
-	padding-top: 3px;
-	height: 100%;
-	border: solid 1px grey;
-	border-top-left-radius: 6px 6px;
-	border-top-right-radius: 6px 6px;
+
+.high-performance .bar{
+    background-color: lighten(overlay(@brand-success, #bbb), 7%);
+    border-color: overlay(@brand-success, #777);
 }
 
-/* Adjust height 0 - 100% */
-.capsule .bar {
-	position: relative;
-	left: 4px;
-	width: 12px;
-	height: 100%;
-	background-color: #F00;
-	border-top-left-radius: 7px 4px;
-	border-top-right-radius: 7px 4px;
-}
-
-.capsule ~ .source{
-	font-size: 8px;
-	text-align: center;
-	margin-top: 2px;
-}
-.capsule ~ .value{
-	font-weight: bold;
-	font-size: 8px;
-	text-align: center;
+.low-performance .bar{
+    background-color: multiply(@brand-success, #bbb);
 }
