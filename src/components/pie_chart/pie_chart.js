@@ -26,16 +26,16 @@ angular.module('amelia-ui.charts.pie-chart', [])
 				left : 20
 			},
 			outerRadius: 120,
-			innerRadius: 80,
+			innerRadius: 60,
 			collapseOuterRadius: 81,
 			collapseInnerRadius: 60,
 			sunburstOuterRadius: 120,
 			sunburstInnerRadius: 80,
 			width: 280,
 			animDuration: 500,
-			colors: ['#FFDFCC','#FFA066', '#FF6000' ,'#BF4800','#200C00'], //light to dark
+			colors: ['#be7100','#ffb84f', 'ff9900' ,'#ffdca8','#333333'], //light to dark
 			collapseColors: ['#D9D1CC', '#B2A399','#8C7466','#664633','#200C00'],
-			outerColorRange: ['#CEE7ED', '#08C1EA', '#200C00'], //range for interpolation
+			outerColorRange: ['#63daf9', '#52bad5', '#063c4a'], //range for interpolation
 		};
 
 		extendDeep(this, defaults);

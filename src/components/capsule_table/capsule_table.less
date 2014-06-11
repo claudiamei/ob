@@ -72,9 +72,10 @@
     width: 18px;
     height: 0%;
     background-color: @brand-success;
-    border: 1px solid darken(@brand-success, 8%);
+    border: 1px solid darken(@brand-success, 15%);
     border-radius: 3px 3px 0 0;
   }
+
 }
 
 
@@ -83,3 +84,12 @@
     margin: 0 0 15px 5%;
 }
 
+
+.high-performance .bar{
+    background-color: lighten(overlay(@brand-success, #bbb), 7%);
+    border-color: overlay(@brand-success, #777);
+}
+
+.low-performance .bar{
+    background-color: multiply(@brand-success, #bbb);
+}

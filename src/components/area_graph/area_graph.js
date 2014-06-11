@@ -20,14 +20,14 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 		var d3 = window.d3;
 		var defaults = {
 			margin: {
-				top : 40,
+				top : 10,
 				right : 20,
 				bottom : 30,
 				left : 45
 			},
 			width: function(element){return element.width();},
 			height: 180,
-			lineColors: ['#FF5F00', '#3DD3E1'],
+			lineColors: ['#ff9900', '#52bad5'],
 			areaColors: ['#FCECE2', '#C8F0F4'],
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
@@ -95,7 +95,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				xAxisFormat = config.xAxisFormat,
 				xAxisTickValues = config.xAxisTickValues,
 				yAxisFormat = config.yAxisFormat,
-				yAxisLabel = config.yAxisLabel,
+				yAxisLabel = "",
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
 				legendMargin = {top: margin.top + 30, left: margin.left + 30};
@@ -130,7 +130,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				.tickSize(0)
 				.ticks(4)
 				.tickFormat(yAxisFormat)
-				.tickPadding(12);
+				.tickPadding(10);
 
 			var svg = d3.select(element[0]).append('svg')
 				.attr('class', 'area-graph')

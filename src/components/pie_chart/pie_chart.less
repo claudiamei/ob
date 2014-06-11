@@ -3,7 +3,7 @@ ob-pie-chart {
   display: block;
 
   .pie-path {
-    opacity: .9;
+    opacity: 1;
     stroke: none;
   }
 
@@ -14,25 +14,31 @@ ob-pie-chart {
   .pie-label {
     position: absolute;
     width: 140px;
+
     text-align: center;
-    font-family: Arimo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
     pointer-events: none;
   }
 
   .pie-text {
     line-height: 1px;
     font-size: 32px;
+    color: #666;
   }
 
+    //TODO - let's round the data in the pie and use small percentile 
+    
   .pie-text:after {
     position: absolute;
     content: "%";
     font-size: 16px;
-    margin-top: 2px;
-  }
+    margin-top: 5px;
+  } 
 
   .pie-desc {
     line-height: 1;
-    font-size: 8px;
+    font-size: 10px;
+    margin-top: 3px;
+    color: #666;
   }
 }

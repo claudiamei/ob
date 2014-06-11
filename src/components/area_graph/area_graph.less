@@ -62,7 +62,7 @@ ob-area-graph {
   }
 
   .area-graph text {
-    fill: #AAAAAA;
+    fill: #333;
     font-size: 12px;
   }
 }
@@ -71,7 +71,8 @@ ob-area-graph {
   display: block;
   border-radius: 3px;
   background-color: rgba(0, 0, 0, .7);
-
+    top: 20 !important;
+//    TODO: Can't find what's controlling top height so i used important again
   //    TODO: I don't think this is the right way to handle the h3 tag here but it was all i could figure out for now.
 
   h3 {
@@ -103,7 +104,7 @@ ob-area-graph .ob-popover {
 .graph-key-row .key-color {
   vertical-align: middle;
   width: 15px;
-  height: 15;
+  height: 15px;
   border-radius: 8px;
   border: 2px solid #444;
 }
