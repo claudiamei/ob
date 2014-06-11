@@ -27,7 +27,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			},
 			width: function(element){return element.width();},
 			height: 180,
-			lineColors: ['#ff9900', '#52bad5'],
+			lineColors: ['#52BAD5', '#F90', '#5CB85C'],
 			areaColors: ['#FCECE2', '#C8F0F4'],
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
@@ -99,10 +99,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
 				legendMargin = {top: margin.top + 30, left: margin.left + 30};
-
-			// Temporary scale until colors are final
-			lineColor = d3.scale.category10();
-			areaColor =  d3.scale.category10();
 
 			var x = d3.time.scale()
 				.range([0, width]);
