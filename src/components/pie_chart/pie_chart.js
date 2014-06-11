@@ -33,9 +33,9 @@ angular.module('amelia-ui.charts.pie-chart', [])
 			sunburstInnerRadius: 80,
 			width: 280,
 			animDuration: 500,
-			colors: ['#be7100','#ffb84f', 'ff9900' ,'#ffdca8','#333333'], //light to dark
+			colors: ['#BE7100','#FFB84F', 'FF9900' ,'#FFDCA8','#333333'], //light to dark
 			collapseColors: ['#D9D1CC', '#B2A399','#8C7466','#664633','#200C00'],
-			outerColorRange: ['#63daf9', '#52bad5', '#063c4a'], //range for interpolation
+			outerColorRange: ['#63DAF9', '#52BAD5', '#063C4A'], //range for interpolation
 		};
 
 		extendDeep(this, defaults);

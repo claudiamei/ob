@@ -22,7 +22,6 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
 			timelineGraph = ObTimeline(element[0])
 				.width(500)
 				.height(194);
-			console.log(element.width())
 			var config = new OBTimelineGraphConfig($parse(attrs.obTimelineGraphOptions)(scope), timelineGraph);
 
 			scope.$watch('data', function(newData) {
