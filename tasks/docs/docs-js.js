@@ -7,7 +7,7 @@ var map = require('map-stream');
 var utils = require('../utils');
 
 var reporter = require('jshint-stylish');
-var jshintRc = require('../../jshintrc.json');
+var jshintRc = '.jshintrc';
 
 var test = {
 	hint: function hint () {
