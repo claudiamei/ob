@@ -91,11 +91,19 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			}
 
 			function setTicks(newTicks){
-				if(newTicks && newTicks.length){
+              if (newTicks){
+                return;
+              }
+
+				if(newTicks.length){
 					xAxisTickValues = newTicks;
 					xAxis.tickValues(xAxisTickValues);
 					scope.update(data, true);
 				}
+        else {
+          xAxis.tickValues(null);
+          scope.update(data, true);
+        }
 			}
 
 			var resizeDebounced = debounce(function() {

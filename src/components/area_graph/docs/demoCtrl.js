@@ -4,6 +4,8 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
     var number = 20;
     var current = $scope.dates.startDate.clone().startOf('day');
     var endDate = $scope.dates.endDate.clone().startOf('day');
+    $scope.xAxisTickValues = [];
+
     if ($scope.dateType === 'month') {
       endDate = endDate.startOf('month').startOf('day');
       current = current.startOf('month').startOf('day');
@@ -16,8 +18,8 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
       });
 
       if ($scope.dateType === 'month'){
+        $scope.xAxisTickValues.push(current._d);
         current.add('months', 1);
-        current = current.startOf('month').startOf('day');
       }
       else {
         current.add('days', 1).startOf('day');
@@ -60,7 +62,19 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
   $scope.dateType = 'day';
 
   $scope.$watch('dates', update);
-  $scope.$watch('dateType', update);
+  $scope.$watch('dateType', function(){
+    if ($scope.dateType === 'month') {
+      $scope.xAxisFormat = d3.time.format("%B");
+    }
+    else {
+      $scope.xAxisFormat  = d3.time.format.multi([
+        ["%a/%-d", function(d) { return d.getDate() !== 1; }],
+        ["%B", function(d) { return d.getMonth(); }],
+        ["%Y", function() { return true; }]
+      ]);
+    }
+    update();
+  });
 }]);
 
 angular.module('amelia.docs.controllers').controller('obAreaGraphControllerDemo', ['$scope', function($scope) {

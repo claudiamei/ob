@@ -196,8 +196,8 @@
             <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="day"
                    id="input-day"/><label for="input-day">Daily</label>
         </div>
-        <ob-area-graph class="col-xs-6" data="clicks"></ob-area-graph>
-        <ob-area-graph class="col-xs-6" data="ctr"></ob-area-graph>
+        <ob-area-graph  axis-x-tick-values="xAxisTickValues" ob-area-graph-options="{yAxisLabel:'Clicks'}" axis-x-format="xAxisFormat" class="col-xs-6" data="clicks"></ob-area-graph>
+        <ob-area-graph  axis-x-tick-values="xAxisTickValues" ob-area-graph-options="{yAxisLabel:'CTR'}" axis-x-format="xAxisFormat" class="col-xs-6" data="ctr"></ob-area-graph>
     </div>
 </script>
 
