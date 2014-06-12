@@ -15,18 +15,20 @@
 	}
 
 	ul.thead {
-		background-color: #d1d1d1;
+		background-color: #333;
 
 		.td {
-			color: #808080;
+			color: #eee;
 			font-size: 1.1rem;
 			&.sortable {
 				cursor: pointer;
 				.user-select(none);
-				&:hover,
+				&:hover{
+                    background-color: lighten(@brand-success, 15%);
+                }
 				&.active-sort {
-					color: #f3f3f3;
-					background-color: #3e3e3e;
+					color: #fff;
+					background-color: @brand-success;
 				}
 			}
 		}
@@ -41,6 +43,7 @@
 			&.totals {
 				.td {
 					color: #333;
+                    background-color: #ccc;
 				}
 				&::before {
 					content: "Totals >";
@@ -62,7 +65,7 @@
 		// &::after,
 		& .highlight {
 			// content: " ";
-			background: #dfdfdf;
+			background: #ddd;
 			position: absolute;
 			height: 100%;
 			bottom: 0;
