@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 038087268b83d96557380b25d7a99a8a78a73c1c
 ## Usage
 ### Locate the Code
 
