@@ -64,6 +64,7 @@ h2 {
 
     .right-options {
       float: right;
+      background-color: #fff;
     }
 
     .right-options .fa {
@@ -79,6 +80,7 @@ h2 {
     .demo-datepicker{
       color: #888;
       display: inline-block;
+      margin: 0 0 0 10px;
       input{
       }
     }
@@ -133,6 +135,7 @@ h2 {
       height: 20px;
       width: 20px;
       border-radius: 4px;
+      background: url('/images/sprite_assets/eyeball.png') no-repeat center;
     }
 
     span.legend-item:nth-child(1) .legend-icon-box {
@@ -154,7 +157,7 @@ h2 {
   }
 
   .area-graph-group {
-    border-right: 1px solid #DDD;
+    border-right: 1px dashed #ccc;
   }
 
   ob-pie-chart {
@@ -163,23 +166,34 @@ h2 {
   }
 
   ob-area-graph {
-    margin: 15px 0px 54px;
+    margin: 0px 0px 54px;
   }
 
-  .pie-group {
+.pie-group {
     background-color: #F8F8F8;
 
     /* Pie Chart Legend (Temporary) */
-    .pie-legend {
-        padding-bottom: 10px;
-        background: #fff;
-        border: 1px solid #ddd;
-        color: #666;
-        position: relative;
-        top: 30px;
-        right: 42%;
-        border-radius: 5px;
+    
+.pie-legend {
+    padding-bottom: 10px;
+	background: #fff;
+	border-left: 1px dashed #ccc;
+	color: #666;
+	position: relative;
+	height: 100%;
     }
+      
+.pie-legend-title{
+    color: #217287;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: #eee;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 5px 15px;
+    margin: 0 0 10px 0;
+}
+
 
     /*Disposable legend Css */
     .legend-row {
@@ -228,19 +242,73 @@ h2 {
 
 .area-title{
     color: #217287;
-    margin: 20px 0 0px 5%;
+    margin: 15px 0 0px 5%;
     font-weight: 700;
     font-size: 16px;
 }
 
-.pie-legend-title{
-    color: #217287;
-    font-weight: 700;
-    font-size: 16px;
-    background-color: #eee;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    padding: 5px 15px;
-    margin: 0 0 10px 0;
+button.all-devices.active{
+    height: 40px;
+    width: 40px;
+    background: #333 url('/images/sprite_assets/allr.png') no-repeat 8px center;
+    
+    &.active{
+        background: #333 url('/images/sprite_assets/all-over.png') no-repeat 8px center;
+    }
+    &:hover{
+        background: #333 url('/images/sprite_assets/all-over.png') no-repeat 8px center;
+    }
 }
+.desktop-devices{
+    height:40px;
+    width:40px;
+    background:url('/images/sprite_assets/desktop.png') no-repeat center;
+    
+    &.active{
+        background:  url('/images/sprite_assets/desktop-over.png') no-repeat center;
+    }
+    &:hover{
+        background:  url('/images/sprite_assets/desktop-over.png') no-repeat  center;
+    }
+
+}
+.tablet-devices{
+    height:40px;
+    width:40px;
+    background: url('/images/sprite_assets/tablet.png') no-repeat center;
+    
+    &.active{
+        background: #333  url('/images/sprite_assets/tablet-over.png') no-repeat  center;
+    }
+    &:hover{
+        background:  url('/images/sprite_assets/tablet-over.png') no-repeat  center;
+    }
+}
+.mobile-devices{
+    height:40px;
+    width:40px;
+    background: url('/images/sprite_assets/mobile.png') no-repeat center;
+    
+    &.active{
+        background: #333  url('/images/sprite_assets/mobile-over.png') no-repeat  center;
+    }
+    &:hover{
+        background:  url('/images/sprite_assets/mobile-over.png') no-repeat  center;
+    }
+}
+
+.download-options{
+    height:40px;
+    width:40px;
+    background: url('/images/sprite_assets/download.png') no-repeat center;
+    
+    &.active{
+        background: #333  url('/images/sprite_assets/downloadOver.png') no-repeat 8px center;
+    }
+    &:hover{
+        background:  @brand-success url('/images/sprite_assets/downloadOver.png') no-repeat 8px center;
+        border-color: darken(@brand-success, 10%);
+    }
+}
+
 

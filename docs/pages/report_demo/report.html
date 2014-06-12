@@ -21,21 +21,21 @@
         <div class="est-time">*EST Time</div>
         <div class="right-options">
             <div class="btn-group btn-options-group device-options">
-                <button class="btn btn-default active">
-                    <span class="fa fa-th"></span>
+                <button class="btn btn-default active all-devices">
+<!--                    <span class="fa fa-th"></span>-->
                 </button>
-                <button class="btn btn-default">
-                    <span class="fa fa-desktop"></span>
+                <button class="btn btn-default desktop-devices ">
+<!--                    <span class="fa fa-desktop"></span>-->
                 </button>
-                <button class="btn btn-default">
-                    <span class="fa fa-tablet"></span>
+                <button class="btn btn-default tablet-devices">
+<!--                    <span class="fa fa-tablet"></span>-->
                 </button>
-                <button class="btn btn-default">
-                    <span class="fa fa-mobile"></span>
+                <button class="btn btn-default mobile-devices">
+<!--                    <span class="fa fa-mobile"></span>-->
                 </button>
             </div>
-            <button class="btn btn-default download-option">
-                <span class="fa fa-download"></span>
+            <button class="btn btn-default download-options">
+<!--                <span class="fa fa-download"></span>-->
             </button>
         </div>
     </div>
@@ -48,42 +48,41 @@
 
     <div class="report-graphs">
         <div class="col-sm-12">
-           
             <div class="area-graph-group col-sm-6">
-                 <div class="area-title">Total Click Traffic</div>
+            <div class="area-title"> Click Performance</div>
                 <div ng-controller="obAreaGraphControllerDemo">
-                    <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 160}" data="data"></ob-area-graph>
+                    <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', height: 180}" data="data"></ob-area-graph>
                 </div>
                 <div class="area-graph-legend">
                 <span class="legend-item">
                     <div class="legend-icon-box">
-                        <span class="fa fa-eye"></span>
+<!--                        <span class="fa fa-eye"></span>-->
                     </div>
-                    <span>roboLemons.com</span>
+                    <span>lighthouse.com</span>
                 </span>
                 <span class="legend-item">
                     <div class="legend-icon-box">
-                        <span class="fa fa-eye"></span>
+<!--                        <span class="fa fa-eye"></span>-->
                     </div>
                     <span>outbrain.com</span>
                 </span>
                 <span class="legend-item">
                     <div class="legend-icon-box">
-                        <span class="fa fa-eye"></span>
+<!--                        <span class="fa fa-eye"></span>-->
                     </div>
                     <span>amelia.com</span>
                 </span>
                 </div>
             </div>
             <div class="pie-group col-sm-6">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <div ng-controller="obPieChartController">
                         <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="pie-legend">
-                        <div class="pie-legend-title">Top Sites</div>
+                        <div class="pie-legend-title"> Top Performers</div>
                         <div class="legend-row">
                             <div class="legend-color"></div>
                             <div class="legend-label">Fox News</div>
@@ -111,6 +110,7 @@
     </div>
 
     <div class="table-filters">
+        <div class="filter-title"> Filter by:</div>
         <div class="btn-group">
             <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
                 Category: All
