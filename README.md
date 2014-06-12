@@ -1,6 +1,8 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 038087268b83d96557380b25d7a99a8a78a73c1c
 ## Usage
-- a change to test versioning -
 ### Locate the Code
 
 Compiled CSS and javascript can be found in `/dist`.

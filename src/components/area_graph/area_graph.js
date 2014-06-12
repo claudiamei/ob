@@ -45,6 +45,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				["%B", function(d) { return d.getMonth(); }],
 				["%Y", function() { return true; }]
 			]),
+			snapLegendToPoints: false,
 		};
 		extendDeep(this, defaults);
 		extendDeep(this, options);
@@ -55,7 +56,9 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 	return {
 		restrict: 'EA',
 		scope: {
-			data: '='
+			data: '=',
+			xAxisFormat: '=axisXFormat',
+			xAxisTickValues: '=axisXTickValues',
 		},
 		templateUrl: '../src/components/area_graph/area-legend.html',
 		link: function(scope, element, attrs) {
@@ -70,7 +73,39 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 					scope.update(data || []);
 				}
 			}, true);
-			
+
+			scope.$watch('xAxisTickValues', function(newTicks){
+				setTicks(newTicks);
+			}, true);
+
+			scope.$watch('xAxisFormat', function(newFormat){
+				setAxisFormat(newFormat);
+			}, true);
+
+			function setAxisFormat(newFormat){
+				if(newFormat){
+					xAxisFormat = newFormat;
+					xAxis.tickFormat(xAxisFormat);
+					scope.update(data, true);
+				}
+			}
+
+			function setTicks(newTicks){
+              if (newTicks){
+                return;
+              }
+
+				if(newTicks.length){
+					xAxisTickValues = newTicks;
+					xAxis.tickValues(xAxisTickValues);
+					scope.update(data, true);
+				}
+        else {
+          xAxis.tickValues(null);
+          scope.update(data, true);
+        }
+			}
+
 			var resizeDebounced = debounce(function() {
 				scope.resize();
 				scope.update(data, true);
@@ -86,7 +121,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				margin = config.margin,
 				width = (typeof(config.width) === "function") ?
 					config.width(element) - margin.left - margin.right:
-					width - margin.left - margin.right,
+					config.width - margin.left - margin.right,
 				height = config.height - margin.top - margin.bottom,
 				lineColor = d3.scale.ordinal().range(config.lineColors),
 				areaColor = d3.scale.ordinal().range(config.areaColors),
@@ -98,7 +133,8 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				yAxisLabel = "",
 				interpolation = config.interpolation,
 				bisectDate = d3.bisector(function(d) { return d.date; }).right,
-				legendMargin = {top: margin.top + 30, left: margin.left + 30};
+				legendMargin = {top: margin.top + 30, left: margin.left + 30},
+				snapLegendToPoints = config.snapLegendToPoints;
 
 			var x = d3.time.scale()
 				.range([0, width]);
@@ -115,10 +151,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				.ticks(8)
 				.tickFormat(xAxisFormat)
 				.tickPadding(12);
-
-			if(xAxisTickValues.length){
-				xAxis.tickValues(xAxisTickValues);
-			}
 
 			var yAxis = d3.svg.axis()
 				.scale(y)
@@ -281,7 +313,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 						focus.transition().style('opacity', 0);
 						hoverLegend.transition().style('opacity', 0);
 					})
-					.on("mousemove", moveFocus);
+					.on("mousemove", moveTooltip);
 			};
 
 			scope.update = function(data, resize){
@@ -328,35 +360,60 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				voronoi.clipExtent([[-margin.left, -margin.top], [width + margin.right, height + margin.bottom]]);
 			};
 
-			function moveFocus(){
+			function moveTooltip(){
 				var x0 = d3.mouse(this)[0] - margin.left;
 				x0 = Math.max(0, x0);
 				x0 = Math.min(width, x0);
-				moveTooltip(x0);
-				focus.attr('transform', "translate(" + x0 + "," + 0 + ")");
-			}
-			
-			function moveTooltip(x0){
+
 				var xDate = x.invert(x0),
 					values = [],
-					d0, d1, i, yValue, interpolate, range;
+					d0, d1, i, yValue, interpolate, range, snapPoint,
+					legendDate, legendWidth, legendLeft, isLegendArrowRight;
 					
-				angular.forEach(data, function(d){
-					i = bisectDate(d.values, xDate);
-					d0 = d.values[i - 1];
-					d1 = d.values[i] || d0;
-					interpolate = d3.interpolateNumber(d0.value, d1.value);
-					range = d1.date - d0.date;
-					yValue = interpolate((xDate - d0.date) / range);
-					values.push(yValue);
-				});
-				hoverLegend.style('left', (x0 + legendMargin.left) + 'px');
-				updateTooltip(xDate, values);
+				if(snapLegendToPoints){
+					angular.forEach(data, function(d, i){
+						i = bisectDate(d.values, xDate);
+						d0 = d.values[i - 1];
+						d1 = d.values[i] || d0;
+						range = d1.date - d0.date;
+						snapPoint = (d0 != d1 && (xDate - d0.date) < (range/2)) ? d0: d1;
+						values.push(snapPoint.value);
+						x0 = x(snapPoint.date);
+					});
+					focus.transition()
+						.style('opacity', 1)
+						.attr('transform', "translate(" + x0 + "," + 0 + ")");
+					legendDate = snapPoint.date;
+
+				}else{
+					angular.forEach(data, function(d){
+						i = bisectDate(d.values, xDate);
+						d0 = d.values[i - 1];
+						d1 = d.values[i] || d0;
+						range = d1.date - d0.date;
+						interpolate = d3.interpolateNumber(d0.value, d1.value);
+						yValue = interpolate((xDate - d0.date) / range);
+						values.push(yValue);
+					});
+					focus.attr('transform', "translate(" + x0 + "," + 0 + ")");
+					legendDate = xDate;
+				}
+
+				legendWidth = parseInt(hoverLegend.style('width')) + legendMargin.left;
+				isLegendArrowRight = (x0 + legendWidth) < width;
+				if(isLegendArrowRight){
+					legendLeft = x0 + legendMargin.left;
+				}else{
+					legendLeft = x0 - legendWidth + legendMargin.left;
+				}
+				updateTooltip(legendDate, values, legendLeft, isLegendArrowRight);
 			}
 			
-			function updateTooltip(xDate, values){
-				legendTitle.text(hoverDateFormat(xDate));
-				
+			function updateTooltip(date, values, legendLeft, isLegendArrowRight){
+				hoverLegend.style('left', legendLeft + 'px')
+					.classed('right', isLegendArrowRight)
+					.classed('left', !isLegendArrowRight);
+				legendTitle.text(hoverDateFormat(date));
 				legendContent.data(values)
 					.select('.key-value')
 					.text(function(d){

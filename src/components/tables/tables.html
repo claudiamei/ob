@@ -1,0 +1,43 @@
+<div class="ob-table" ng-class="{
+	'show-totals': showTotals,
+	'expandable': expandable
+	}">
+	<ul class="thead">
+		<li class="row">
+			<ul class="tr">
+				<li class="td col-xs-{{metric.width}}" 
+					ng-class="{
+						sortable: metric.sortable,
+						sorted: predicate.indexOf(metric.key) > -1,
+						'sorted-desc': predicate === '-'+metric.key,
+						'sorted-asc': predicate === metric.key
+					}" ng-repeat="metric in schema"
+					ng-click="sortBy('-'+metric.key)">
+					{{metric.name}}
+				</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ul class="tbody">
+		<li class="row totals" ng-if="showTotals">
+			<ul class="tr">
+				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema">
+					{{totals[metric.key]}}
+				</li>
+			</ul>
+		</li>
+		<li class="row" ng-repeat="datum in data | orderBy:predicate" ng-init="expanded = !!datum.expanded" ng-class="{expanded: expanded}">
+			<ul class="tr clearfix">
+				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema">
+					{{metric.display(datum[metric.key])}}
+				</li>
+				<li class="expand-toggle" ng-click="expanded = !expanded">
+					<div class="center">&#8661;</div>
+				</li>
+				<li class="expanded-row" compile="expandedTemplate" ng-show="expanded"></li>
+			</ul>
+		</li>
+		<li class="highlight"></li>
+	</ul>
+</div>

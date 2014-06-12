@@ -5,6 +5,7 @@
     }
 </style>
 <div ob-demo-list demo-list="area-graph-1.html"></div>
+<div ob-demo-list demo-list="area-graph-2.html"></div>
 
 <h3>OBAreaGraphConfig Options</h3>
 <table class="table table-bordered table-striped">
@@ -100,6 +101,16 @@
             <a href="http://github.com/mbostock/d3/wiki/Time-Formatting#format_multi">github.com/mbostock/d3/wiki/Time-Formatting#format_multi</a>
         </td>
     </tr>
+    <tr>
+        <td>snapLegendToPoints</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>
+            true: The Hover Legend will snap onto the nearest data point to the mouse cursor on the graph.
+            <br>
+            false: The Hover Legend will calculate an interpolated value based on where the mouse cursor position.
+        </td>
+    </tr>
     </tbody>
 </table>
 
@@ -134,12 +145,11 @@
 <script type="text/ng-template" id="area-graph-1.html">
     <h3>Standard</h3>
     <div ng-controller="obAreaGraphControllerDemo">
-        <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" data="data"></ob-area-graph>
+        <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks'}" axis-x-tick-values="xAxisTickValues"
+                       axis-x-format="xAxisFormat" data="data"></ob-area-graph>
 
         <form class="form-horizontal">
-
             <div class="form-group">
-
                 <div class="form-col col-sm-6 area_dates">
                     <label class="control-label">Blue line Values (Date Range)</label>
 
@@ -153,7 +163,6 @@
                         <input class="form-control" type="text" ng-model="data.0.values.2.date">
                     </div>
                 </div>
-
                 <div class="form-col area_datapoints">
                     <label class="control-label">Data Points</label>
 
@@ -167,7 +176,6 @@
                         <input class="form-control" type="number" ng-model="data.0.values.2.value">
                     </div>
                 </div>
-
             </div>
         </form>
     </div>
@@ -188,15 +196,19 @@
             <input style="margin-right: 10px" type="radio" name="dateType" ng-model="dateType" value="day"
                    id="input-day"/><label for="input-day">Daily</label>
         </div>
-        <ob-area-graph class="col-xs-6" data="clicks"></ob-area-graph>
-        <ob-area-graph class="col-xs-6" data="ctr"></ob-area-graph>
+        <ob-area-graph  axis-x-tick-values="xAxisTickValues" ob-area-graph-options="{yAxisLabel:'Clicks'}" axis-x-format="xAxisFormat" class="col-xs-6" data="clicks"></ob-area-graph>
+        <ob-area-graph  axis-x-tick-values="xAxisTickValues" ob-area-graph-options="{yAxisLabel:'CTR'}" axis-x-format="xAxisFormat" class="col-xs-6" data="ctr"></ob-area-graph>
     </div>
 </script>
 
 <script type="text/ng-template" id="area-graph-2.html">
-    <h3>Customize Options</h3>
-    <div ng-controller="obAreaGraphControllerDemo">
-        <ob-area-graph data="data" ob-area-graph-options="{margin: {left: 50}, innerRadius: 20}">
-        </ob-area-graph>
+    <h3>Custom X-Axis Demo</h3>
+    A demo for customizing the x-axis
+    <a href="https://github.com/outbrain/AmeliaUI/blob/feature/xaxis/src/components/area_graph/docs/demoCtrl.js">
+        See obAreaGraphAxisControllerDemo for details.
+    </a>
+    <div ng-controller="obAreaGraphAxisControllerDemo">
+        <ob-area-graph ob-area-graph-options="{yAxisLabel:'Clicks', width:600, margin:{right:30}, snapLegendToPoints:true}" axis-x-tick-values="xAxisTickValues"
+                       axis-x-format="xAxisFormat" data="data"></ob-area-graph>
     </div>
 </script>

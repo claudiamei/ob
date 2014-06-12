@@ -1,6 +1,6 @@
 /* global describe, it, beforeEach, inject, expect */
 
-describe("Unit Testing Examples", function() {
+xdescribe("Unit Testing Examples", function() {
 
 	beforeEach(angular.mock.module('amelia-ui.kpi-boxes'));
 

@@ -4,6 +4,8 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
     var number = 20;
     var current = $scope.dates.startDate.clone().startOf('day');
     var endDate = $scope.dates.endDate.clone().startOf('day');
+    $scope.xAxisTickValues = [];
+
     if ($scope.dateType === 'month') {
       endDate = endDate.startOf('month').startOf('day');
       current = current.startOf('month').startOf('day');
@@ -16,8 +18,8 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
       });
 
       if ($scope.dateType === 'month'){
+        $scope.xAxisTickValues.push(current._d);
         current.add('months', 1);
-        current = current.startOf('month').startOf('day');
       }
       else {
         current.add('days', 1).startOf('day');
@@ -60,7 +62,19 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
   $scope.dateType = 'day';
 
   $scope.$watch('dates', update);
-  $scope.$watch('dateType', update);
+  $scope.$watch('dateType', function(){
+    if ($scope.dateType === 'month') {
+      $scope.xAxisFormat = d3.time.format("%B");
+    }
+    else {
+      $scope.xAxisFormat  = d3.time.format.multi([
+        ["%a/%-d", function(d) { return d.getDate() !== 1; }],
+        ["%B", function(d) { return d.getMonth(); }],
+        ["%Y", function() { return true; }]
+      ]);
+    }
+    update();
+  });
 }]);
 
 angular.module('amelia.docs.controllers').controller('obAreaGraphControllerDemo', ['$scope', function($scope) {
@@ -103,22 +117,81 @@ angular.module('amelia.docs.controllers').controller('obAreaGraphControllerDemo'
 	}];
 }]);
 
-angular.module('amelia.docs.controllers').controller('obAreaGraphCustomTicksControllerDemo', ['$scope', function($scope) {
+angular.module('amelia.docs.controllers').controller('obAreaGraphAxisControllerDemo', ['$scope', '$interval', function($scope, $interval) {
 	$scope.data = [{
 		name: 'TestPub1',
 		values: [{
 			value : 100,
-			date: '4/5/2014',
+			date: '1/5/2014',
 		}, {
 			value : 150,
-			date: '4/8/2014',
+			date: '1/10/2014',
 		}, {
 			value : 125,
-			date: '4/11/2014',
+			date: '1/15/2014',
 		}]
-	}]
+	}];
 
+	var dataSets = [{
+		xAxisTickValues: [new Date('1/5/2014'), new Date('1/15/2014')],
+		xAxisFormat: d3.time.format.multi([
+			["%I %p", function(d) { return d.getHours(); }],
+			["%a/%-d", function(d) { return d.getDate() !== 1; }],
+			["%B", function(d) { return d.getMonth(); }],
+			["%Y", function() { return true; }]
+		]),
+		data: [{
+			name: 'TestPub1',
+			values: [{
+				value : 100,
+				date: '1/5/2014',
+			}, {
+				value : 150,
+				date: '1/10/2014',
+			}, {
+				value : 125,
+				date: '1/15/2014',
+			}]
+		}],
+	},{
+		xAxisTickValues: [new Date('2/5/2014'), new Date('1/8/2014'), new Date('1/10/2014'), new Date('1/12/2014'), new Date('1/15/2014')],
+		xAxisFormat: d3.time.format.multi([
+			["%I %p", function(d) { return d.getHours(); }],
+			["%-m/%-d", function(d) { return d.getDate() !== 1; }],
+			["%B", function(d) { return d.getMonth(); }],
+		]),
+		data: [{
+			name: 'TestPub1',
+			values: [{
+				value : 100,
+				date: '1/1/2014',
+			}, {
+				value : 125,
+				date: '2/1/2014',
+			}]
+		}],
+	},{
+		xAxisTickValues: [new Date('2/1/2014'), new Date('3/1/2014')],
+		xAxisFormat: d3.time.format("%B"),
+		data: [{
+			name: 'TestPub1',
+			values: [{
+				value : 300,
+				date: '2/1/2014',
+			}, {
+				value : 225,
+				date: '3/1/2014',
+			}]
+		}],
+	}];
 
-
-
+	var i = 0;
+	$interval(function(){
+		if(i <3) {
+			$scope.xAxisTickValues = dataSets[i].xAxisTickValues;
+			$scope.xAxisFormat = dataSets[i].xAxisFormat;
+			$scope.data = dataSets[i].data;
+		}
+		i = (i + 1) % 3 ;
+	}, 5000);
 }]);
