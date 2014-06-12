@@ -1,4 +1,6 @@
-[ob-table] {
+.ob-table {
+
+	min-width: 964px;
 
 	ul.thead,
 	ul.tbody, 
@@ -7,6 +9,7 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		// overflow: hidden;
 	}
 
 	li.td {
@@ -15,35 +18,73 @@
 	}
 
 	ul.thead {
+<<<<<<< HEAD
 		background-color: #333;
 
 		.td {
 			color: #eee;
+=======
+		background-color: @table-head-bg-color;
+
+		.td {
+			color: @table-head-color;
+>>>>>>> feature/table
 			font-size: 1.1rem;
+			cursor: default;
+			.user-select(none);
 			&.sortable {
 				cursor: pointer;
 				.user-select(none);
+<<<<<<< HEAD
 				&:hover{
                     background-color: lighten(@brand-success, 15%);
                 }
 				&.active-sort {
 					color: #fff;
 					background-color: @brand-success;
+=======
+				&:hover,
+				&.sorted {
+					color: @table-head-active-color;
+					background-color: @table-head-active-bg-color;
 				}
+				&.sorted-asc::after {
+					content: '\25B2';
+>>>>>>> feature/table
+				}
+				&.sorted-desc::after {
+					content: '\25BC';
+				}
+				// &.sorted::before {
+				// 	position: absolute;
+				// 	height: 500px;
+				// 	width: 100%;
+				// 	background-color: #FF0;
+				// 	content: " ";
+				// 	top: 100%;
+				// 	z-index: 1;
+				// 	left: 0;
+				// }
 			}
 		}
 	}
 
 	ul.tbody {
-		background-color: #f6f6f6;
+		background-color: @table-body-bg-color;
 		.row {
 			position: relative;
 			z-index: 2;
-			border-bottom: 1px solid #ccc;
+			border-bottom: 1px solid @table-border-color;
 			&.totals {
+					background-color: @table-total-bg-color;
+					border-bottom: 1px @table-head-active-bg-color solid;
 				.td {
+<<<<<<< HEAD
 					color: #333;
                     background-color: #ccc;
+=======
+					color: @table-total-color;
+>>>>>>> feature/table
 				}
 				&::before {
 					content: "Totals >";
@@ -52,14 +93,14 @@
 					white-space: nowrap;
 					padding: 0.2rem;
 					font-size: 1.2rem;
-					background: #FFF;
+					background: @table-total-label-bg-color;
 					margin: 1.3rem 1.3rem 1.3rem 0.6rem;
-					color: #23ACDF;
+					color: @table-total-label-color;
 				}
 			}
 		}
 		.td {
-			color: #666;
+			color: @table-body-color;
 			padding: 1.3rem 0;
 		}
 		// &::after,
@@ -70,13 +111,13 @@
 			height: 100%;
 			bottom: 0;
 			// margin-left: 16.6666667%;
-			// left: 50px;
-			// width: 16.666667%;
+			left: 50px;
+			width: 16.666667%;
 			z-index: 1;
 			border-left: 1px solid #ccc;
 			border-right: 1px solid #ccc;
 			&.anim {
-				transition: margin-left 0.333s ease-in-out;
+				transition: margin-left @table-highlight-transition-duration @table-highlight-transition-timing-function;
 			}
 		}
 	}
@@ -84,8 +125,87 @@
 	&.show-totals {
 		ul.thead,
 		ul.tbody .row {
-			padding-left: 50px;
+			padding-left: 60px;
 		}
+
+		.expanded-row::before {
+			content: " ";
+			width: 60px;
+			height: 100%;
+			background-color: #FFF;
+			position: absolute;
+			left: 0;
+			margin-left: -60px;
+		}
+	}
+
+	&.expandable {
+		ul.thead,
+		ul.tbody .row {
+			padding-right: 30px;
+		}
+		.row.expanded .expand-toggle,
+		.row:hover .expand-toggle {
+			opacity: 1;
+			border-left: 1px solid @table-total-bg-color;
+		}
+		.expand-toggle {
+			position: absolute;
+			right: 0;
+			margin-right: -30px;
+			width: 30px;
+			height: 100%;
+			opacity: 0;
+			cursor: pointer;
+			text-align: center;
+			font-size: 2rem;
+			color: @table-body-color;
+			.user-select(none);
+
+			&::before {
+				content: '';
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+				margin-right: -0.25em; /* Adjusts for spacing */
+			}
+
+			&:hover {
+				color: @table-total-color;
+				background-color: @table-highlight-bg-color;
+			}
+
+			.center {
+				display: inline-block;
+				vertical-align: middle;
+				// width: 300px;
+			}
+		}
+
+		.expanded-row {
+			background-color: #FFF;
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			border-top: 1px solid #E2E2E2;
+		}
+		// ul.tbody .row:not(.totals)::after {
+		// 	position: absolute;
+		// 	top: 0;
+		// 	right: 0;
+		// 	content: '\21D5';
+		// 	width: 30px;
+		// 	text-align: center;
+		// 	// height: 100%;
+		// 	// margin-right: -30px;
+		// 	padding: 1.4rem 0;
+		// }
+		// ul.tbody .row:not(.totals):hover::after {
+		// 	background-color: @table-highlight-bg-color;
+		// 	&:hover {
+		// 		cursor: pointer;
+		// 	}
+		// }
 	}
 
 }
