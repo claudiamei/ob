@@ -18,31 +18,16 @@
 	}
 
 	ul.thead {
-<<<<<<< HEAD
-		background-color: #333;
-
-		.td {
-			color: #eee;
-=======
 		background-color: @table-head-bg-color;
 
 		.td {
 			color: @table-head-color;
->>>>>>> feature/table
 			font-size: 1.1rem;
 			cursor: default;
 			.user-select(none);
 			&.sortable {
 				cursor: pointer;
 				.user-select(none);
-<<<<<<< HEAD
-				&:hover{
-                    background-color: lighten(@brand-success, 15%);
-                }
-				&.active-sort {
-					color: #fff;
-					background-color: @brand-success;
-=======
 				&:hover,
 				&.sorted {
 					color: @table-head-active-color;
@@ -50,7 +35,6 @@
 				}
 				&.sorted-asc::after {
 					content: '\25B2';
->>>>>>> feature/table
 				}
 				&.sorted-desc::after {
 					content: '\25BC';
@@ -79,12 +63,7 @@
 					background-color: @table-total-bg-color;
 					border-bottom: 1px @table-head-active-bg-color solid;
 				.td {
-<<<<<<< HEAD
-					color: #333;
-                    background-color: #ccc;
-=======
 					color: @table-total-color;
->>>>>>> feature/table
 				}
 				&::before {
 					content: "Totals >";
@@ -106,7 +85,7 @@
 		// &::after,
 		& .highlight {
 			// content: " ";
-			background: #ddd;
+			background: #dfdfdf;
 			position: absolute;
 			height: 100%;
 			bottom: 0;
