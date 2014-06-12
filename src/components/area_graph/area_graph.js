@@ -28,7 +28,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			width: function(element){return element.width();},
 			height: 180,
 			lineColors: ['#52BAD5', '#F90', '#5CB85C'],
-			areaColors: ['#FCECE2', '#C8F0F4'],
+			areaColors: ['#52BAD5', '#F90', '#5CB85C'],
 			parseDate: function(d){return d3.time.format("%m/%d/%Y").parse(d.date);},
 			hoverDateFormat: d3.time.format('%-m/%-d/%Y'),
 			interpolation: 'monotone',
@@ -214,7 +214,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 				areaGroup.append("path")
 					.attr("class", "area")
 					.style('fill', function(d, i){return areaColor(i);})
-					.style('opacity', 0.05)
+					.style('opacity', .35)
 					.attr("d", function(d){return area(d.values);});
 
 				areaGroup.append("path")
