@@ -154,7 +154,7 @@ module.exports = {
 	},
 
 	test: function () {
-		var tasks = [test.hint, test.units];
+		var tasks = [test.hint];
 		return utils.run_tasks(__filename, tasks);
 	},
 
