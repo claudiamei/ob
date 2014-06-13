@@ -123,14 +123,16 @@
                 <span class="caret"></span>
             </button>
         </div>
-        <div class="btn-group search">
+        <!-- <div class="btn-group search">
             <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
                 Search
             </button>
-        </div>
+        </div> -->
+        <!-- <div class="search">
+            <input type="search" class="" placeholder="Search" ng-model="tableSearch" />
+        </div> -->
     </div>
-
     <div ng-controller="tableDemoController">
-        <div ob-table class="show-totals"></div>
+        <div ob-table class="show-totals" search="tableSearch"></div>
     </div>
 </div>

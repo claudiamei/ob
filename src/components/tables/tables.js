@@ -38,8 +38,12 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
         $scope.updateHighlight(true);
       };
 
-      $scope.sortBy = function (sortBy) {
-        $scope.predicate = ($scope.predicate !== sortBy) ? sortBy : sortBy.replace('-', '');
+      $scope.sortBy = function (sortBy, defaultSort) {
+        if (defaultSort === 'desc') {
+          $scope.predicate = ($scope.predicate !== '-'+sortBy) ? '-'+sortBy : sortBy;
+        } else {
+          $scope.predicate = ($scope.predicate !== sortBy) ? sortBy : '-'+sortBy;
+        }
       };
 
       // $scope.toggleExpandedRow = function (datum) {
@@ -47,10 +51,6 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
       //   datum.expanded = !!datum.expanded;
       // };
       // 
-      $scope.hello = function (datum) {
-        datum.expanded = !!datum.expanded;
-    alert(datum)
-  };
 
       // $scope.updateHighlight = function () {
       // 	var active = $($element).find('.active-sort');
@@ -97,47 +97,15 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
             } else {
               scope.totals[metric.key] = metric.display(min);
             }
-          } else {
+          } else if (metric.totalLogic === 'sum') {
             scope.totals[metric.key] = metric.display(total);
+          } else {
+            scope.totals[metric.key] = "&#8212";
           }
         });
-
-
-
-
-
-
-
-        // scope.updateHighlight = function(anim) {
-        //   var active = $(element).find('.active-sort');
-        //   var highlight = $(element).find('.highlight');
-        //   offset = active.position();
-        //   if (anim) {
-        //   	highlight.addClass('anim');
-        //   }
-        //   highlight.css('margin-left', active.position().left + parseInt(active.parents('.thead').css('padding-left'), 10))
-        //     .css('width', active.width() - 1);
-        //   setTimeout(function () {
-        //   	highlight.removeClass('anim');
-        //   }, 1000);
-        // };
-
-        // scope.updateActiveSort = function(sortBy) {
-        //   $(element).find('.active-sort').removeClass('active-sort');
-        //   $(element).find('[data-sortable="' + sortBy + '"]').addClass('active-sort');
-        // };
-
-        // scope.updateHighlight();
-
-        // var lookupDebounced = debounce(scope.updateHighlight, 10, false);
-        // var win = angular.element($window);
-        // win.bind('resize', function() {
-        //   // console.log('resize event')
-        //   lookupDebounced();
-        // });
-
       }
-      // scope: {},
-      // template: '{{currentTime | date:format}}'
     };
-  }]);
+  }])
+  .directive('ob-table-tr', function () {
+
+  });

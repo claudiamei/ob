@@ -1,10 +1,11 @@
 var app = angular.module('amelia.docs', [
 	'ngRoute',
 	'ngTable',
-  'ngBootstrap',
+  	'ngBootstrap',
 	'hljs',
 	'amelia.docs.components',
 	'amelia.docs.controllers',
+  	'ngAnimate',
 	'amelia-ui',
     'duScroll'
 ]);

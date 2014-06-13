@@ -8,25 +8,28 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
 		},
 		sortable: true,
 		width: '2',
-		totalLogic: 'range'
+		totalLogic: 'range',
+		defaultSort: 'desc'
 	},{
-		key: 'total_clicks',
-		name: 'Total Clicks',
+		key: 'title',
+		name: 'Title',
 		display: function (value) {
-			return $filter('number')(value, 0);
+			return value;
+		},
+		sortable: true,
+		width: '3',
+		totalLogic: undefined,
+		defaultSort: 'asc'
+	},{
+		key: 'authors',
+		name: 'Authors',
+		display: function (value) {
+			return value.join(', ');
 		},
 		sortable: true,
 		width: '2',
-		totalLogic: undefined
-	},{
-		key: 'organic_clicks',
-		name: 'Organic Clicks',
-		display: function (value) {
-			return $filter('number')(value, 0);
-		},
-		sortable: true,
-		width: '2',
-		totalLogic: undefined
+		totalLogic: undefined,
+		defaultSort: 'asc'
 	},{
 		key: 'paid_clicks',
 		name: 'Paid Clicks',
@@ -35,7 +38,8 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
 		},
 		sortable: true,
 		width: '2',
-		totalLogic: undefined
+		totalLogic: 'sum',
+		defaultSort: 'desc'
 	},{
 		key: 'page_views',
 		name: 'Page Views',
@@ -44,16 +48,18 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
 		},
 		width: '2',
 		sortable: true,
-		totalLogic: undefined
+		totalLogic: 'sum',
+		defaultSort: 'desc'
 	},{
 		key: 'ctr',
 		name: 'CTR',
 		display: function (value) {
 			return $filter('number')(value, 2) + '%';
 		},
-		width: '2',
+		width: '1',
 		sortable: true,
-		totalLogic: 'average'
+		totalLogic: 'average',
+		defaultSort: 'desc'
 	}];
 
 	// $scope.hello = function () {
@@ -74,43 +80,43 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
 
 	$scope.data = [{
 		date: new Date('3/7/2014'),
-		total_clicks: 456456,
-		organic_clicks: 43564,
+		title: "Hello Outbrain!",
+		authors: ["Joe Shmo", "Barack Obama"],
 		paid_clicks: 264645,
 		page_views: 975524,
 		ctr: 5.13
 	},{
 		date: new Date('3/8/2014'),
-		total_clicks: 659735,
-		organic_clicks: 42567,
+		title: "That is one sweet design...",
+		authors: ["Aaron Neeley"],
 		paid_clicks: 87360,
 		page_views: 474558,
 		ctr: 3.13
 	},{
 		date: new Date('3/9/2014'),
-		total_clicks: 46537,
-		organic_clicks: 6552,
+		title: "Do you think I'm sexy?",
+		authors: ["Cody Nicholson"],
 		paid_clicks: 87360,
 		page_views: 54386788,
 		ctr: 10.13
 	},{
 		date: new Date('3/10/2014'),
-		total_clicks: 4653294,
-		organic_clicks: 69564,
+		title: "No Sleep Till Brooklyn!",
+		authors: ["TJ Lavelle", "Bill De Blasio"],
 		paid_clicks: 87360,
 		page_views: 7867838,
 		ctr: 4.13
 	},{
 		date: new Date('3/11/2014'),
-		total_clicks: 43564,
-		organic_clicks: 39754,
+		title: "Gold teeth and a curse for this town were all in my mouth.",
+		authors: ["Shins"],
 		paid_clicks: 87360,
 		page_views: 35808,
 		ctr: 87.13
 	},{
 		date: new Date('3/12/2014'),
-		total_clicks: 1357,
-		organic_clicks: 1217,
+		title: "Triangles are my facorite shape, three points where two lines meet.",
+		authors: ["Alt-J"],
 		paid_clicks: 1646,
 		page_views: 4345645,
 		ctr: 52.13
