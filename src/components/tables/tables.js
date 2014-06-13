@@ -35,7 +35,7 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
       $scope.applySort = function(sortBy) {
         console.log(sortBy)
         $scope.updateActiveSort(sortBy);
-        $scope.updateHighlight(true);
+        $scope.updateHighlight(sortBy);
       };
 
       $scope.sortBy = function (sortBy, defaultSort) {
@@ -44,6 +44,7 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
         } else {
           $scope.predicate = ($scope.predicate !== sortBy) ? sortBy : '-'+sortBy;
         }
+        $scope.updateHighlight(sortBy);
       };
 
       // $scope.toggleExpandedRow = function (datum) {
@@ -52,13 +53,15 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
       // };
       // 
 
-      // $scope.updateHighlight = function () {
-      // 	var active = $($element).find('.active-sort');
-      // 	var highlight = $($element).find('.highlight');
-      // 	offset = active.position();
-      // 	highlight.css('margin-left', active.position().left + parseInt(active.parents('.thead').css('padding-left'), 10))
-      // 		.css('width', active.width() - 1);
-      // };
+      $scope.updateHighlight = function (sortBy) {
+      	var active = $($element).find('[data-metric="'+sortBy+'"]');
+      	var highlight = $($element).find('.highlight');
+      	offset = active.position();
+      	highlight.css('margin-left', active.position().left + parseInt(active.parents('.thead').css('padding-left'), 10))
+      		.css('width', active.width());
+      };
+
+
     }
   ])
   .directive('obTable', ['$window', 'debounce', '$filter', function($window, debounce, $filter) {
@@ -102,10 +105,26 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
           } else {
             scope.totals[metric.key] = "&#8212";
           }
+
         });
+
+        // scope.updateHighlight(scope.predicate);
+        var timeout = setInterval(function () {
+          if ($(element).find('.sorted').length > 0) {
+            scope.updateHighlight(scope.predicate.replace('-', ''));
+            clearTimeout(timeout);
+          }
+        }, 500);
       }
     };
   }])
   .directive('ob-table-tr', function () {
 
+  })
+  .directive('repeatDone', function() {
+    return function(scope, element, attrs) {
+      if (scope.$last) { // all are rendered
+        scope.$eval(attrs.repeatDone);
+      }
+    }
   });

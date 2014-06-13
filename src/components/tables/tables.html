@@ -1,8 +1,9 @@
 <div class="ob-table" ng-class="{
 	'show-totals': showTotals,
 	'expandable': expandable
-	}">
+	}" ng-cloak>
 	<div class="table-filters clearfix">
+
 		<input type="search" class="" placeholder="Search" ng-model="search" />
 	</div>
 	<ul class="thead">
@@ -15,8 +16,8 @@
 						'sorted-desc': predicate === '-'+metric.key,
 						'sorted-asc': predicate === metric.key
 					}" ng-repeat="metric in schema"
-					ng-click="sortBy(metric.key, metric.defaultSort)">
-					{{metric.name}}
+					ng-click="sortBy(metric.key, metric.defaultSort)"
+					data-metric="{{metric.key}}" ng-bind-html="metric.name">
 				</li>
 			</ul>
 		</li>
@@ -25,13 +26,18 @@
 	<ul class="tbody">
 		<li class="row totals" ng-if="showTotals">
 			<ul class="tr">
-				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema" ng-bind-html="totals[metric.key]">
+				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema" ng-bind-html="totals[metric.key]"
+				ng-class="{
+					sorted: predicate.indexOf(metric.key) > -1
+				}">
 				</li>
 			</ul>
 		</li>
 		<li class="row animate-repeat" ng-repeat="datum in data | filter: search | orderBy:predicate" ng-init="expanded = !!datum.expanded" ng-class="{expanded: expanded}">
 			<ul class="tr clearfix">
-				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema">
+				<li class="td col-xs-{{metric.width}}" ng-repeat="metric in schema" ng-class="{
+					sorted: predicate.indexOf(metric.key) > -1
+				}">
 					{{metric.display(datum[metric.key])}}
 				</li>
 				<li class="expand-toggle" ng-click="expanded = !expanded">

@@ -64,6 +64,10 @@
 					border-bottom: 1px @table-head-active-bg-color solid;
 				.td {
 					color: @table-total-color;
+					&.sorted {
+						color: @table-total-active-color;
+						background-color: @table-total-active-bg-color;
+					}
 				}
 				&::before {
 					content: "Totals >";
@@ -82,7 +86,7 @@
 			color: @table-body-color;
 			padding: 1.3rem 0;
 		}
-		// &::after,
+		// // &::after,
 		& .highlight {
 			// content: " ";
 			background: #dfdfdf;
@@ -90,7 +94,7 @@
 			height: 100%;
 			bottom: 0;
 			// margin-left: 16.6666667%;
-			left: 50px;
+			// left: 50px;
 			width: 16.666667%;
 			z-index: 1;
 			border-left: 1px solid #ccc;
