@@ -7,8 +7,8 @@ var map = require('map-stream');
 var utils = require('../utils');
 
 var reporter = require('jshint-stylish');
-var jshintRc = require('../../jshintrc.json');
-
+var jshintRc = '.jshintrc';
+tasks.jshint.lookup = jshintRc;
 // var files = {
 // 	docs: {},
 // 	src: {
@@ -154,7 +154,7 @@ module.exports = {
 	},
 
 	test: function () {
-		var tasks = [test.hint, test.units];
+		var tasks = [test.hint];
 		return utils.run_tasks(__filename, tasks);
 	},
 

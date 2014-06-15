@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# AmeliaUI quality check:
+# 1. npm install
+# 2. jshint
+# 3. unit tests
+
+npm install
+bin/amelia-ui -t test
