@@ -91,7 +91,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 			}
 
 			function setTicks(newTicks){
-              if (newTicks){
+              if (!newTicks){
                 return;
               }
 
