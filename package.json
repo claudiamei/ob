@@ -57,7 +57,8 @@
     "q": "~1.0.0",
     "reload": "~0.1.0",
     "run-sequence": "0.3.6",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "gulp-svg-sprites": "^0.1.2"
   },
   "engines": {
     "node": ">=0.8.0"
