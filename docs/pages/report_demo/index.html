@@ -1,4 +1,4 @@
-<ob-wrapper>
+<ob-wrapper ng-init="report = 'pages/report_demo/dashboard.html'">
 	<div id="main" role="main">
         <div id="content">
             <header class="ob-header">
@@ -11,7 +11,7 @@
                 </ob-dropdown>
             </header>
 
-            <ng-include src="'pages/report_demo/report.html'"></ng-include>
+            <ng-include src="report"></ng-include>
         </div>
 
 	</div>
@@ -19,7 +19,7 @@
 	<div id="left-sidebar" ob-sidebar-navigation>
 			<ul>
 				<li class="active">
-					<a ob-nav-link ng-href="" class="color-gray">
+					<a ob-nav-link ng-href="" class="color-gray" ng-click="report = 'pages/report_demo/dashboard.html'">
 						<div class="image">
 							<img src="images/sprite_assets/dashboard.png"></img>
 						</div>
@@ -28,7 +28,7 @@
 					</a>
 				</li>
 				<li>
-					<a ob-nav-link ng-href="" class="color-gray">
+					<a ob-nav-link ng-href="" class="color-gray" ng-click="report = 'pages/report_demo/social.html'">
 						<div class="image">
 							<img src="images/sprite_assets/social.png">
 						</div>

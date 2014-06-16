@@ -120,6 +120,12 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
               clearTimeout(timeout);
             }
           }, 500);
+
+          scope.$watch(function () {
+            return element.width()
+          }, function () {
+            scope.updateHighlight(scope.predicate.replace('-', ''));
+          });
         }
       };
     }
