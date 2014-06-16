@@ -7,7 +7,7 @@ var path = require('path');
 var Q = require('q');
 
 Q.all([
-  //src.js.test(),
+  src.js.test(),
   jsBeautify.verifyOnly(),
   docs.js.test()
 ])

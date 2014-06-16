@@ -17,7 +17,7 @@ angular.module('d3', [])
       scriptTag.type = 'text/javascript';
       scriptTag.async = true;
       //scriptTag.src = 'http://d3js.org/d3.v3.min.js';
-      scriptTag.src = '/docs/lib/d3/d3.js'
+      scriptTag.src = '/docs/lib/d3/d3.js';
       scriptTag.onreadystatechange = function() {
         if (this.readyState === 'complete') {
           onScriptLoad();

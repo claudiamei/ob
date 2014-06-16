@@ -1,8 +1,3 @@
-var scripts = document.getElementsByTagName("script");
-var currentScriptPath = scripts[scripts.length - 1].src;
-
-// console.log(currentScriptPath);
-
 angular.module('amelia-ui.page', ['amelia-ui.clock', 'amelia-ui.utils.debounce'])
   .directive('obWrapper', ['$window', 'debounce',
     function($window, debounce) {
