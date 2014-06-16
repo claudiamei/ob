@@ -1,4 +1,4 @@
-window.DropdownNewsPropertyCtrl = function ($scope) {
+window.DropdownNewsPropertyCtrl = function($scope) {
   $scope.items = [
     'CNN',
     'Fox News',

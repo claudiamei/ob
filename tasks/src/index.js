@@ -5,7 +5,7 @@ var amelia_icons = require('./src-icons');
 // var amelia_markdown = require('./amelia-reload');
 // var ameliaDocs = require('./amelia-docs');
 
-function Amelia () {};
+function Amelia() {};
 
 Amelia.prototype.js = amelia_js;
 Amelia.prototype.css = amelia_css;

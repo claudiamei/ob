@@ -1,4 +1,4 @@
-window.DropdownFrontpageCtrl = function ($scope) {
+window.DropdownFrontpageCtrl = function($scope) {
   $scope.items = [
     'Homepage',
     'Mobile',

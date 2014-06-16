@@ -7,11 +7,10 @@ var path = require('path');
 var Q = require('q');
 
 Q.all([
-    src.js.build(),
-    src.css.build(),
-    docs.html.build(),
-    docs.css.build()
+  src.js.build(),
+  src.css.build(),
+  docs.html.build(),
+  docs.css.build()
 
-  ])
-  .then(function () {
-  });
+])
+  .then(function() {});

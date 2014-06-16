@@ -7,7 +7,7 @@ var path = require('path');
 var Q = require('q');
 
 Q.all([
-	//src.js.test(),
-	docs.js.test()
+  //src.js.test(),
+  docs.js.test()
 ])
-.then(function () {});
+  .then(function() {});

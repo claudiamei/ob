@@ -6,7 +6,7 @@ var tasks = require('gulp-load-plugins')();
 var utils = require('../utils');
 
 var serve = {
-  outbrain_font: function outbrain_font () {
+  outbrain_font: function outbrain_font() {
     gulp.src(['src/icons/*.svg'])
       .pipe(tasks.iconfontCss({
         fontName: 'outbrain',
@@ -17,11 +17,11 @@ var serve = {
       .pipe(tasks.iconfont({
         fontName: 'outbrain', // required
         appendCodepoints: false // recommended option
-       }))
-        .on('codepoints', function(codepoints, options) {
-          // CSS templating, e.g.
-          console.log(codepoints, options);
-        })
+      }))
+      .on('codepoints', function(codepoints, options) {
+        // CSS templating, e.g.
+        console.log(codepoints, options);
+      })
       .pipe(gulp.dest(path.join('docs', '.tmp', 'fonts')));
   }
 };

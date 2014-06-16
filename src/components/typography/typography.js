@@ -1,7 +1,9 @@
 window.WebFontConfig = {
-  google: { families: [ 'Lato:300,400,700:latin' ] }
+  google: {
+    families: ['Lato:300,400,700:latin']
+  }
 };
-(function () {
+(function() {
   var wf = document.createElement('script');
   wf.src = ('https:' === document.location.protocol ? 'https' : 'http') +
     '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';

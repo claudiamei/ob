@@ -13,22 +13,22 @@ var filesToBeautify = [
   path.join('tasks', '**', '*.js'),
 ];
 
-var verifyOnly = function () {
+var verifyOnly = function() {
   gulp.src(filesToBeautify)
-    .pipe(prettify(
-      {
-        config: '.jsbeautifyrc',
-        mode: 'VERIFY_ONLY'
-      }));
+    .pipe(prettify({
+      config: '.jsbeautifyrc',
+      mode: 'VERIFY_ONLY'
+    }));
 };
 
-var verifyAndFix = function () {
-  gulp.src(filesToBeautify, {base: './'})
-    .pipe(prettify(
-      {
-        config: '.jsbeautifyrc',
-        mode: 'VERIFY_AND_WRITE'
-      })).pipe(gulp.dest('./'));
+var verifyAndFix = function() {
+  gulp.src(filesToBeautify, {
+    base: './'
+  })
+    .pipe(prettify({
+      config: '.jsbeautifyrc',
+      mode: 'VERIFY_AND_WRITE'
+    })).pipe(gulp.dest('./'));
 };
 
 module.exports = {
