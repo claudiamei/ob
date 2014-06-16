@@ -1,6 +1,5 @@
 
 function OBSparkline(selector) {
-
   var d3 = window.d3,
     selection = d3.select(selector),
     margin = {
@@ -75,20 +74,17 @@ function OBSparkline(selector) {
       .attr("height", height);
 
     sparklineGroup = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      .data(data);
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     sparklineGroup.append("path")
+      .datum(data)
       .attr("class", "line")
-      .attr("d", function(d) {
-        return line(d);
-      });
+      .attr("d", line);
 
     sparklineGroup.append("path")
+      .datum(data)
       .attr("class", "area")
-      .attr("d", function(d) {
-        return area(d);
-      });
+      .attr("d", area);
   }
 
   function update(data) {
