@@ -1,6 +1,8 @@
-function ObTimeline(selector) {
 
-  var selection = d3.select(selector),
+window.OBTimelineGraph = function OBTimelineGraph(selector) {
+
+  var d3 = window.d3,
+	selection = d3.select(selector),
     margin = {
       top: 35,
       right: 20,
@@ -16,8 +18,7 @@ function ObTimeline(selector) {
     color = d3.scale.category10(),
     x = d3.time.scale(),
     y = d3.scale.linear(),
-    xAxisFormat = d3.time.format('%-I'),
-    xAxisFormat = d3.time.format('%m/%d'),
+    //xAxisFormat = d3.time.format('%m/%d'),
     xAxis = d3.svg.axis().scale(x).orient("bottom"),
     xAxisLabel,
     xAxisGroup,
@@ -31,33 +32,38 @@ function ObTimeline(selector) {
     line = d3.svg.line(),
     valuesFilter = function(d) { //
       return valuesAccessor(d).filter(function(d) {
-        return yAccessor(d) != 0 && yAccessor(d) != null
+        return yAccessor(d) !== 0 && yAccessor(d) !== null;
       });
     },
     valuesAccessor = function(d) {
       return d.values;
     },
     xAccessor = function(d, value) {
-      if (value) d.date = value;
+      if (value) {
+        d.date = value;
+      }
       return d.date;
     },
     yAccessor = function(d) {
       return d.value;
     };
 
-  function setAxis() {
+  /*function setAxis() {
     if ((xExtent[1] - xExtent[0]) / (1000 * 60) <= 61) {
       xAxis.ticks(d3.time.minutes, 10)
-        .tickFormat(d3.time.format('%-I:%M'))
+        .tickFormat(d3.time.format('%-I:%M'));
     } else {
       xAxis.ticks(d3.time.hours, 2)
         .tickFormat(xAxisFormat);
     }
-  }
+  }*/
 
   function setScale(data) {
     var xExtents = data.map(function(d) {
       return d3.extent(valuesAccessor(d), function(d) {
+        if(typeof(xAccessor(d)) !== 'string'){
+          return xAccessor(d);
+        }
         var date = parseDate(xAccessor(d));
         return xAccessor(d, date);
       });
@@ -77,30 +83,25 @@ function ObTimeline(selector) {
     setScale(data);
     //setAxis();
 
-    width = width - margin.left - margin.right;
-    height = height - margin.top - margin.bottom;
-
-    timelineHeight = ~~ (height / data.length);
-    x.range([0, width]);
-    y.range([height, 0]);
+    timelineHeight = ~~((height - margin.top - margin.bottom) / data.length);
+    x.range([0, width - margin.left - margin.right]);
+    y.range([height - margin.top - margin.bottom, 0]);
 
     svg = selection.append('svg')
       .attr('class', 'timeline-graph')
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom);
+      .attr("width", width)
+      .attr("height", height);
 
     graphGroup = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     line.defined(function(d) {
-      return yAccessor(d) != null;
+      return yAccessor(d) !== null;
     })
       .x(function(d) {
         return x(xAccessor(d));
       })
-      .y(function(d) {
-        return 0
-      });
+      .y(0);
 
     timelineGroup = graphGroup.selectAll('.timeline-group')
       .data(data)
@@ -110,7 +111,7 @@ function ObTimeline(selector) {
         return "translate(0," + (i * timelineHeight) + ")";
       })
       .attr('class', 'timeline-group').style('fill', function(d, i) {
-        return color(i)
+        return color(i);
       });
 
     timelineGroup.append("path")
@@ -125,7 +126,7 @@ function ObTimeline(selector) {
       .append('circle')
       .attr('class', 'circ')
       .attr('r', 0)
-      .style('opacity', .7)
+      .style('opacity', 0.7)
       .attr("transform", function(d) {
         return "translate(" + x(xAccessor(d)) + ",0)";
       });
@@ -135,12 +136,12 @@ function ObTimeline(selector) {
         return i * 10;
       })
       .attr('r', function(d) {
-        return yAccessor(d) + 4
-      })
+        return yAccessor(d) + 4;
+      });
 
     xAxisGroup = graphGroup.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height - margin.top - margin.bottom) + ")")
       .call(xAxis);
   }
 
@@ -151,11 +152,11 @@ function ObTimeline(selector) {
       .duration(1000)
       .call(xAxis);
 
-    timelineGroup.data(data)
+    timelineGroup.data(data);
 
     timelineGroup.selectAll('.timeline-line')
       .data(function(d) {
-        return [d]
+        return [d];
       })
       .transition()
       .attr("d", function(d) {
@@ -163,13 +164,13 @@ function ObTimeline(selector) {
       });
 
     circles = timelineGroup.selectAll('.circ')
-      .data(valuesFilter)
+      .data(valuesFilter);
 
     circles.enter()
       .append('circle')
       .attr('class', 'circ')
       .attr('r', 0)
-      .style('opacity', .7)
+      .style('opacity', 0.7)
       .attr("transform", function(d) {
         return "translate(" + x(xAccessor(d)) + ",0)";
       })
@@ -178,7 +179,7 @@ function ObTimeline(selector) {
         return i * 10;
       })
       .attr('r', function(d) {
-        return yAccessor(d) + 4
+        return yAccessor(d) + 4;
       });
 
     circles.exit()
@@ -189,12 +190,16 @@ function ObTimeline(selector) {
 
     circles.transition()
       .attr('r', function(d) {
-        return yAccessor(d) + 4
+        return yAccessor(d) + 4;
       })
       .attr("transform", function(d) {
         return "translate(" + x(xAccessor(d)) + ",0)";
-      })
+      });
+  }
 
+  function resize(){
+    x.range([0, width - margin.left - margin.right]);
+    svg.attr("width", width);
   }
 
   chart.render = function(data) {
@@ -207,35 +212,40 @@ function ObTimeline(selector) {
     return chart;
   };
 
+  chart.resize = function() {
+    resize();
+    return chart;
+  };
+
   chart.margin = function(_) {
-    if (!arguments.length) return margin;
+    if (!arguments.length){return margin;}
     margin = _;
     return chart;
   };
 
   chart.width = function(_) {
-    if (!arguments.length) return width;
+    if (!arguments.length) {return width;}
     width = _;
     return chart;
   };
 
   chart.height = function(_) {
-    if (!arguments.length) return height;
+    if (!arguments.length) {return height;}
     height = _;
     return chart;
   };
 
   chart.title = function(_) {
-    if (!arguments.length) return title;
+    if (!arguments.length) {return title;}
     title = _;
     return chart;
   };
 
   chart.xAxisLabel = function(_) {
-    if (!arguments.length) return xAxisLabel;
+    if (!arguments.length) {return xAxisLabel;}
     xAxisLabel = _;
     return chart;
   };
 
-  return chart
-}
+  return chart;
+};

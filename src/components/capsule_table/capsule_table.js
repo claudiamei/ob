@@ -19,7 +19,7 @@ angular.module('amelia-ui.charts.capsule-table', [])
     function scaleBars() {
       $scope.total = 0;
       angular.forEach($scope.capsule, function(d) {
-        $scope.total += +d.value
+        $scope.total += +d.value;
       });
       angular.forEach($scope.capsule, function(d) {
         d.percent = +(100 * d.value / $scope.total).toFixed(2);
@@ -39,9 +39,7 @@ angular.module('amelia-ui.charts.capsule-table', [])
           capsule.percent = +(100 * value / $scope.max).toFixed(2);
         });
       } else {
-        capsule.$watch('value', function(value) {
-          scaleBars();
-        });
+        capsule.$watch('value', scaleBars);
       }
 
       capsule.$on('$destroy', function() {
@@ -87,4 +85,4 @@ angular.module('amelia-ui.charts.capsule-table', [])
       obCapsuleTableController.add('capsule', scope, element);
     }
   };
-})
+});

@@ -1,12 +1,15 @@
 angular.module('amelia-ui.charts.timeline-graph', ['d3'])
-  .service('OBTimelineGraphConfig', function() {
-    return function(options, timelineGraph) {
-      for (var attr in options) {
+
+.service('OBTimelineGraphConfig', function() {
+  return function(options, timelineGraph) {
+    for (var attr in options) {
+      if(options.hasOwnProperty(attr)){
         timelineGraph[attr](options[attr]);
       }
-      return options;
-    };
-  })
+    }
+    return options;
+  };
+})
 
 .directive('obTimelineGraph', [
   '$parse', '$window', 'd3Service', 'OBTimelineGraphConfig', 'debounce',
@@ -17,12 +20,19 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
         data: '='
       },
       link: function(scope, element, attrs) {
-        var data, timelineGraph, create = true;
+        var data,
+          create = true,
+          timelineGraph = window.OBTimelineGraph(element[0]);
 
-        timelineGraph = ObTimeline(element[0])
-          .width(500)
-          .height(194);
         var config = new OBTimelineGraphConfig($parse(attrs.obTimelineGraphOptions)(scope), timelineGraph);
+
+        function setWidth(){
+          if(!config.width){
+            timelineGraph.width(element.width());
+          }
+        }
+
+        setWidth();
 
         scope.$watch('data', function(newData) {
           data = angular.copy(newData);
@@ -33,6 +43,23 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
             timelineGraph.update(data);
           }
         }, true);
+
+        scope.$watch(function () {
+            return {
+              w: element.width(),
+            };
+          }, function (newValue, oldValue) {
+            if (newValue.w !== oldValue.w) {
+              setWidth();
+              resizeDebounced();
+            }
+          }, true
+        );
+
+        var resizeDebounced = debounce(function() {
+          timelineGraph.resize();
+          timelineGraph.update(data, true);
+        }, 1000, false);
       }
     };
   }

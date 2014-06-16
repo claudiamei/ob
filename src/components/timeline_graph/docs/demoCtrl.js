@@ -59,8 +59,8 @@ angular.module('amelia.docs.controllers').controller('obTimelineGraphControllerD
 
   $interval(function() {
     var data = [],
-      row = {},
-      values = [];
+      row = {};
+
     $scope.data.forEach(function(d) { //create rows with random values
       row = {};
       row.name = d.name;

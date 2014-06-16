@@ -115,6 +115,17 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
           setAxisFormat(newFormat);
         }, true);
 
+        scope.$watch(function () {
+            return {
+              w: element.width(),
+            };
+          }, function (newValue, oldValue) {
+            if (newValue.w !== oldValue.w) {
+              resizeDebounced();
+            }
+          }, true
+        );
+
         function setAxisFormat(newFormat) {
           if (newFormat) {
             xAxisFormat = newFormat;
@@ -142,10 +153,6 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
           scope.resize();
           scope.update(data, true);
         }, 1000, false);
-
-        angular.element($window).on('resize', function() {
-          resizeDebounced();
-        });
 
         /* d3 Configuration*/
         var d3 = window.d3,
@@ -207,7 +214,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 
         var area = d3.svg.area()
           .defined(function(d) {
-            return d.value != null;
+            return d.value !== null;
           })
           .interpolate(interpolation)
           .x(function(d) {
@@ -220,7 +227,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
 
         var line = d3.svg.line()
           .defined(function(d) {
-            return d.value != null;
+            return d.value !== null;
           })
           .interpolate(interpolation)
           .x(function(d) {
@@ -310,7 +317,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
             .style('fill', function(d, i) {
               return areaColor(i);
             })
-            .style('opacity', .35)
+            .style('opacity', 0.35)
             .attr("d", function(d) {
               return area(d.values);
             });
@@ -479,7 +486,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
               d0 = d.values[i - 1];
               d1 = d.values[i] || d0;
               range = d1.date - d0.date;
-              snapPoint = (d0 != d1 && (xDate - d0.date) < (range / 2)) ? d0 : d1;
+              snapPoint = (d0 !== d1 && (xDate - d0.date) < (range / 2)) ? d0 : d1;
               values.push(snapPoint.value);
               x0 = x(snapPoint.date);
             });
@@ -520,7 +527,9 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
           legendContent.data(values)
             .select('.key-value')
             .text(function(d) {
-              if (!d) return d3.select(this).text();
+              if (!d){
+                return d3.select(this).text();
+              }
               return (d >= 100) ? d3.format('.3s')(d) : d.toFixed(0);
             });
         }
