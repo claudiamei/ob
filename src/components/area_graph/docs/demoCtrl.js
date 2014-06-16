@@ -1,3 +1,5 @@
+/* global moment, d3 */
+
 angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphControllerDemo', ['$scope',
   function($scope) {
     var update = function() {
@@ -25,7 +27,7 @@ angular.module('amelia.docs.controllers').controller('obDateRangeAreaGraphContro
           current.add('days', 1).startOf('day');
         }
 
-        number = ~~ (Math.random() * 30);
+        number = (Math.random() * 30);
       }
 
       $scope.clicks = [{
