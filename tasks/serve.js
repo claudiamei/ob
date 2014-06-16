@@ -11,7 +11,7 @@ Q.all([
   docs.html.build(),
   docs.css.build(),
   src.css.serve(),
-  src.icons.serve()
+  // src.icons.serve()
 ])
   .then(function() {
 
@@ -41,6 +41,6 @@ Q.all([
     src.css.watch(connect);
     src.js.watch(connect);
     src.html.watch(connect);
-    src.icons.watch(connect);
+    // src.icons.watch(connect);
 
   });

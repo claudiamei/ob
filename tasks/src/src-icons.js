@@ -7,22 +7,22 @@ var utils = require('../utils');
 
 var serve = {
   outbrain_font: function outbrain_font() {
-    gulp.src(['src/icons/*.svg'])
-      .pipe(tasks.iconfontCss({
-        fontName: 'outbrain',
-        // path: path.join('src', 'icons', 'icons.css'),
-        targetPath: 'outbrain.css',
-        // fontPath: path.join('docs', '.tmp', 'fonts') + '/'
-      }))
-      .pipe(tasks.iconfont({
-        fontName: 'outbrain', // required
-        appendCodepoints: false // recommended option
-      }))
-      .on('codepoints', function(codepoints, options) {
-        // CSS templating, e.g.
-        console.log(codepoints, options);
-      })
-      .pipe(gulp.dest(path.join('docs', '.tmp', 'fonts')));
+    var 
+      icons = path.join('src', 'components', 'icons', '*.svg');
+      dest = path.join('docs', '.tmp'),
+      config = {
+        cssFile: 'amelia-sprite.css',
+        svgPath: "%f",
+        // pngPath: "%f",
+        svg: {
+          sprite: "amelia-sprite.svg"
+        }
+      };
+    return gulp.src(icons)
+      .pipe(tasks.svgSprites.svg(config))
+      .pipe(gulp.dest(dest))
+      // .pipe(tasks.svgSprites.png())
+      // .pipe(gulp.dest(dest));
   }
 };
 
@@ -36,7 +36,7 @@ module.exports = {
     return utils.run_tasks(__filename, tasks);
   },
   watch: function(connect) {
-    var icons = path.join('src', 'icons', '*.svg');
+    var icons = path.join('src', 'components', 'icons', '*.svg');
     gulp.watch([icons], function(event) {
       var tasks = [serve.outbrain_font];
       utils.run_tasks(__filename, tasks).then(function() {
