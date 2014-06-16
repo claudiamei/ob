@@ -45,16 +45,15 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
         }, true);
 
         scope.$watch(function () {
-            return {
-              w: element.width(),
-            };
-          }, function (newValue, oldValue) {
-            if (newValue.w !== oldValue.w) {
-              setWidth();
-              resizeDebounced();
-            }
-          }, true
-        );
+          return {
+            w: element.width(),
+          };
+        }, function (newValue, oldValue) {
+          if (newValue.w !== oldValue.w) {
+            setWidth();
+            resizeDebounced();
+          }
+        }, true);
 
         var resizeDebounced = debounce(function() {
           timelineGraph.resize();
