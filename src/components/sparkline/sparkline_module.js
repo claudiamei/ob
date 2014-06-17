@@ -21,7 +21,6 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
       },
       link: function(scope, element, attrs) {
 
-        console.log("Linked SPARKLINE")
         var data,
           create = true,
           sparkline = window.OBSparkline(element[0]);
