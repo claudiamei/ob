@@ -2,10 +2,10 @@ function OBSparkline(selector) {
   var d3 = window.d3,
     selection = d3.select(selector),
     margin = {
-      top: 35,
-      right: 20,
-      bottom: 25,
-      left: 15,
+      top: 5,
+      right: 5,
+      bottom: 5,
+      left: 5,
     },
     width = 400,
     height = 50,
@@ -17,6 +17,7 @@ function OBSparkline(selector) {
     yExtent,
     line,
     area,
+    data,
     graphLine,
     graphArea,
     sparkCircle,
@@ -29,8 +30,8 @@ function OBSparkline(selector) {
     y.domain(yExtent);
   }
 
-  function chart(data) {
-
+  function chart(initialData) {
+    data = initialData;
     setScale(data, true);
 
     x.range([0, width - margin.left - margin.right]);
@@ -64,11 +65,13 @@ function OBSparkline(selector) {
     svg = selection.append('svg')
       .attr('class', 'sparkline-graph')
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .on('mousemove', hoverSpark)
+      .on('mouseleave', leaveSpark);
 
     sparklineGroup = svg.append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-      .on('mousemove', hoverSpark);
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 
     graphLine = sparklineGroup.append("path")
       .datum(data)
@@ -88,7 +91,8 @@ function OBSparkline(selector) {
 
   }
 
-  function update(data) {
+  function update(updateData) {
+    data = updateData;
     setScale(data, false);
 
     graphLine.datum(data)
@@ -104,11 +108,32 @@ function OBSparkline(selector) {
       .attr('cy', y(data[data.length - 1]));
   }
 
+  function leaveSpark() {
+    sparkCircle.transition()
+      .attr('cx', x(data.length - 1))
+      .attr('cy', y(data[data.length - 1]));
+  }
+
   function hoverSpark() {
-    var x0 = d3.mouse(this)[0] - margin.left;
-    x0 = (x0 > width) ? width : x0;
-    x0 = (x0 < 0) ? 0 : x0;
-    console.log(x0)
+    var leftIndex,
+      rightIndex,
+      xIndex,
+      yVal,
+      interpolate,
+      xMouse = d3.mouse(this)[0] - margin.left;
+
+    xMouse = Math.max(xMouse, x.range()[0]);
+    xMouse = Math.min(xMouse, x.range()[1]);
+
+    xIndex = x.invert(xMouse);
+    leftIndex = ~~xIndex;
+    rightIndex = (leftIndex >= data.length - 1) ? leftIndex : leftIndex + 1;
+    interpolate = d3.interpolateNumber(data[leftIndex], data[rightIndex]);
+    yVal = interpolate(xIndex - leftIndex);
+
+    sparkCircle
+      .attr('cx', x(xIndex))
+      .attr('cy', y(yVal));
   }
 
 

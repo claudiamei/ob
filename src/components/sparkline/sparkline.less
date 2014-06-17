@@ -6,6 +6,7 @@ ob-sparkline {
   .area {
     stroke: none;
     fill: none;
+    opacity: .3;
   }
 
   .line {
@@ -16,9 +17,29 @@ ob-sparkline {
 
   .circle {
     fill: #FFF;
-    //stroke: #A9A9A9;
     stroke: #000000;
     stroke-width: 2px;
   }
 }
 
+ob-sparkline.backgrounded{
+  display: block;
+  position: absolute;
+  overflow: hidden;
+
+  .area {
+    fill: blue;
+    opacity: .3;
+  }
+
+  .line {
+    fill: none;
+    stroke: none;
+  }
+
+  .circle {
+    fill: #FFF;
+    stroke: #000000;
+    stroke-width: 2px;
+  }
+}

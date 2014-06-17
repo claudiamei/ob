@@ -59,7 +59,7 @@ angular.module('amelia.docs.controllers')
     key: 'paidClicks',
     name: '',
     display: function() {
-      return '<ob-sparkline ng-controller="obSparklineControllerDemo" ob-sparkline-options="{margin: {left: 5, top: 5, right: 5, bottom: 5}, height:20}" data="data"></ob-sparkline>';
+      return '<ob-sparkline ng-controller="obSparklineControllerDemo" ob-sparkline-options="{margin: {left: 5, top: 5, right: 5, bottom: 5}, height:30}" data="data"></ob-sparkline>';
     },
     sortable: true,
     width: '2',

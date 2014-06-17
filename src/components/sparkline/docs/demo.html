@@ -1,13 +1,87 @@
 <div ob-demo-list demo-list="sparkline-1.html"></div>
+<div ob-demo-list demo-list="sparkline-2.html"></div>
 <div ob-demo-list demo-list="sparkline-table-1.html"></div>
 
 <script type="text/ng-template" id="sparkline-1.html">
     <h3>Standard</h3>
     <div style="height:50px;" ng-controller="obSparklineControllerDemo">
-        <ob-sparkline ob-sparkline-options="{margin: {left: 5, top: 5, right: 5, bottom: 5}, height:50}" data="data"></ob-sparkline>
+        <ob-sparkline ob-sparkline-options="{height:50}" data="data"></ob-sparkline>
     </div>
 </script>
 
+<script type="text/ng-template" id="sparkline-2.html">
+    <style>
+        .pane {
+            display: block;
+        }
+
+        .pane-title {
+            font-size: 20px;
+            border-bottom: 1px solid #DDDEDE;
+            padding-bottom: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .pane-content {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pane-item {
+            height: 50px;
+        }
+
+        .pane ob-sparkline {
+            display: block;
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .pane ob-sparkline .area {
+            fill: blue;
+            opacity: .3;
+        }
+
+        .pane ob-sparkline .line {
+           display: none;
+        }
+
+        .pane ob-sparkline .circle {
+            display: none;
+        }
+    </style>
+
+    <h3>As a Background</h3>
+    <div class="row">
+        <div class="pane col-xs-3 clearfix">
+            <div class="pane-title">NEWS</div>
+            <div class="pane-content">
+                <div class="pane-item">
+                    <ob-sparkline ng-controller="obSparklineControllerDemo"
+                                  ob-sparkline-options="{margin:{left:0,right:0,top:8, bottom:8},height:40}"
+                                  data="data"></ob-sparkline>
+                    <div class="col-xs-9">www.news-stories.com</div>
+                    <div class="col-xs-3">23,286</div>
+                </div>
+            </div>
+            <div class="pane-content">
+                <div class="pane-item">
+                    <ob-sparkline ng-controller="obSparklineControllerDemo"
+                                  ob-sparkline-options="{margin:{left:0,right:0,top:8, bottom:8},height:40}"
+                                  data="data"></ob-sparkline>
+                    <div class="col-xs-9">www.other-stories.com</div>
+                    <div class="col-xs-3">53,286</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
 
 <script type="text/ng-template" id="sparkline-table-1.html">
     <h3>Inside a Table</h3>
