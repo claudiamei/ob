@@ -1,9 +1,17 @@
-<div ob-demo-list demo-list="sparkline-graph-1.html"></div>
+<div ob-demo-list demo-list="sparkline-1.html"></div>
+<div ob-demo-list demo-list="sparkline-table-1.html"></div>
 
-<script type="text/ng-template" id="sparkline-graph-1.html">
+<script type="text/ng-template" id="sparkline-1.html">
     <h3>Standard</h3>
     <div ng-controller="obSparklineControllerDemo">
         <ob-sparkline ob-sparkline-options="{margin: {left: 5, top: 5, right: 5, bottom: 5}}" data="data"></ob-sparkline>
     </div>
+</script>
 
+
+<script type="text/ng-template" id="sparkline-table-1.html">
+    <h3>Inside a Table</h3>
+    <div ng-controller="SparklineTableControllerDemo">
+        <ob-table></ob-table>
+    </div>
 </script>

@@ -9,9 +9,9 @@ function OBSparkline(selector) {
       left: 15,
     },
     width = 400,
-    height = 300,
+    height = 50,
     parseDate = function(d) {
-      d.date = d3.time.format("%m/%d/%Y").parse(d.date);
+      //d.date = d3.time.format("%m/%d/%Y").parse(d.date);
       return d.date;
     },
     x = d3.time.scale(),
@@ -21,6 +21,8 @@ function OBSparkline(selector) {
     yExtent,
     line,
     area,
+    graphLine,
+    graphArea,
     sparklineGroup;
 
   function setScale(data, parseDates) {
@@ -45,6 +47,7 @@ function OBSparkline(selector) {
     y.range([height - margin.top - margin.bottom, 0]);
 
     line = d3.svg.line()
+      .interpolate('monotone')
       .defined(function(d) {
         return d.value !== null;
       })
@@ -56,10 +59,10 @@ function OBSparkline(selector) {
       });
 
     area = d3.svg.area()
+      .interpolate('monotone')
       .defined(function(d) {
         return d.value !== null;
       })
-      .interpolate('monotone')
       .x(function(d) {
         return x(d.date);
       })
@@ -76,12 +79,12 @@ function OBSparkline(selector) {
     sparklineGroup = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    sparklineGroup.append("path")
+    graphLine = sparklineGroup.append("path")
       .datum(data)
       .attr("class", "line")
       .attr("d", line);
 
-    sparklineGroup.append("path")
+    graphArea = sparklineGroup.append("path")
       .datum(data)
       .attr("class", "area")
       .attr("d", area);
@@ -89,6 +92,14 @@ function OBSparkline(selector) {
 
   function update(data) {
     setScale(data, false);
+
+    graphLine.datum(data)
+      .transition()
+      .attr("d", line);
+
+    graphArea.datum(data)
+      .transition()
+      .attr("d", area);
 
   }
 

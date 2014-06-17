@@ -27,13 +27,16 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
 
         var config = new OBSparklineConfig($parse(attrs.obSparklineOptions)(scope), sparkline);
 
-        function setWidth(){
+        function setDimensions(){
           if(!config.width){
             sparkline.width(element.width());
           }
+          if(!config.height){
+            sparkline.height(element.height());
+          }
         }
 
-        setWidth();
+        setDimensions();
 
         scope.$watch('data', function(newData) {
           data = angular.copy(newData);
@@ -48,10 +51,11 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
         scope.$watch(function () {
           return {
             w: element.width(),
+            h: element.height(),
           };
         }, function (newValue, oldValue) {
-          if (newValue.w !== oldValue.w) {
-            setWidth();
+          if (newValue.w !== oldValue.w || newValue.h !== oldValue.h) {
+            setDimensions();
             resizeDebounced();
           }
         }, true);
