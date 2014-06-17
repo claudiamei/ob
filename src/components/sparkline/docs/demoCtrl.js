@@ -23,7 +23,7 @@ angular.module('amelia.docs.controllers')
   }, 5000);
 })
 
-.controller('SparklineTableControllerDemo', function($scope, $filter, $compile) {
+.controller('SparklineTableControllerDemo', function($scope, $filter) {
 
   $scope.showTotals = false;
   $scope.expandable = false;
@@ -80,7 +80,7 @@ angular.module('amelia.docs.controllers')
   }, {
     date: new Date('3/8/2014'),
     title: "That is one sweet design...",
-    authors: ["Aaron Neeley"],
+    authors: ["Aaron McNeeley"],
     paidClicks: 87360,
     pageViews: 474558,
     ctr: 3.13
