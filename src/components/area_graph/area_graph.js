@@ -115,16 +115,15 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
           setAxisFormat(newFormat);
         }, true);
 
-        scope.$watch(function () {
-            return {
-              w: element.width(),
-            };
-          }, function (newValue, oldValue) {
-            if (newValue.w !== oldValue.w) {
-              resizeDebounced();
-            }
-          }, true
-        );
+        scope.$watch(function() {
+          return {
+            w: element.width(),
+          };
+        }, function(newValue, oldValue) {
+          if (newValue.w !== oldValue.w) {
+            resizeDebounced();
+          }
+        }, true);
 
         function setAxisFormat(newFormat) {
           if (newFormat) {
@@ -527,7 +526,7 @@ angular.module('amelia-ui.charts.area-graph', ['d3'])
           legendContent.data(values)
             .select('.key-value')
             .text(function(d) {
-              if (!d){
+              if (!d) {
                 return d3.select(this).text();
               }
               return (d >= 100) ? d3.format('.3s')(d) : d.toFixed(0);

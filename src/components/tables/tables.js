@@ -121,9 +121,9 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
             }
           }, 500);
 
-          scope.$watch(function () {
+          scope.$watch(function() {
             return element.width()
-          }, function () {
+          }, function() {
             scope.updateHighlight(scope.predicate.replace('-', ''));
           });
         }

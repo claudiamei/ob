@@ -1,8 +1,7 @@
-
 window.OBTimelineGraph = function OBTimelineGraph(selector) {
 
   var d3 = window.d3,
-	selection = d3.select(selector),
+    selection = d3.select(selector),
     margin = {
       top: 35,
       right: 20,
@@ -61,7 +60,7 @@ window.OBTimelineGraph = function OBTimelineGraph(selector) {
   function setScale(data) {
     var xExtents = data.map(function(d) {
       return d3.extent(valuesAccessor(d), function(d) {
-        if(typeof(xAccessor(d)) !== 'string'){
+        if (typeof(xAccessor(d)) !== 'string') {
           return xAccessor(d);
         }
         var date = parseDate(xAccessor(d));
@@ -83,7 +82,7 @@ window.OBTimelineGraph = function OBTimelineGraph(selector) {
     setScale(data);
     //setAxis();
 
-    timelineHeight = ~~((height - margin.top - margin.bottom) / data.length);
+    timelineHeight = ~~ ((height - margin.top - margin.bottom) / data.length);
     x.range([0, width - margin.left - margin.right]);
     y.range([height - margin.top - margin.bottom, 0]);
 
@@ -197,7 +196,7 @@ window.OBTimelineGraph = function OBTimelineGraph(selector) {
       });
   }
 
-  function resize(){
+  function resize() {
     x.range([0, width - margin.left - margin.right]);
     svg.attr("width", width);
   }
@@ -218,31 +217,41 @@ window.OBTimelineGraph = function OBTimelineGraph(selector) {
   };
 
   chart.margin = function(_) {
-    if (!arguments.length){return margin;}
+    if (!arguments.length) {
+      return margin;
+    }
     margin = _;
     return chart;
   };
 
   chart.width = function(_) {
-    if (!arguments.length) {return width;}
+    if (!arguments.length) {
+      return width;
+    }
     width = _;
     return chart;
   };
 
   chart.height = function(_) {
-    if (!arguments.length) {return height;}
+    if (!arguments.length) {
+      return height;
+    }
     height = _;
     return chart;
   };
 
   chart.title = function(_) {
-    if (!arguments.length) {return title;}
+    if (!arguments.length) {
+      return title;
+    }
     title = _;
     return chart;
   };
 
   chart.xAxisLabel = function(_) {
-    if (!arguments.length) {return xAxisLabel;}
+    if (!arguments.length) {
+      return xAxisLabel;
+    }
     xAxisLabel = _;
     return chart;
   };

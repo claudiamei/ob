@@ -3,7 +3,7 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
 .service('OBTimelineGraphConfig', function() {
   return function(options, timelineGraph) {
     for (var attr in options) {
-      if(options.hasOwnProperty(attr)){
+      if (options.hasOwnProperty(attr)) {
         timelineGraph[attr](options[attr]);
       }
     }
@@ -26,8 +26,8 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
 
         var config = new OBTimelineGraphConfig($parse(attrs.obTimelineGraphOptions)(scope), timelineGraph);
 
-        function setWidth(){
-          if(!config.width){
+        function setWidth() {
+          if (!config.width) {
             timelineGraph.width(element.width());
           }
         }
@@ -44,11 +44,11 @@ angular.module('amelia-ui.charts.timeline-graph', ['d3'])
           }
         }, true);
 
-        scope.$watch(function () {
+        scope.$watch(function() {
           return {
             w: element.width(),
           };
-        }, function (newValue, oldValue) {
+        }, function(newValue, oldValue) {
           if (newValue.w !== oldValue.w) {
             setWidth();
             resizeDebounced();

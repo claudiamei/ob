@@ -3,7 +3,7 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
 .service('OBSparklineConfig', function() {
   return function(options, Sparkline) {
     for (var attr in options) {
-      if(options.hasOwnProperty(attr)){
+      if (options.hasOwnProperty(attr)) {
         Sparkline[attr](options[attr]);
       }
     }
@@ -27,11 +27,11 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
 
         var config = new OBSparklineConfig($parse(attrs.obSparklineOptions)(scope), sparkline);
 
-        function setDimensions(){
-          if(!config.width){
+        function setDimensions() {
+          if (!config.width) {
             sparkline.width(element.width());
           }
-          if(!config.height){
+          if (!config.height) {
             sparkline.height(element.height());
           }
         }
@@ -48,12 +48,12 @@ angular.module('amelia-ui.charts.sparkline', ['d3'])
           }
         }, true);
 
-        scope.$watch(function () {
+        scope.$watch(function() {
           return {
             w: element.width(),
             h: element.height(),
           };
-        }, function (newValue, oldValue) {
+        }, function(newValue, oldValue) {
           if (newValue.w !== oldValue.w || newValue.h !== oldValue.h) {
             setDimensions();
             resizeDebounced();

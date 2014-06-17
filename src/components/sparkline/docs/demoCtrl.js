@@ -2,14 +2,11 @@ angular.module('amelia.docs.controllers')
 
 .controller('obSparklineControllerDemo', function($scope, $interval) {
 
-  function getRandomPoint(i){
-    return {
-      date: (new Date(1403023324266 + i * 60000 * 24)),
-      value: ~~(Math.random() * 20),
-    };
+  function getRandomPoint() {
+    return~~ (Math.random() * 20);
   }
   var data = [];
-  for(var i = 0; i < 20; i++){
+  for (var i = 0; i < 20; i++) {
     data.push(getRandomPoint(i));
   }
 
@@ -58,10 +55,10 @@ angular.module('amelia.docs.controllers')
     sortable: true,
     totalLogic: 'sum',
     defaultSort: 'desc'
-  },{
+  }, {
     key: 'paidClicks',
     name: '',
-    display: function(){
+    display: function() {
       return '<ob-sparkline ng-controller="obSparklineControllerDemo" ob-sparkline-options="{margin: {left: 5, top: 5, right: 5, bottom: 5}, height:20}" data="data"></ob-sparkline>';
     },
     sortable: true,
@@ -87,4 +84,3 @@ angular.module('amelia.docs.controllers')
   }];
 
 });
-

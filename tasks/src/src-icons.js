@@ -7,17 +7,17 @@ var utils = require('../utils');
 
 var serve = {
   outbrain_font: function outbrain_font() {
-    var 
+    var
       icons = path.join('src', 'components', 'icons', '*.svg');
-      dest = path.join('docs', '.tmp'),
-      config = {
-        cssFile: 'amelia-sprite.css',
-        svgPath: "%f",
-        // pngPath: "%f",
-        svg: {
-          sprite: "amelia-sprite.svg"
-        }
-      };
+    dest = path.join('docs', '.tmp'),
+    config = {
+      cssFile: 'amelia-sprite.css',
+      svgPath: "%f",
+      // pngPath: "%f",
+      svg: {
+        sprite: "amelia-sprite.svg"
+      }
+    };
     return gulp.src(icons)
       .pipe(tasks.svgSprites.svg(config))
       .pipe(gulp.dest(dest))
