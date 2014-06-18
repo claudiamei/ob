@@ -70,9 +70,11 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
 
   // $scope.expandable = true;
 
-  $scope.expandedTemplate = '<div ng-controller="obPieChartController">\
-                        <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>\
-                    </div>';
+  // $scope.expandedTemplate = '<div ng-controller="obPieChartController">\
+  //                       <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>\
+  //                   </div>';
+  //                   
+  $scope.expandedTemplate = '';
 
   $scope.data = [{
     date: new Date('3/7/2014'),
