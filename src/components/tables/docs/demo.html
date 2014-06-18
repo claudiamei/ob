@@ -63,7 +63,7 @@
 <script type="text/ng-template"id="ultable.html">
 <h3>UL "table"</h3>
 <div ng-controller="tableDemoController">
-	<ob-table></ob-table>
+	<ob-table schema="schema" data="data" predicate="-date" show-totals="showTotals" expandable="true" expanded-template="expandedTemplate"></ob-table>
 	<input type="checkbox" id="show-totals" ng-model="showTotals" />
 	<label for="show-totals">Show Totals</label>
 </div>

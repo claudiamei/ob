@@ -55,10 +55,12 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
 
       $scope.updateHighlight = function(sortBy) {
         var active = $($element).find('[data-metric="' + sortBy + '"]');
-        var highlight = $($element).find('.highlight');
-        offset = active.position();
-        highlight.css('margin-left', active.position().left + parseInt(active.parents('.thead').css('padding-left'), 10))
-          .css('width', active.width());
+        if (active.length > 0) {
+          var highlight = $($element).find('.highlight');
+          offset = active.position();
+          highlight.css('margin-left', active.position().left + parseInt(active.parents('.thead').css('padding-left'), 10))
+            .css('width', active.width());
+        }
       };
 
 
@@ -71,11 +73,14 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
         replace: true,
         controller: 'obTableController',
         templateUrl: '../src/components/tables/tables.html',
-        // scope: {
-        //   schema: '=',
-        //   data: '=',
-        //   predicate: '='
-        // },
+        scope: {
+          schema: '=',
+          data: '=',
+          predicate: '@',
+          showTotals: '=',
+          expandable: '@',
+          expandedTemplate: '='
+        },
         link: function(scope, element, attr) {
 
           scope.totals = {};
@@ -122,9 +127,9 @@ angular.module('amelia-ui.table', ['amelia-ui.utils.debounce'])
           }, 500);
 
           scope.$watch(function() {
-            return element.width()
+              return element.width()
           }, function() {
-            scope.updateHighlight(scope.predicate.replace('-', ''));
+            if (scope.predicate) scope.updateHighlight(scope.predicate.replace('-', ''));
           });
         }
       };

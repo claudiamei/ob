@@ -64,17 +64,11 @@ angular.module('amelia.docs.controllers').controller('tableDemoController', func
     defaultSort: 'desc'
   }];
 
-  // $scope.hello = function () {
-  // 	alert('test')
-  // };
+  // $scope.predicate = '-date';
 
-  $scope.predicate = '-date';
+  // $scope.showTotals = true;
 
-  $scope.showTotals = true;
-
-  $scope.expandable = true;
-
-  // $scope.expandedTemplate = "<div>Hello World!!</div>";
+  // $scope.expandable = true;
 
   $scope.expandedTemplate = '<div ng-controller="obPieChartController">\
                         <ob-pie-chart ob-pie-chart-data="data"></ob-pie-chart>\
