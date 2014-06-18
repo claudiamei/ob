@@ -71,9 +71,10 @@ angular.module('amelia-ui.charts.pie-chart', [])
 
         // Read options from directive attribute.
         var d3 = window.d3,
+          $ = window.$,
           config = new OBPieChartConfig($parse(attrs.obPieChartOptions)(scope));
         // D3 Geometry objects
-        var svg, innerPieGroup, outerPieGroup, outerArcs, outerPaths, arc, pie, arcs, paths, text, label;
+        var svg, innerPieGroup, outerPieGroup, outerArcs, outerPaths, arc, pie, arcs, paths, text, label, data0, data1;
 
         var color = d3.scale.ordinal().range(config.colors),
           collapseColor = d3.scale.ordinal().range(config.collapseColors),
@@ -131,37 +132,7 @@ angular.module('amelia-ui.charts.pie-chart', [])
             .attr("width", width)
             .attr("height", height)
             .on('mouseleave', function() {
-              function findParentWithClass(ele, className) {
-                while (ele && ele.nodeType !== 9) {
-                  if (angular.element(ele).hasClass(className)) {
-                    return ele;
-                  }
-                  ele = ele.parentNode;
-                }
-                return false;
-              }
-
-              function isChildOf(ele, parent) {
-                while (ele && ele.nodeType !== 9) {
-                  if (ele === parent) {
-                    return true;
-                  }
-                  ele = ele.parentNode;
-                }
-              }
-              var popoverElement = findParentWithClass(d3.event.toElement, 'popover');
-
-              // Don't destroy the the sunburst if user hovers over a popover
-              if (!popoverElement) {
-                scope.destroySunburst();
-              } else {
-                // Fix for issue of not destroying sunburst after entering popover (for browsers that dont support pointer events)
-                d3.select(popoverElement).on('mouseleave', function() {
-                  if (!isChildOf(d3.event.toElement, svg[0][0])) {
-                    scope.destroySunburst();
-                  }
-                });
-              }
+              scope.destroySunburst();
             });
 
           innerPieGroup = svg.append("g")
@@ -209,18 +180,7 @@ angular.module('amelia-ui.charts.pie-chart', [])
             .style("fill", function(d, i) {
               return color(i);
             })
-            .attr({
-              'pieover': function(d) {
-                return d.data.label;
-              },
-              'popover-placement': function(d) {
-                return isTop(d) ? 'top' : 'bottom';
-              },
-              'popover-append-to-body': true,
-              'popover-trigger': 'mouseenter',
-            })
             .each(function(d, i) {
-              $compile(this)(scope); //register new <path> to angular
               this._current = {
                 startAngle: d.startAngle,
                 endAngle: d.endAngle,
@@ -239,8 +199,8 @@ angular.module('amelia-ui.charts.pie-chart', [])
         };
 
         scope.update = function(updateData) {
-          var data0 = arcs.data();
-          var data1 = pie(updateData);
+          data0 = arcs.data();
+          data1 = pie(updateData);
 
           sliceTotal = 0;
           angular.forEach(updateData, function(d) {
@@ -259,18 +219,7 @@ angular.module('amelia-ui.charts.pie-chart', [])
             .style("fill", function(d, i) {
               return isSunburstActive ? collapseColor(i) : color(i);
             })
-            .attr({
-              'pieover': function(d) {
-                return d.data.label;
-              },
-              'popover-placement': function(d) {
-                return isTop(d) ? 'top' : 'bottom';
-              },
-              'popover-append-to-body': true,
-              'popover-trigger': 'mouseenter',
-            })
             .each(function(d, i) {
-              $compile(this)(scope); //needed for angular to know the attrs exist
               this._current = findNeighborArc(i, data0, data1, keyAccessor) || d;
               setPrimaryRadii(this._current);
               setPrimaryRadii(d);
@@ -331,19 +280,6 @@ angular.module('amelia-ui.charts.pie-chart', [])
             .attr('class', 'pie-path')
             .style("fill", function(d, i) {
               return outerColor(i);
-            })
-            .attr({
-              'pieover': function(d) {
-                return d.data.label;
-              },
-              'popover-placement': function(d) {
-                return isTop(d) ? 'top' : 'bottom';
-              },
-              'popover-append-to-body': true,
-              'popover-trigger': 'mouseenter',
-            })
-            .each(function() {
-              $compile(this)(scope);
             })
             .on('mouseenter', mouseEnterSlice)
             .on('mouseleave', mouseLeaveSlice);
