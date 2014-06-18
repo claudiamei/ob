@@ -90,6 +90,7 @@ angular.module('amelia.docs.controllers').controller('obPieChartController', fun
     }
     i = (i + 1) % 3;
   }, 5000);
+  
   $scope.data = {
     'primaryData': testData[i],
     'otherData': otherData,

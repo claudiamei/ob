@@ -14,7 +14,6 @@ angular.module('amelia-ui', [
   'amelia-ui.dropdown',
   'amelia-ui.table',
   'ui.bootstrap',
-  'pieover',
   'compile'
   // 'amelia-ui.utils.debounce'
 ]);
