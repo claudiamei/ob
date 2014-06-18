@@ -112,7 +112,7 @@ describe('ngTableParams', function () {
             'page': '1',
             'count': '1',
             'filter[name]': 'test',
-            'filter[age]': '20',
+            'filter[age]': 20,
             'sorting[age]': 'desc'
         });
         expect(params.url(true)).toEqual([
@@ -137,39 +137,37 @@ describe('ngTableParams', function () {
     }));
 
     it('ngTableParams test settings', inject(function (ngTableParams) {
-        var params = new ngTableParams({
-            'sorting[name]': 'asc'
-        });
+        var params = new ngTableParams();
 
         expect(params.settings()).toEqual({
             $scope: null,
             $loading: false,
+            data: null,
             total: 0,
+            defaultSort : 'desc',
             counts: [10, 25, 50, 100],
             getData: params.getData,
-            getGroups: params.getGroups
+            getGroups: params.getGroups,
+            filterDelay: 750
         });
 
-        params = new ngTableParams({
-            'sorting[name]': 'asc'
-        }, {
-            total: 100
-        });
+        params = new ngTableParams({}, { total: 100 });
 
         expect(params.settings()).toEqual({
             $scope: null,
             $loading: false,
+            data: null,
             total: 100,
+            defaultSort : 'desc',
             counts: [10, 25, 50, 100],
             getData: params.getData,
-            getGroups: params.getGroups
+            getGroups: params.getGroups,
+            filterDelay: 750
         });
     }));
 
     it('ngTableParams test getData', inject(function ($q, ngTableParams) {
-        var params = new ngTableParams({
-            'sorting[name]': 'asc'
-        });
+        var params = new ngTableParams();
         $defer = $q.defer();
         $defer.promise.then(function(data) {
             expect(data).toEqual([]);
@@ -178,9 +176,7 @@ describe('ngTableParams', function () {
     }));
 
     it('ngTableParams test grouping', inject(function ($q, ngTableParams) {
-        var params = new ngTableParams({
-            'sorting[name]': 'asc'
-        });
+        var params = new ngTableParams();
         params.getData = function ($defer) {
             $defer.resolve(data);
         };

@@ -1,6 +1,6 @@
 Table + AngularJS
 =================
-[![Build Status](https://travis-ci.org/esvit/ng-table.png)](https://travis-ci.org/esvit/ng-table) [![Coverage Status](https://coveralls.io/repos/esvit/ng-table/badge.png)](https://coveralls.io/r/esvit/ng-table) [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/esvit/ng-table/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Build Status](https://travis-ci.org/esvit/ng-table.png)](https://travis-ci.org/esvit/ng-table) [![Coverage Status](https://coveralls.io/repos/esvit/ng-table/badge.png)](https://coveralls.io/r/esvit/ng-table)
 
 Code licensed under New BSD License.
 
@@ -10,9 +10,9 @@ Header row with titles and filters automatic generated on compilation step.
 ## Compatibility
 
 For work in IE < 9 need jQuery, just add:
-```
+```html
 <!--[if lt IE 9]>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <![endif]-->
 ```
 
@@ -21,6 +21,15 @@ For work in IE < 9 need jQuery, just add:
 * [Export to CSV](https://github.com/esvit/ng-table-export)
 
 ## Updates
+
+### v0.3.2 (master)
+- add pagination directive ngTablePagination [(see usage)](https://github.com/esvit/ng-table/blob/master/examples/demo28.html)
+- rename filter.name to filter.$$name according to issue #196
+- add debugMode setting
+- add defaultSort setting
+- add filterDelay setting
+- add multisorting (click on header with Ctrl-key)
+- add css classes (ng-table-pager, ng-table-pagination, ng-table-counts)
 
 ### v0.3.1
 - add support of `header-class` attribute
@@ -35,7 +44,7 @@ For work in IE < 9 need jQuery, just add:
 
 ### v0.2.2
 In functions that return data for the filters were removed `.promise`
-```
+```javascript
 $scope.names = function(column) {
     ...
     def.resolve(names);
@@ -49,6 +58,17 @@ $scope.names = function(column) {
 ```
 bower install ng-table
 ```
+
+## Development
+We use Karma to ensure the quality of the code. The easiest way to run these checks is to use grunt:
+
+```sh
+npm install -g grunt-cli
+npm install && bower install
+grunt
+```
+
+The karma task will try to open Firefox and Chrome as browser in which to run the tests. Make sure this is available or change the configuration in `karma.conf.js`
 
 ## Examples (from simple to complex)
 
@@ -67,6 +87,9 @@ bower install ng-table
 * [Table with grouping with callback](http://bazalt-cms.com/ng-table/example/13)
 * [Table with external control of data](http://bazalt-cms.com/ng-table/example/14)
 * [Export to CSV](http://bazalt-cms.com/ng-table/example/15)
+
+## Configuring ng-table
+For a list of configuration options available, see [Configuring your table with ngTableParams](https://github.com/esvit/ng-table/wiki/Configuring-your-table-with-ngTableParams)
 
 #### PS
 Let me know if you are using **ng-table**. It will motivate me to work harder.
