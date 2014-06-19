@@ -23,9 +23,10 @@ angular.module('amelia-ui.dropdown', [])
     return {
       restrict: 'AE',
       replace: true,
-      // scope: {
-      //   items: '='
-      // },
+      scope: {
+        items: '=',
+        title: '='
+      },
       //   hPos: '@?',  // for menu placement relative to toggle
       //   vPos: '@?',  // for menu placement relative to toggle
       // },
