@@ -72,7 +72,7 @@ Provides smooth anchor scrolling.
 ```
 
 ### `du-scrollspy`
-Observes wether the target element is in the viewport and adds an `active` class if so. Takes optional `offset` and `duration` attributes which is passed on to `.scrollTo`,
+Observes wether the target element is at the top of the viewport (or container) and adds an `active` class if so. Takes optional `offset` and `duration` attributes which is passed on to `.scrollTo`,
 
 ```html
 <a href="#anchor" du-scrollspy>Am i active?</a>
@@ -180,6 +180,13 @@ angular.module('myApp', ['duScroll']).value('duScrollEasing', invertedEasingFunc
 
 You can also pass a custom easing function as the fourth argument in `scrollTo`.
 
+### Greedy option
+Set the `duScrollGreedy` value to `true` if the elements you are observing are not wrapping the whole section you want to observe, but merely the first one in the section (such as headlines).
+
+```js
+angular.module('myApp', ['duScroll']).value('duScrollGreedy', true);
+```
+
 Events
 ------
 
@@ -211,5 +218,11 @@ Building
 Tests
 -----
 
+### Unit tests
+
     $ npm test
- 
+
+### End to end tests
+
+    $ npm run update-webdriver
+    $ npm run protractor

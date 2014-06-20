@@ -48,12 +48,13 @@
 	var ngTableDemoCtrl = function($scope, ngTableParams) {
 		$scope.tableParams = new ngTableParams({
 			page: 1,
-			count: 10
+			count: 10,
 		}, {
 			total: data.length,
 			getData: function($defer, params) {
 				$defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-			}
+			},
+            debugMode: false,
 		});
 	};
 
@@ -63,7 +64,7 @@
 <script type="text/ng-template"id="ultable.html">
 <h3>UL "table"</h3>
 <div ng-controller="tableDemoController">
-	<ob-table></ob-table>
+	<ob-table schema="schema" data="data" predicate="-date" show-totals="showTotals" expandable="true" expanded-template="expandedTemplate"></ob-table>
 	<input type="checkbox" id="show-totals" ng-model="showTotals" />
 	<label for="show-totals">Show Totals</label>
 </div>

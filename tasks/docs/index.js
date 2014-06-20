@@ -4,7 +4,7 @@ var js = require('./docs-js');
 
 // var utils = require('../utils');
 
-function Docs () {};
+function Docs() {};
 
 // markdown = utils.add_banner(markdown);
 

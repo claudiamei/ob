@@ -1,18 +1,18 @@
-<ob-wrapper>
+<ob-wrapper ng-init="report = 'pages/report_demo/dashboard.html'">
 	<div id="main" role="main">
         <div id="content">
             <header class="ob-header">
                 <ul class="breadcrumbs">
-                    <li ob-dropdown title="'Publisher'" hover="true" items="['hello','world']"></ob-dropdown>
-                    <li ob-dropdown title="'News Property'" hover="true" items="['hello','world']"></ob-dropdown>
+                    <li ob-dropdown title="'Publisher'" hover="true" items="[{label:'hello'},{label:'world'}]"></ob-dropdown>
+                    <li ob-dropdown title="'News Property'" hover="true" items="[{label:'hello'},{label:'world'}]"></ob-dropdown>
                 </ul>
-								<ob-dropdown class="account fr" h-pos="left" title="'Johhny Appleseed'" hover="true" items="['Settings','Logout']"></ob-dropdown>
+								<ob-dropdown class="account fr" h-pos="left" title="'Johhny Appleseed'" hover="true" items="[{label:'Settings'},{label:'Logout'}]"></ob-dropdown>
                 <!-- <ob-dropdown h-pos="left" title="Johnny Appleseed" class="account fr">
                     Test Test
                 </ob-dropdown> -->
             </header>
 
-            <ng-include src="'pages/report_demo/report.html'"></ng-include>
+            <ng-include src="report"></ng-include>
         </div>
 
 	</div>
@@ -20,7 +20,7 @@
 	<div id="left-sidebar" ob-sidebar-navigation>
 			<ul>
 				<li class="active">
-					<a ob-nav-link ng-href="" class="color-gray">
+					<a ob-nav-link ng-href="" class="color-gray" ng-click="report = 'pages/report_demo/dashboard.html'">
 						<div class="image">
 							<img src="images/sprite_assets/dashboard.png"></img>
 						</div>
@@ -29,7 +29,7 @@
 					</a>
 				</li>
 				<li>
-					<a ob-nav-link ng-href="" class="color-gray">
+					<a ob-nav-link ng-href="" class="color-gray" ng-click="report = 'pages/report_demo/social.html'">
 						<div class="image">
 							<img src="images/sprite_assets/social.png">
 						</div>

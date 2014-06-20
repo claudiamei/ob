@@ -102,7 +102,7 @@ var build = {
       bootstrap_theme = path.join('src', 'bootstrap-theme.less'),
       destination = 'dist';
 
-    return gulp.src([bs_variables, ob_variables, bs_mixins, bs_overrides, components, '!'+amelia, '!'+bootstrap_theme])
+    return gulp.src([bs_variables, ob_variables, bs_mixins, bs_overrides, components, '!' + amelia, '!' + bootstrap_theme])
       .pipe(tasks.concat('amelia-ui.less'))
       .pipe(tasks.less())
       .pipe(tasks.rename('amelia-ui.css'))

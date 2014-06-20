@@ -133,6 +133,6 @@
         </div> -->
     </div>
     <div ng-controller="tableDemoController">
-        <div ob-table class="show-totals" search="tableSearch"></div>
+        <ob-table schema="schema" data="data" predicate="-date" show-totals="showTotals" expandable="true" expanded-template="expandedTemplate"></ob-table>
     </div>
 </div>

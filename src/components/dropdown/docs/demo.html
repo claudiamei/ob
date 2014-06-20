@@ -4,7 +4,7 @@
 <ob-dropdown ng-controller="DropdownCtrl" hover="false" items="items" title="'News Property'"></ob-dropdown>
 
 <script type="text/ng-template"id="dropdown.html">
-	<div class="dropdown" ng-controller="DropdownCtrl">
+	<div class="dropdown" ng-controller="DropdownCtrl" items="items">
 	  <a class="ob-dropdown-toggle block" href="" hover>
 	    Publisher
 	    <i class="fa fa-caret-down"></i>
@@ -33,29 +33,48 @@
 
 <script>
 	function DropdownCtrl($scope) {
+		$scope.title = 'asdf';
 	  $scope.items = [
-	    "The first choice!",
-	    "And another choice for you.",
-	    "but wait! A third!",
-	    "The first choiceas!",
-	    "And another chasdfoice for you.",
-	    "but wait! sdfA sdfsthird!",
-	    "The first asdfchoice!",
-	    "And anothfder choice for you.",
-	    "but wait!asdfsadf A third!",
-	    "The firstsdf choice!",
-	    "And anothfd A third!",
-	    "The first2 choice!",
-	    "And another choice 2for you.",
-	    "but wait! 2A third!",
-	    "The first c2hoiceas!",
-	    "And another chasdfoice 2for you.",
-	    "but wait! sdfA sd2fsthird!",
-	    "The first asd2fchoice!",
-	    "And anothfder choice 2for you.",
-	    "but wait!asdfsadf 2A third!",
-	    "The firstsdf2 choice!",
-	    "And anothfd 2A third!"
+	    {label: "The first choice!",
+	     href: "blah"},
+	    {label: "And another choice for you.",
+	     href: "blah"},
+	    {label: "but wait! A third!",
+	     href: "blah"},
+	    {label: "The first choiceas!",
+	     href: "blah"},
+	    {label: "And another chasdfoice for you.",
+	     href: "blah"},
+	    {label: "but wait! sdfA sdfsthird!",
+	     href: "blah"},
+	    {label: "And anothfder choice for you.",
+	     href: "blah"},
+	    {label: "but wait!asdfsadf A third!",
+	     href: "blah"},
+	    {label: "The firstsdf choice!",
+	     href: "blah"},
+	    {label: "And anothfd A third!",
+	     href: "blah"},
+	    {label: "The first2 choice!",
+	     href: "blah"},
+	    {label: "And another choice 2for you.",
+	     href: "blah"},
+	    {label: "but wait! 2A third!",
+	     href: "blah"},
+	    {label: "The first c2hoiceas!",
+	     href: "blah"},
+	    {label: "And another chasdfoice 2for you.",
+	     href: "blah"},
+	    {label: "but wait! sdfA sd2fsthird!",
+	     href: "blah"},
+	    {label: "The first asd2fchoice!",
+	     href: "blah"},
+	    {label: "And anothfder choice 2for you.",
+	     href: "blah"},
+	    {label: "but wait!asdfsadf 2A third!",
+	     href: "blah"},
+	    {label: "And anothfd 2A third!",
+	     href: "blah"}
 	  ];
 	}
 </script>

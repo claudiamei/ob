@@ -36,6 +36,7 @@ angular.module('amelia-ui.dropdown', [])
 	// },
   };
 })
+
 // .controller('obDropdownToggleController', ['$scope', '$attrs', 'obDropdownConfig', function ($scope, $attrs, obDropdownConfig) {
 //   $scope.openEvent = angular.isDefined($attrs.hover) ? $attrs.openEvent : obDropdownConfig.toggleEvent.open;
 //   $scope.closeEvent = angular.isDefined($attrs.hover) ? $attrs.closeEvent : obDropdownConfig.toggleEvent.close;
@@ -58,18 +59,22 @@ angular.module('amelia-ui.dropdown', [])
       scope.openEvent = (!!scope.hover) ? 'mouseenter click' : 'click';
       scope.closeEvent = (!!scope.hover) ? 'mouseleave click' : 'click';
 
-      scope.$watch('$location.path', function() { closeMenu(); });
-      element.parent().bind(scope.closeEvent, function() { closeMenu(); });
-      element.bind(scope.openEvent, function (event) {
-
-        var elementWasOpen = (element === openElement);
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        if (!!openElement) {
+        scope.$watch('$location.path', function() {
           closeMenu();
-        }
+        });
+        element.parent().bind(scope.closeEvent, function() {
+          closeMenu();
+        });
+        element.bind(scope.openEvent, function(event) {
+
+          var elementWasOpen = (element === openElement);
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (!!openElement) {
+            closeMenu();
+          }
 
         if (!elementWasOpen && !element.hasClass('disabled') && !element.prop('disabled')) {
           element.parent().addClass('open');

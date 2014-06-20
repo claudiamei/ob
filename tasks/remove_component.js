@@ -3,9 +3,9 @@ var inquirer = require("inquirer");
 var _ = require('underscore');
 var clc = require('cli-color')
 
-var get_current_components = function () {
+var get_current_components = function() {
   var components = fs.readdirSync('src');
-  components = _.filter(components, function (component) {
+  components = _.filter(components, function(component) {
     if (component[0] === '.') {
       return false;
     }
@@ -15,19 +15,16 @@ var get_current_components = function () {
 };
 
 // Get name of new component
-inquirer.prompt([
-  {
-    type: "list",
-    name: "name",
-    message: "Which component do you want to remove?",
-    choices: get_current_components()
-  },
-  {
-    type: "confirm",
-    name: "toDelete",
-    message: "Are you sure you want to delete?",
-    default: false
-  }
-], function (answers) {
+inquirer.prompt([{
+  type: "list",
+  name: "name",
+  message: "Which component do you want to remove?",
+  choices: get_current_components()
+}, {
+  type: "confirm",
+  name: "toDelete",
+  message: "Are you sure you want to delete?",
+  default: false
+}], function(answers) {
   console.log(answers);
 });

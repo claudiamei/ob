@@ -7,7 +7,7 @@ var clc = require('cli-color');
 var _ = require('underscore');
 var argv = require('minimist')(process.argv.slice(2), {'alias': {'task': 't'}});
 
-var tasks = ['serve', 'build', 'test','add_component', 'remove_component'];
+var tasks = ['serve', 'build', 'test','add_component', 'remove_component', 'prettify'];
 
 var run_task = function (task) {
   require('../tasks/' + task + '.js');
