@@ -48,6 +48,7 @@ angular.module('amelia.docs.controllers').controller('kpiEditorialRecommendDemoC
 
   $interval(function() {
     $scope.data.recommendValue.value += 14467;
+    $scope.data.recommendValue.value %= 1000000000;
   }, 10000);
 
 });
