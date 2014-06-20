@@ -1,7 +1,7 @@
 <!-- <div ob-demo-list demo-list="dropdown.html, dropdown2.html"></div> -->
-<ob-dropdown ng-controller="DropdownCtrl" hover></ob-dropdown>
+<ob-dropdown ng-controller="DropdownCtrl" hover="true" items="items" title="'Publisher'"></ob-dropdown>
 
-<ob-dropdown ng-controller="DropdownCtrl"></ob-dropdown>
+<ob-dropdown ng-controller="DropdownCtrl" hover="false" items="items" title="'News Property'"></ob-dropdown>
 
 <script type="text/ng-template"id="dropdown.html">
 	<div class="dropdown" ng-controller="DropdownCtrl">

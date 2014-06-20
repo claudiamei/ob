@@ -21,17 +21,19 @@ angular.module('amelia-ui.dropdown', [])
   return {
     restrict: 'AE',
     replace: true,
-    // scope: {
-    //   items: '='
-    // },
+    scope: {
+      items: '=',
+      title: '=',
+      hover: '='
+    },
     //   hPos: '@?',  // for menu placement relative to toggle
     //   vPos: '@?',  // for menu placement relative to toggle
     // },
     controller: 'obDropdownController',
     templateUrl: '../src/components/dropdown/dropdown.html',
-	link: function(scope, ele, attr){
-		scope.title = attr.title;
-	},
+	// link: function(scope, ele, attr){
+	// 	scope.title = attr.title;
+	// },
   };
 })
 // .controller('obDropdownToggleController', ['$scope', '$attrs', 'obDropdownConfig', function ($scope, $attrs, obDropdownConfig) {
@@ -43,6 +45,9 @@ angular.module('amelia-ui.dropdown', [])
       closeMenu   = angular.noop;
   return {
     restrict: 'CA',
+    scope: {
+      hover: '='
+    },
     // scope: {
     //   'openEvent': '=?',
     //   'closeEvent': '=?'
@@ -50,8 +55,8 @@ angular.module('amelia-ui.dropdown', [])
     // controller: 'obDropdownToggleController',
     link: function(scope, element, attrs) {
 
-      scope.openEvent = (attrs.hasOwnProperty('hover')) ? 'mouseenter click' : 'click';
-      scope.closeEvent = (attrs.hasOwnProperty('hover')) ? 'mouseleave click' : 'click';
+      scope.openEvent = (!!scope.hover) ? 'mouseenter click' : 'click';
+      scope.closeEvent = (!!scope.hover) ? 'mouseleave click' : 'click';
 
       scope.$watch('$location.path', function() { closeMenu(); });
       element.parent().bind(scope.closeEvent, function() { closeMenu(); });
