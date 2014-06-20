@@ -3,12 +3,13 @@
         <div id="content">
             <header class="ob-header">
                 <ul class="breadcrumbs">
-                    <li ob-dropdown title="Publisher" ng-controller="DropdownNewsPropertyCtrl"></ob-dropdown>
-                    <li ob-dropdown title="News Property" ng-controller="DropdownFrontpageCtrl"></ob-dropdown>
+                    <li ob-dropdown title="'Publisher'" hover="true" items="[{label:'hello'},{label:'world'}]"></ob-dropdown>
+                    <li ob-dropdown title="'News Property'" hover="true" items="[{label:'hello'},{label:'world'}]"></ob-dropdown>
                 </ul>
-                <ob-dropdown h-pos="left" title="Johnny Appleseed" class="account fr">
+								<ob-dropdown class="account fr" h-pos="left" title="'Johhny Appleseed'" hover="true" items="[{label:'Settings'},{label:'Logout'}]"></ob-dropdown>
+                <!-- <ob-dropdown h-pos="left" title="Johnny Appleseed" class="account fr">
                     Test Test
-                </ob-dropdown>
+                </ob-dropdown> -->
             </header>
 
             <ng-include src="report"></ng-include>
@@ -59,6 +60,3 @@
 	</div>
 
 </ob-wrapper>
-
-<script src="pages/report_demo/dropdown_news_property.js"></script>
-<script src="pages/report_demo/dropdown_frontpage.js"></script>
