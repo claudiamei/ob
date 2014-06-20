@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu dropdown-menu-{{hPos}} dropdown-menu-{{vPos}}">
     <li ng-repeat="choice in items">
-      <a href="{{choice.href}}" ng-click="{{choice.event}}"">{{choice.label}}</a>
+      <a href="{{choice.href}}" ng-click="choice.event">{{choice.label}}</a>
     </li>
   </ul>
 </div>
