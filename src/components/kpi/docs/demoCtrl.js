@@ -20,35 +20,19 @@ angular.module('amelia.docs.controllers').controller('kpiEditorialContentDemoCon
 
 angular.module('amelia.docs.controllers').controller('kpiEditorialRecommendDemoController', function($scope, $interval) {
 
-  var recommendKpiData = {
-    recommendationsValue: 3000,
-    currentValue: 15000,
-    expectedValue: 13000,
-    topExpectedValueToday: 12000,
-  };
-
-  var recommendedTotal = recommendKpiData.recommendationsValue + recommendKpiData.currentValue,
-    maxValue;
-
-  if (recommendKpiData.topExpectedValueToday * 3 >= recommendedTotal) {
-    maxValue = recommendKpiData.topExpectedValueToday * 3;
-  } else {
-    maxValue = recommendedTotal;
-  }
-
   $scope.data = {
-    recommendValue: {
+    totalRecommendationsValue: {
       value: 12342,
       label: 'Incremental Content Views /hr',
       //prefix: '$',
     },
-    recommendations: 2400,
-    executedRecommendations: 23,
+    recommendationsCount: 33,
+    executedRecommendationsCount: 23,
   };
 
   $interval(function() {
-    $scope.data.recommendValue.value += 14467;
-    $scope.data.recommendValue.value %= 1000000000;
+    $scope.data.totalRecommendationsValue.value += 14467;
+    $scope.data.totalRecommendationsValue.value %= 1000000000;
   }, 10000);
 
 });
