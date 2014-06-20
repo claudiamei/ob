@@ -4,15 +4,15 @@
 			<div class="row equal-height-cols aligned-block-container">
 				<div class="col-xs-6">
 					<div class="center-table font-lg">
-						<div class="value" ng-bind-html="kpi_data.content_hr.today | kpiNumber:1:4:true"></div>
-						<label>Total Content Views /hr</label>
+						<div class="value" ng-bind-html="data.contentPerHour.today | kpiNumber:1:4:true"></div>
+                        <label>Total Content Views /hr</label>
                         <div class="parent-aligned-block row highlight">
                             <div class="font-md center-table">
-                                <div class="value" ng-bind-html="kpi_data.content_hr.last_week | kpiNumber:1:4:true"></div>
+                                <div class="value" ng-bind-html="data.contentPerHour.lastWeek | kpiNumber:1:4:true"></div>
                                 <label>Last Tuesday</label>
                             </div>
                             <div class="font-md center-table">
-                                <div class="value" ng-bind-html="kpi_data.content_hr.last_month | kpiNumber:1:4:true"></div>
+                                <div class="value" ng-bind-html="data.contentPerHour.lastMonth | kpiNumber:1:4:true"></div>
                                 <label>Last Month</label>
                             </div>
                         </div>
