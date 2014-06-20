@@ -75,8 +75,8 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
           newValue,
           oldValue,
           currentTween;
+        
         scope.$watch('data', function(newData, oldData) {
-
           if(newData === undefined){
             return;
           }
@@ -86,7 +86,7 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
             oldValue = oldData;
           } else {
             newValue = newData.value;
-            oldValue = oldData.value;
+            oldValue = oldData ? oldData.value: 0;
           }
 
           if (!init) {
