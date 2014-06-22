@@ -24,6 +24,7 @@
     "confirm": false,
     "console": false,
     "angular": true,
-    "require": true
+    "require": true,
+    "module": true
   }
 }
