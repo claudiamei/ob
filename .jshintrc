@@ -23,6 +23,7 @@
   "globals": {
     "confirm": false,
     "console": false,
-    "angular": true
+    "angular": true,
+    "require": true
   }
 }
