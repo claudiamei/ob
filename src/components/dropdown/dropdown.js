@@ -16,11 +16,12 @@ angular.module('amelia-ui.dropdown', [])
 .controller('obDropdownController', ['$scope', '$attrs', 'obDropdownConfig', function ($scope, $attrs, obDropdownConfig) {
   $scope.hPos = angular.isDefined($attrs.hPos) ? $attrs.hPos : obDropdownConfig.menuPosition.horizontal;
   $scope.vPos = angular.isDefined($attrs.vPos) ? $attrs.vPos : obDropdownConfig.menuPosition.vertical;
-  $scope.call = function (func) {
+  $scope.call = function (func, args) {
+    args = args || [];
     if ($scope[func]) {
-      $scope[func]();
-    } else if ($scope.$parent.logout) {
-      $scope.$parent[func]()
+      $scope[func].apply(this, args);
+    } else if ($scope.$parent[func]) {
+      $scope.$parent[func].apply(this, args)
     }
   };
 }])
