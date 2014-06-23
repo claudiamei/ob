@@ -32,11 +32,11 @@ angular.module('amelia.docs.controllers').controller('kpiEditorialRecommendDemoC
   };
 
   $interval(function() {
-    $scope.data.totalRecommendationsValue.value += ~~(Math.random()*50) - 25;
-    $scope.data.currentValue += ~~(Math.random()*50) - 25;
+    $scope.data.totalRecommendationsValue.value += ~~(Math.random() * 50) - 25;
+    $scope.data.currentValue += ~~(Math.random() * 50) - 25;
 
-    var currentVal = $scope.data.currentValue + ~~(Math.random()*50) - 25;
-    var recomVal = $scope.data.totalRecommendationsValue.value + ~~(Math.random()*50) - 25;
+    var currentVal = $scope.data.currentValue + ~~(Math.random() * 50) - 25;
+    var recomVal = $scope.data.totalRecommendationsValue.value + ~~(Math.random() * 50) - 25;
 
     $scope.data.currentValue = Math.abs(currentVal);
     $scope.data.totalRecommendationsValue.value = Math.abs(recomVal);
