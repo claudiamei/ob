@@ -52,7 +52,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
     controller: 'obBulletGraphController',
     templateUrl: '../src/components/bullet_graph/bullet_graph.html',
     scope: {
-      max: '='
+      max: '=?'
     }
   };
 })
