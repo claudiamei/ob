@@ -8,8 +8,9 @@
   min-width: 964px;
 
   .kpi-suffix {
-    font-size: 30px;
-  }
+     font-size: 30px;
+     font-weight: 400;
+   }
 
   .organic-paid {
     position: absolute;
@@ -199,19 +200,28 @@
   padding-top: 35px;
 }
 
-.ob-kpi-box [class*="col-"] [class*="col-"] {
-  padding-top: 0;
-  padding-bottom: 0;
-}
+.ob-kpi-box{
 
-.ob-kpi-box label {
-  font-size: 14px;
-  font-weight: normal;
-  padding: 0;
-  margin-top: 5px;
-  display: block;
-  text-align: left;
-  color: #aaa;
+  [class*="col-"] [class*="col-"] {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  label {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 0;
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+    color: #aaa;
+  }
+
+  .inline-label{
+    font-size: 30px;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+  }
 }
 
 .ob-kpi-box label label {
@@ -277,6 +287,7 @@
   .equal-height-cols > div {
     display: table-cell;
     vertical-align: middle;
+    float: none;
   }
 
   .multi-row {
@@ -322,5 +333,31 @@
   }
 }
 
+ob-kpi-number {
+  /* Font 0 for span spaces problem */
+  font-size: 0px;
+
+  .affix-top {
+    font-size: 30px;
+    line-height: 1.2;
+    vertical-align: top;
+  }
+
+  .suffix {
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .value {
+    font-size: 60px;
+    font-weight: 400;
+  }
+
+  &.ob-number-sm {
+    .value {
+      font-size: 30px;
+      }
+  }
+}
 
 

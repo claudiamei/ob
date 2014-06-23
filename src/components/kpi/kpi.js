@@ -51,6 +51,97 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
       return $filter('obNumber')(number, decimalPlaces) + '<span class="kpi-suffix">' + suffixes[multiple] + '</span>';
     };
   })
+  .directive('obKpiNumber', function() {
+    return {
+      restrict: 'EA',
+      // replace: true,
+      scope: {
+        percentage: '=',
+        currency: '=',
+        data: '=',
+      },
+      templateUrl: '../src/components/kpi/templates/kpi-number.html',
+      link: function(scope, element) {
+        var init = false,
+          changeSiSuffix = {
+            'k': 'K',
+            'M': 'MM',
+            'G': 'BN',
+          },
+          d3 = window.d3,
+          formatPrefix,
+          kpiValue = d3.select(element[0]).select('.value'),
+          kpiSuffix = d3.select(element[0]).select('.suffix'),
+          newValue,
+          oldValue,
+          currentTween;
+
+        scope.$watch('data', function(newData, oldData) {
+          if (newData === undefined) {
+            return;
+          }
+
+          if (typeof(newData) === 'number') {
+            newValue = newData;
+            oldValue = oldData;
+          } else {
+            newValue = newData.value;
+            oldValue = oldData ? oldData.value : 0;
+          }
+
+          if (!init) {
+            oldValue = 0;
+            animateText();
+            init = !init;
+            return;
+          }
+          if (newValue !== oldValue) {
+            animateText();
+          }
+
+        }, true);
+
+        function animateText() {
+          if (scope.percentage) {
+            currentTween = tweenPercentageText;
+            oldValue *= 100;
+            newValue *= 100;
+            scope.data.valueSuffix = '';
+            scope.data.suffix = '%';
+          } else {
+            currentTween = tweenValueAndSuffixText;
+          }
+
+          kpiValue
+            .transition()
+            .duration(init ? 7000 : 2000)
+            .ease("exp-in-out")
+            .tween("text", currentTween);
+        }
+
+        function tweenValueAndSuffixText() {
+          var i = d3.interpolate(oldValue, newValue);
+          return function(t) {
+            if (i(t) < 1000) {
+              this.textContent = ~~i(t);
+              kpiSuffix.text('');
+              return;
+            }
+            formatPrefix = d3.formatPrefix(i(t));
+            kpiSuffix.text(changeSiSuffix[formatPrefix.symbol]);
+            this.textContent = formatPrefix.scale(i(t)).toFixed(1);
+          };
+        }
+
+        function tweenPercentageText() {
+          var i = d3.interpolate(oldValue, newValue);
+          return function(t) {
+            this.textContent = d3.format('.2f')(i(t));
+          };
+        }
+      }
+    };
+  })
   .directive('kpioverPopup', function($timeout) {
     return {
       restrict: 'EA',
@@ -140,11 +231,11 @@ angular.module('amelia-ui.kpi-boxes', ['amelia-ui.utils', 'ui.bootstrap.tooltip'
       restrict: 'AE',
       templateUrl: '../src/components/kpi/templates/editorial-recommend.html',
       replace: true,
-      transclude: true,
-      scope: {
-        boxes: '=',
-        currency: '@'
-      }
+      //  transclude: true,
+      //      scope: {
+      //        boxes: '=',
+      //        currency: '@'
+      //      }
     };
   })
   .directive('obKpiBoxEditorialContent', function() {

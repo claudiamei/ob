@@ -1,37 +1,33 @@
-
 <div class="ob-kpi-box">
-	<div class="row equal-height-cols">
-		<div class="col-xs-4">
-			<div class="row equal-height-cols">
-				<div class="col-xs-6">
-					<div class="font-lg">
-						<div class="value" ng-bind-html="data.fp_top_expected_value | kpiNumber:2"></div>
-						<label>Incremental Content Views/hr</label>
-					</div>
-				</div>
-				<div class="col-xs-6">
-					<ob-bullet-graph>
-						<ob-bullet-bar value="10" class="progress-bar-info" name="search"></ob-bullet-bar>
-						<ob-bullet-benchmark value="20"></ob-bullet-benchmark>
-					</ob-bullet-graph>
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-8">
-			<div class="row">
-				<div class="col-xs-12 col-lg-6">
-					<div class="font-md center-table">
-						<strong ng-bind="45 | number"></strong>
-						<span> Recommendations Now</span>
-					</div>
-				</div>
-				<div class="col-xs-12 col-lg-6">
-					<div class="font-md center-table">
-						<strong ng-bind="data.num_recommendations_executed | number"></strong>
-						<span> Executed Today</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row equal-height-cols">
+        <div class="col-xs-4">
+            <div class="row equal-height-cols">
+                <div class="col-xs-6">
+                    <ob-kpi-number class="center-table" data="data.totalRecommendationsValue"></ob-kpi-number>
+                </div>
+                <div class="col-xs-6">
+                    <!--<ob-bullet-graph max="maxValue">-->
+                    <!--<ob-bullet-bar value="barval" class="progress-bar-info" name="a"></ob-bullet-bar>-->
+                    <!--<ob-bullet-benchmark value="barbench" name="b"></ob-bullet-benchmark>-->
+                    <!--</ob-bullet-graph>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-12 col-lg-6">
+                    <div class="center-table">
+                        <ob-kpi-number class="ob-number-sm" data="data.recommendationsCount"></ob-kpi-number>
+                        <span class="inline-label"> Recommendations Now</span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6">
+                    <div class="font-md center-table">
+                        <ob-kpi-number class="ob-number-sm" data="data.executedRecommendationsCount"></ob-kpi-number>
+                        <span class="inline-label"> Executed Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
