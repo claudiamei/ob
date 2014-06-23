@@ -28,7 +28,11 @@ angular.module('amelia.docs.controllers').controller('kpiEditorialRecommendDemoC
     },
     recommendationsCount: 33,
     executedRecommendationsCount: 23,
+    barValue: 50,
+    maxValue: 100,
   };
+
+
 
   $interval(function() {
     $scope.data.totalRecommendationsValue.value += 14467;
