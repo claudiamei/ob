@@ -13,7 +13,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
     $scope.bar = {};
     $scope.benchmark = {};
     $scope.max = angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : obBulletGraphConfig.max;
-    
+
     this.add = function(type, bar, element) {
       if (!animate) {
         element.css({

@@ -22,21 +22,26 @@ angular.module('amelia.docs.controllers').controller('kpiEditorialRecommendDemoC
 
   $scope.data = {
     totalRecommendationsValue: {
-      value: 12342,
+      value: 600,
       label: 'Incremental Content Views /hr',
-      //prefix: '$',
     },
     recommendationsCount: 33,
     executedRecommendationsCount: 23,
-    barValue: 50,
-    maxValue: 100,
+    currentValue: 2400,
+    maxValue: 3200,
   };
 
-
-
   $interval(function() {
-    $scope.data.totalRecommendationsValue.value += 14467;
-    $scope.data.totalRecommendationsValue.value %= 1000000000;
+    $scope.data.totalRecommendationsValue.value += ~~(Math.random()*50) - 25;
+    $scope.data.currentValue += ~~(Math.random()*50) - 25;
+
+    var currentVal = $scope.data.currentValue + ~~(Math.random()*50) - 25;
+    var recomVal = $scope.data.totalRecommendationsValue.value + ~~(Math.random()*50) - 25;
+
+    $scope.data.currentValue = Math.abs(currentVal);
+    $scope.data.totalRecommendationsValue.value = Math.abs(recomVal);
+
+    $scope.data.maxValue = $scope.data.totalRecommendationsValue.value + $scope.data.currentValue;
   }, 10000);
 
 });
