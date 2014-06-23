@@ -6,10 +6,11 @@
                     <ob-kpi-number class="center-table" data="data.totalRecommendationsValue"></ob-kpi-number>
                 </div>
                 <div class="col-xs-6">
-                    <!--<ob-bullet-graph max="maxValue">-->
-                    <!--<ob-bullet-bar value="barval" class="progress-bar-info" name="a"></ob-bullet-bar>-->
-                    <!--<ob-bullet-benchmark value="barbench" name="b"></ob-bullet-benchmark>-->
-                    <!--</ob-bullet-graph>-->
+                    <ob-bullet-graph max="data.maxValue">
+                        <ob-bullet-bar value="data.currentValue" class="progress-bar-danger" name="a"></ob-bullet-bar>
+                        <ob-bullet-bar value="data.totalRecommendationsValue.value" class="progress-bar-info" name="b"></ob-bullet-bar>
+                        <!--<ob-bullet-benchmark value="data.barBench" name="b"></ob-bullet-benchmark>-->
+                    </ob-bullet-graph>
                 </div>
             </div>
         </div>
