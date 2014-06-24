@@ -1,15 +1,20 @@
 #!/usr/bin/env node
+
 'use strict';
 
 var pkg = require('../package.json');
 var inquirer = require("inquirer");
 var clc = require('cli-color');
 var _ = require('underscore');
-var argv = require('minimist')(process.argv.slice(2), {'alias': {'task': 't'}});
+var argv = require('minimist')(process.argv.slice(2), {
+  'alias': {
+    'task': 't'
+  }
+});
 
-var tasks = ['serve', 'build', 'test','add_component', 'remove_component', 'prettify'];
+var tasks = ['serve', 'build', 'test', 'add_component', 'remove_component', 'prettify', 'hint'];
 
-var run_task = function (task) {
+var run_task = function(task) {
   require('../tasks/' + task + '.js');
 };
 
@@ -28,24 +33,22 @@ if (argv.t) {
 
 // Print banner
 var orange = clc.xterm(202);
-var banner =  "\n" +
-              orange('Welcome to ' + pkg.name) + "\n" + 
-              clc.white(pkg.description) + "\n";
+var banner = "\n" +
+  orange('Welcome to ' + pkg.name) + "\n" +
+  clc.white(pkg.description) + "\n";
 console.log(banner);
 
 // Check for versions (?)
 
 // Select task
-inquirer.prompt([
-  {
-    type: "list",
-    name: "task",
-    message: "What do you want to do? [-t, --task]",
-    choices: (function () {
-        tasks.splice(3, 0, new inquirer.Separator());
-        return tasks;
-    })()
-  }
-], function (answers) {
+inquirer.prompt([{
+  type: "list",
+  name: "task",
+  message: "What do you want to do? [-t, --task]",
+  choices: (function() {
+    tasks.splice(3, 0, new inquirer.Separator());
+    return tasks;
+  })()
+}], function(answers) {
   run_task(answers.task);
 });

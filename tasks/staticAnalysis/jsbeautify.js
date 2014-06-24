@@ -2,16 +2,16 @@ var Q = require('q');
 var gulp = require('gulp');
 var prettify = require('gulp-jsbeautifier');
 
-var verifyCodeStyle = function(filesToBeautify) {
-  gulp.src(filesToBeautify)
+var verifyCodeStyle = function(files) {
+  gulp.src(files)
     .pipe(prettify({
       config: '.jsbeautifyrc',
       mode: 'VERIFY_ONLY'
     }));
 };
 
-var fixCodeStyle = function(filesToBeautify) {
-  gulp.src(filesToBeautify, {
+var fixCodeStyle = function(files) {
+  gulp.src(files, {
     base: './'
   })
     .pipe(prettify({
