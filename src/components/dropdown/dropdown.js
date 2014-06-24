@@ -51,48 +51,6 @@ angular.module('amelia-ui.dropdown', [])
 //   $scope.openEvent = angular.isDefined($attrs.hover) ? $attrs.openEvent : obDropdownConfig.toggleEvent.open;
 //   $scope.closeEvent = angular.isDefined($attrs.hover) ? $attrs.closeEvent : obDropdownConfig.toggleEvent.close;
 // }])
-.directive('obDropdownToggle', ['$document',
-  function($document) {
-    var openElement = null,
-      closeMenu = angular.noop;
-    return {
-      restrict: 'CA',
-      scope: {
-        hover: '='
-      },
-      toggleEvent: {
-        open: 'mouseenter click',
-        close: 'mouseleave click'
-      }
-    }
-  }
-])
-  .controller('obDropdownController', ['$scope', '$attrs', 'obDropdownConfig',
-    function($scope, $attrs, obDropdownConfig) {
-      $scope.hPos = angular.isDefined($attrs.hPos) ? $attrs.hPos : obDropdownConfig.menuPosition.horizontal;
-      $scope.vPos = angular.isDefined($attrs.vPos) ? $attrs.vPos : obDropdownConfig.menuPosition.vertical;
-      $scope.call = function(func) {
-        if ($scope[func]) {
-          $scope[func]();
-        } else if ($scope.$parent[func]) {
-          $scope.$parent[func]();
-        }
-      };
-    }
-  ])
-  .directive('obDropdown', function() {
-    return {
-      restrict: 'AE',
-      replace: true,
-      scope: {
-        items: '=',
-        title: '=',
-        hover: '='
-      },
-      controller: 'obDropdownController',
-      templateUrl: '../src/components/dropdown/dropdown.html',
-    };
-  })
   .directive('obDropdownToggle', ['$document',
     function($document) {
       var openElement = null,
