@@ -50,7 +50,10 @@ angular.module('amelia-ui.charts.bullet-graph', [])
     replace: true,
     transclude: true,
     controller: 'obBulletGraphController',
-    templateUrl: '../src/components/bullet_graph/bullet_graph.html'
+    templateUrl: '../src/components/bullet_graph/bullet_graph.html',
+    scope: {
+      max: '=?'
+    }
   };
 })
 
@@ -61,7 +64,7 @@ angular.module('amelia-ui.charts.bullet-graph', [])
     transclude: true,
     require: '^obBulletGraph',
     scope: {
-      value: '@',
+      value: '=',
       class: '@',
       name: '@'
     },

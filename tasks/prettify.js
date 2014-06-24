@@ -12,4 +12,4 @@ var filesToBeautify = [
   path.join('tasks', '**', '*.js'),
 ];
 
-jsBeautify.verifyAndFix(filesToBeautify);
+jsBeautify.fixCodeStyle(filesToBeautify);

@@ -17,11 +17,12 @@ angular.module('amelia-ui.dropdown', [])
     function($scope, $attrs, obDropdownConfig) {
       $scope.hPos = angular.isDefined($attrs.hPos) ? $attrs.hPos : obDropdownConfig.menuPosition.horizontal;
       $scope.vPos = angular.isDefined($attrs.vPos) ? $attrs.vPos : obDropdownConfig.menuPosition.vertical;
-      $scope.call = function(func) {
+      $scope.call = function(func, args) {
+        args = args || [];
         if ($scope[func]) {
-          $scope[func]();
-        } else if ($scope.$parent.logout) {
-          $scope.$parent[func]()
+          $scope[func].apply(this, args);
+        } else if ($scope.$parent[func]) {
+          $scope.$parent[func].apply(this, args)
         }
       };
     }
@@ -35,58 +36,69 @@ angular.module('amelia-ui.dropdown', [])
         title: '=',
         hover: '='
       },
+      //   hPos: '@?',  // for menu placement relative to toggle
+      //   vPos: '@?',  // for menu placement relative to toggle
+      // },
       controller: 'obDropdownController',
       templateUrl: '../src/components/dropdown/dropdown.html',
+      // link: function(scope, ele, attr){
+      // 	scope.title = attr.title;
+      // },
     };
   })
-  .directive('obDropdownToggle', ['$document',
-    function($document) {
-      var openElement = null,
-        closeMenu = angular.noop;
-      return {
-        restrict: 'CA',
-        scope: {
-          hover: '='
-        },
-        link: function(scope, element, attrs) {
 
-          scope.openEvent = (!!scope.hover) ? 'mouseenter click' : 'click';
-          scope.closeEvent = (!!scope.hover) ? 'mouseleave click' : 'click';
+// .controller('obDropdownToggleController', ['$scope', '$attrs', 'obDropdownConfig', function ($scope, $attrs, obDropdownConfig) {
+//   $scope.openEvent = angular.isDefined($attrs.hover) ? $attrs.openEvent : obDropdownConfig.toggleEvent.open;
+//   $scope.closeEvent = angular.isDefined($attrs.hover) ? $attrs.closeEvent : obDropdownConfig.toggleEvent.close;
+// }])
+.directive('obDropdownToggle', ['$document',
+  function($document) {
+    var openElement = null,
+      closeMenu = angular.noop;
+    return {
+      restrict: 'CA',
+      scope: {
+        hover: '='
+      },
+      link: function(scope, element, attrs) {
 
-          scope.$watch('$location.path', function() {
+        scope.openEvent = (!!scope.hover) ? 'mouseenter click' : 'click';
+        scope.closeEvent = (!!scope.hover) ? 'mouseleave click' : 'click';
+
+        scope.$watch('$location.path', function() {
+          closeMenu();
+        });
+        element.parent().bind(scope.closeEvent, function() {
+          closeMenu();
+        });
+        element.bind(scope.openEvent, function(event) {
+
+          var elementWasOpen = (element === openElement);
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (!!openElement) {
             closeMenu();
-          });
-          element.parent().bind(scope.closeEvent, function() {
-            closeMenu();
-          });
-          element.bind(scope.openEvent, function(event) {
+          }
 
-            var elementWasOpen = (element === openElement);
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            if (!!openElement) {
-              closeMenu();
-            }
-
-            if (!elementWasOpen && !element.hasClass('disabled') && !element.prop('disabled')) {
-              element.parent().addClass('open');
-              openElement = element;
-              closeMenu = function(event) {
-                if (event) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                $document.unbind('click', closeMenu);
-                element.parent().removeClass('open');
-                closeMenu = angular.noop;
-                openElement = null;
-              };
-              $document.bind('click', closeMenu);
-            }
-          });
-        }
-      };
-    }
-  ]);
+          if (!elementWasOpen && !element.hasClass('disabled') && !element.prop('disabled')) {
+            element.parent().addClass('open');
+            openElement = element;
+            closeMenu = function(event) {
+              if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              $document.unbind('click', closeMenu);
+              element.parent().removeClass('open');
+              closeMenu = angular.noop;
+              openElement = null;
+            };
+            $document.bind('click', closeMenu);
+          }
+        });
+      }
+    };
+  }
+]);

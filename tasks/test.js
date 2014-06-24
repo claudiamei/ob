@@ -27,6 +27,6 @@ var filesToHint = [
 Q.all([
   jshint.jshintFiles(filesToHint),
   // src.js.test(), // no tests ro run right now
-  jsBeautify.verifyOnly(filesToBeautify)
+  jsBeautify.verifyCodeStyle(filesToBeautify)
 ])
   .then(function() {});
